@@ -2,7 +2,7 @@ import React from 'react';
 
 const Homepage: React.FunctionComponent = () => {
 	return (
-		<div>
+		<div className='bg-indigo-400'>
 			<h1>Homepage</h1>
 		</div>
 	);
