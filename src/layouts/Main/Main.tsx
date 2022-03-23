@@ -12,7 +12,7 @@ const Main: React.FunctionComponent = () => {
 			<header>
 				<Navbar />
 			</header>
-			<main>
+			<main className='font-poppins'>
 				<Outlet />
 				<Scroll />
 			</main>
