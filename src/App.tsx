@@ -28,6 +28,8 @@ const App: React.FunctionComponent = () => {
 						<Route path="web-development" element={<h1>/work/web-development</h1>} />
 						<Route path="marketing-digital-performance" element={<h1>/work/marketing-digital-performance</h1>} />
 					</Route>
+					<Route path="sobre-a-basicamente" element={<h1>/sobre-a-basicamente</h1>} />
+					<Route path="contactos" element={<h1>/contactos</h1>} />
 					<Route path="pedir-proposta" element={<h1>/pedir-proposta</h1>} />
 					<Route path="termos-e-condicoes" element={<h1>/termos-e-condicoes</h1>} />
 					<Route path="resolucao-litigios" element={<h1>/resolucao-litigios</h1>} />
