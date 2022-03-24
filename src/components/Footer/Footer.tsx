@@ -8,7 +8,7 @@ const Footer: React.FunctionComponent = () => {
 			<h2 id="footer-heading" className="sr-only">
 				Footer
 			</h2>
-			<div className="mx-auto lg:py-12 lg:px-4 py-8 px-2">
+			<div className="mx-auto lg:py-12 py-8">
 				<div className="flex flex-col lg:flex-row gap-y-8 text-center items-center lg:gap-y-0 lg:justify-evenly lg:text-left lg:items-start">
                     <div className="space-y-4 lg:space-y-8">
 						<h4 className="text-xl font-bold text-white">

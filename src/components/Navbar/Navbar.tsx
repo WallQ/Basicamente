@@ -3,7 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { Popover, Transition, Disclosure } from '@headlessui/react';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
 import { ChevronDownIcon } from '@heroicons/react/solid';
-import logo from '../../assets/logo.gif';
+import logo from '../../assets/Basicamente-Logo.gif';
 
 const Navbar: React.FunctionComponent = () => {
 	return (
