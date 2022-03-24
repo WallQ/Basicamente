@@ -28,7 +28,7 @@ const Scroll: React.FunctionComponent = () => {
 	}, []);
 	return (
 		<div className="fixed bottom-2 right-2">
-			<button type="button" onClick={scrollToTop} className={`p-2 rounded-full shadow-sm text-white bg-primary ease-linear duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+			<button type="button" onClick={scrollToTop} className={`p-2 shadow-sm text-white bg-primary ease-linear duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
 				<ChevronUpIcon className="w-6 h-6" />
 			</button>
 		</div>
