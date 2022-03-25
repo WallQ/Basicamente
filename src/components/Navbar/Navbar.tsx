@@ -5,6 +5,8 @@ import { MenuIcon, XIcon } from '@heroicons/react/outline';
 import { ChevronDownIcon } from '@heroicons/react/solid';
 import logo from '../../assets/Basicamente-Logo.gif';
 
+import { solucoes, work } from './_navItems';
+
 const Navbar: React.FunctionComponent = () => {
 	return (
 		<Popover className="relativebg-white">
@@ -36,21 +38,13 @@ const Navbar: React.FunctionComponent = () => {
 									<Popover.Panel className="absolute left-1/2 z-10 mt-3 w-screen max-w-xs -translate-x-1/2 transform px-2 sm:px-0">
 										<div className="overflow-hidden shadow-lg ring-1 ring-black ring-opacity-5">
 											<div className="relative bg-white">
-												<NavLink to="solucoes/comercio-digital" className="text-base font-medium text-gray-600 block px-8 py-2 hover:bg-gray-100">
-													Comércio Digital
-												</NavLink>
-												<NavLink to="solucoes/marketing-digital-performance" className="text-base font-medium text-gray-600 block px-8 py-2 hover:bg-gray-100">
-													Marketing Digital e Performance
-												</NavLink>
-												<NavLink to="solucoes/uiux-design" className="text-base font-medium text-gray-600 block px-8 py-2 hover:bg-gray-100">
-													UI/UI Design
-												</NavLink>
-												<NavLink to="solucoes/websites-workplaces-digitais" className="text-base font-medium text-gray-600 block px-8 py-2 hover:bg-gray-100">
-													Websites e Workplaces Digitais
-												</NavLink>
-												<NavLink to="solucoes/web-development" className="text-base font-medium text-gray-600 block px-8 py-2 hover:bg-gray-100">
-													Web Development
-												</NavLink>
+												{solucoes.map((item,index) => (
+													<Popover.Button key={item.routeUrl+index} onClick={() => (open = false)} className='min-w-full text-left'>
+														<NavLink to={item.routeUrl} className="text-base font-medium text-gray-600 block px-8 py-2 hover:bg-primary hover:text-white">
+															{item.routeTitle}
+														</NavLink>
+													</Popover.Button>
+												))}
 											</div>
 										</div>
 									</Popover.Panel>
@@ -72,18 +66,13 @@ const Navbar: React.FunctionComponent = () => {
 									<Popover.Panel className="absolute left-1/2 z-10 mt-3 w-screen max-w-xs -translate-x-1/2 transform px-2 sm:px-0">
 										<div className="overflow-hidden shadow-lg ring-1 ring-black ring-opacity-5">
 											<div className="relative bg-white">
-												<NavLink to="work/websites" className="text-base font-medium text-gray-600 block px-8 py-2 hover:bg-gray-100">
-													Websites
-												</NavLink>
-												<NavLink to="work/e-commerce" className="text-base font-medium text-gray-600 block px-8 py-2 hover:bg-gray-100">
-													eCommerce
-												</NavLink>
-												<NavLink to="work/web-development" className="text-base font-medium text-gray-600 block px-8 py-2 hover:bg-gray-100">
-													Web Development
-												</NavLink>
-												<NavLink to="work/marketing-digital-performance" className="text-base font-medium text-gray-600 block px-8 py-2 hover:bg-gray-100">
-													Marketing Digital e Performance
-												</NavLink>
+												{work.map((item,index) => (
+													<Popover.Button key={item.routeUrl+index} onClick={() => (open = false)} className='min-w-full text-left'>
+														<NavLink to={item.routeUrl} className="text-base font-medium text-gray-600 block px-8 py-2 hover:bg-primary hover:text-white">
+															{item.routeTitle}
+														</NavLink>
+													</Popover.Button>
+												))}
 											</div>
 										</div>
 									</Popover.Panel>
@@ -131,21 +120,13 @@ const Navbar: React.FunctionComponent = () => {
 												<ChevronDownIcon className={`${open ? "transform rotate-180" : ""} w-6 h-6`} />
 											</Disclosure.Button>
 											<Disclosure.Panel className="flex flex-col justify-center items-center border-t border-b border-t-gray-500 border-b-gray-500">
-												<NavLink to="solucoes/comercio-digital" className="text-base font-medium text-gray-600 block px-8 py-2 hover:bg-gray-100">
-													Comércio Digital
-												</NavLink>
-												<NavLink to="solucoes/marketing-digital-performance" className="text-base font-medium text-gray-600 block px-8 py-2 hover:bg-gray-100">
-													Marketing Digital e Performance
-												</NavLink>
-												<NavLink to="solucoes/uiux-design" className="text-base font-medium text-gray-600 block px-8 py-2 hover:bg-gray-100">
-													UI/UI Design
-												</NavLink>
-												<NavLink to="solucoes/websites-workplaces-digitais" className="text-base font-medium text-gray-600 block px-8 py-2 hover:bg-gray-100">
-													Websites e Workplaces Digitais
-												</NavLink>
-												<NavLink to="solucoes/web-development" className="text-base font-medium text-gray-600 block px-8 py-2 hover:bg-gray-100">
-													Web Development
-												</NavLink>
+												{solucoes.map((item,index) => (
+													<Popover.Button key={item.routeUrl+index+index} onClick={() => (open = false)} className='min-w-full text-left'>
+														<NavLink to={item.routeUrl} className="text-base font-medium text-gray-600 block px-8 py-2 hover:bg-gray-100">
+															{item.routeTitle}
+														</NavLink>
+													</Popover.Button>
+												))}
 											</Disclosure.Panel>
 										</>
 									)}
@@ -161,18 +142,13 @@ const Navbar: React.FunctionComponent = () => {
 												<ChevronDownIcon className={`${open ? "transform rotate-180" : ""} w-6 h-6`} />
 											</Disclosure.Button>
 											<Disclosure.Panel className="flex flex-col justify-center items-center border-t border-b border-t-gray-500 border-b-gray-500">
-												<NavLink to="work/websites" className="text-base font-medium text-gray-600 block px-8 py-2 hover:bg-gray-100">
-													Websites
-												</NavLink>
-												<NavLink to="work/e-commerce" className="text-base font-medium text-gray-600 block px-8 py-2 hover:bg-gray-100">
-													eCommerce
-												</NavLink>
-												<NavLink to="work/web-development" className="text-base font-medium text-gray-600 block px-8 py-2 hover:bg-gray-100">
-													Web Development
-												</NavLink>
-												<NavLink to="work/marketing-digital-performance" className="text-base font-medium text-gray-600 block px-8 py-2 hover:bg-gray-100">
-													Marketing Digital e Performance
-												</NavLink>
+												{work.map((item,index) => (
+													<Popover.Button key={item.routeUrl+index+index} onClick={() => (open = false)} className='min-w-full text-left'>
+														<NavLink to={item.routeUrl} className="text-base font-medium text-gray-600 block px-8 py-2 hover:bg-gray-100">
+															{item.routeTitle}
+														</NavLink>
+													</Popover.Button>
+												))}
 											</Disclosure.Panel>
 										</>
 									)}
