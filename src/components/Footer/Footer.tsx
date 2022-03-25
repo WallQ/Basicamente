@@ -8,8 +8,8 @@ const Footer: React.FunctionComponent = () => {
 			<h2 id="footer-heading" className="sr-only">
 				Footer
 			</h2>
-			<div className="mx-auto lg:py-12 py-8">
-				<div className="flex flex-col lg:flex-row gap-y-8 text-center items-center lg:gap-y-0 lg:justify-evenly lg:text-left lg:items-start">
+			<div className="mx-auto lg:py-12 py-8 px-8">
+				<div className="flex flex-col lg:flex-row gap-y-8 lg:gap-y-0 lg:justify-evenly lg:text-left lg:items-start">
                     <div className="space-y-4 lg:space-y-8">
 						<h4 className="text-xl font-bold text-white">
                             Soluções Basicamente
@@ -82,7 +82,7 @@ const Footer: React.FunctionComponent = () => {
 								</li>
 							</ul>
 						</div>
-						<div className="flex flex-row justify-evenly lg:justify-start gap-x-2">
+						<div className="flex flex-row justify-start lg:justify-start gap-x-2">
 							<a href="https://www.instagram.com/basicamente.digital/" target="_blank" rel='noreferrer' className="rounded-full border-2 border-white p-1.5 text-gray-400 hover:text-gray-500">
 								<span className="sr-only">Instagram</span>
 								<FaInstagram className="text-white" />
@@ -99,8 +99,8 @@ const Footer: React.FunctionComponent = () => {
 					</div>
 				</div>
             </div>
-			<div className="py-8 bg-white">
-                <div className="flex flex-col flex-wrap lg:flex-row items-center text-center justify-center gap-x-4 gap-y-2">
+			<div className="py-8 px-8 bg-white">
+                <div className="flex flex-wrap flex-row items-center text-center justify-center gap-x-4 gap-y-2">
                     <Link to="termos-e-condicoes" className='text-xs text-primary border-b border-b-primary hover:opacity-80'>Termos e Condições</Link>
                     <Link to="resolucao-litigios" className='text-xs text-primary border-b border-b-primary hover:opacity-80'>Resolução de Litígios</Link>
                     <a href="##" target="_blank" rel='noreferrer' className='text-xs text-primary border-b border-b-primary hover:opacity-80'>Livro de Reclamações</a>
