@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 interface Props {
-	size?: string;
+	size: string;
 	image: string;
 	altText: string;
 	title: string;
@@ -24,10 +24,11 @@ const SimpleCard: React.FunctionComponent<Props> = ({
 	internalHref,
 	externalHref,
 }) => {
+	console.log(image);
 	return (
 		<>
 			<div className={`flex ${size} flex-col whitespace-pre-wrap`}>
-				<img src={image} alt={altText} />
+				<img src={image} alt={altText} loading="lazy" />
 				<p className="mt-8 text-sm font-bold text-gray-600">{title}</p>
 				{subTitle && (
 					<p className="mt-4 text-sm font-light text-gray-600">
