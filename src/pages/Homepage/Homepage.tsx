@@ -79,12 +79,12 @@ const Homepage: React.FunctionComponent = () => {
 				</div>
 				<BreakTitle title="Dezenas de marcas confiam na Basicamente " />
 				<div className="grid grid-cols-1 content-center justify-items-center gap-y-6 pb-12 lg:grid-cols-3">
-					<img className="w-4/5" src={Partner1} alt="Porto. & hôma" />
-					<img className="w-4/5" src={Partner2} alt="mota-engil & Forcargo" />
-					<img className="w-4/5" src={Partner3} alt="P.Porto & Kaizen" />
-					<img className="w-4/5" src={Partner4} alt="321 Crédito & Halibut" />
-					<img className="w-4/5" src={Partner5} alt="Mattreness & Clínicas Nuno Mendes" />
-					<img className="w-4/5" src={Partner6} alt="Exaktus & Mahrla" />
+					<img className="w-4/5" src={Partner1} alt="Porto. & hôma" loading="lazy" />
+					<img className="w-4/5" src={Partner2} alt="mota-engil & Forcargo" loading="lazy" />
+					<img className="w-4/5" src={Partner3} alt="P.Porto & Kaizen" loading="lazy" />
+					<img className="w-4/5" src={Partner4} alt="321 Crédito & Halibut" loading="lazy" />
+					<img className="w-4/5" src={Partner5} alt="Mattreness & Clínicas Nuno Mendes" loading="lazy" />
+					<img className="w-4/5" src={Partner6} alt="Exaktus & Mahrla" loading="lazy" />
 				</div>
 			</div>
 			<div className="flex flex-col items-center justify-center bg-cover bg-center bg-no-repeat py-16 lg:py-28" style={{ backgroundImage: `url(${FooterImage})` }}>
