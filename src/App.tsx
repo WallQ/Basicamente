@@ -7,7 +7,7 @@ import SolucoesLayout from './layouts/Solucoes/Solucoes';
 import WorkLayout from './layouts/Work/Work';
 
 // Pages
-import Homepage from './pages/Homepage';
+import Homepage from './pages/Homepage/Homepage';
 
 const App: React.FunctionComponent = () => {
 	return (
