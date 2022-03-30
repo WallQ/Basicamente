@@ -6,23 +6,18 @@ import SimpleCard from '../../components/SimpleCard/SimpleCard';
 import InputBox from '../../components/InputBox/InputBox';
 import TextArea from '../../components/TextArea/TextArea';
 
-// Data
-import { services } from './_services';
-import { works } from './_works';
-
 // Background Images
 import BannerImage from '../../assets/Homepage/Basicamente-Header.jpeg';
 import FooterImage from '../../assets/Homepage/Basicamente-Footer.jpg';
 
-// Partner Images
-import Partner1 from '../../assets/Homepage/Partner-1.png';
-import Partner2 from '../../assets/Homepage/Partner-2.png';
-import Partner3 from '../../assets/Homepage/Partner-3.png';
-import Partner4 from '../../assets/Homepage/Partner-4.png';
-import Partner5 from '../../assets/Homepage/Partner-5.png';
-import Partner6 from '../../assets/Homepage/Partner-6.png';
+// Data
+import { services, works, partners } from './_data';
 
 const Homepage: React.FunctionComponent = () => {
+	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+		alert('Formulário enviado com sucesso!');
+		e.preventDefault();
+	}
 	return (
 		<>
 			<div className="flex flex-col items-center justify-center bg-cover bg-center bg-no-repeat py-28 lg:py-44" style={{ backgroundImage: `url(${BannerImage})` }}>
@@ -30,7 +25,7 @@ const Homepage: React.FunctionComponent = () => {
 					<h1 className="text-xl font-medium lg:text-4xl">
 						Aceleramos a sua Transformação Digital
 					</h1>
-					<p className="text-base font-light leading-normal lg:text-2xl">
+					<p className="whitespace-pre-wrap text-base font-light leading-normal lg:text-2xl">
 						Ajudamos empresas e organizações a{' '}
 						<span className="font-bold">
 							Transformar, Inovar e a Escalar Negócios no Digital
@@ -77,14 +72,16 @@ const Homepage: React.FunctionComponent = () => {
 						/>
 					))}
 				</div>
-				<BreakTitle title="Dezenas de marcas confiam na Basicamente " />
+				<BreakTitle title="Dezenas de marcas confiam na Basicamente" />
 				<div className="grid grid-cols-1 content-center justify-items-center gap-y-6 pb-12 lg:grid-cols-3">
-					<img className="w-4/5" src={Partner1} alt="Porto. & hôma" loading="lazy" />
-					<img className="w-4/5" src={Partner2} alt="mota-engil & Forcargo" loading="lazy" />
-					<img className="w-4/5" src={Partner3} alt="P.Porto & Kaizen" loading="lazy" />
-					<img className="w-4/5" src={Partner4} alt="321 Crédito & Halibut" loading="lazy" />
-					<img className="w-4/5" src={Partner5} alt="Mattreness & Clínicas Nuno Mendes" loading="lazy" />
-					<img className="w-4/5" src={Partner6} alt="Exaktus & Mahrla" loading="lazy" />
+					{partners.map((partner, index) => (
+						<img 
+							key={partner.altText + index} 
+							className="w-4/5"
+							src={partner.image}
+							alt={partner.altText}
+							loading="lazy" />
+					))}
 				</div>
 			</div>
 			<div className="flex flex-col items-center justify-center bg-cover bg-center bg-no-repeat py-16 lg:py-28" style={{ backgroundImage: `url(${FooterImage})` }}>
@@ -97,7 +94,7 @@ const Homepage: React.FunctionComponent = () => {
 						disponível a ajudá-lo.
 					</p>
 				</div>
-				<form className="mt-8 flex w-4/5 flex-col flex-wrap justify-center gap-y-6 text-white lg:w-1/2">
+				<form onSubmit={handleSubmit} className="mt-8 flex w-4/5 flex-col flex-wrap justify-center gap-y-6 text-white lg:w-1/2">
 					<div className="inline-flex w-full items-end justify-between gap-x-2">
 						<div className="flex grow flex-col">
 							<InputBox id="name" title="Nome" subTitle="Nome *" type="text" />
