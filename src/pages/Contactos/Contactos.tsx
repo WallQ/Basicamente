@@ -8,7 +8,7 @@ const Contactos = () => {
 		<>
 			<div className="container mx-auto max-w-max px-12 lg:px-48 py-10">
 				<div className="flex flex-col lg:flex-row items-center justify-between">
-                    <img src={SquareLogo} alt="Basicamente Square Logo" className="w-max md:w-1/2 h-auto" />
+                    <img width="750" height="500" src={SquareLogo} alt="Basicamente Square Logo" className="w-max md:w-1/2 h-auto" />
 					<div className="flex flex-col grow gap-y-6 py-14 lg:py-28 lg:px-28">
 						<h1 className='text-4xl font-medium'>Contactar a Basicamente</h1>
 						<a href="mailto:askus@basicamente.io?subject=Contacto%20feito%20em%20Basicamente.pt">
