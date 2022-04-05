@@ -6,9 +6,9 @@
   <img src="https://github.com/WallQ/Basicamente/blob/master/docs/tech/Redux.png?raw=true" alt="Redux" width="75" height="75" />
   <img src="https://github.com/WallQ/Basicamente/blob/master/docs/tech/GraphQL.png?raw=true" alt="GraphQL" width="75" height="75" />
   <img src="https://github.com/WallQ/Basicamente/blob/master/docs/tech/Contentful.png?raw=true" alt="Contentful" width="75" height="75" />
-  <img src="https://github.com/WallQ/Basicamente/blob/master/docs/tech/TailwindCSS.png?raw=true" alt="Tailwind CSS" width="37.5" height="75" />
+  <img src="https://github.com/WallQ/Basicamente/blob/master/docs/tech/TailwindCSS.png?raw=true" alt="Tailwind CSS" width="75" height="75" />
   <img src="https://github.com/WallQ/Basicamente/blob/master/docs/tech/Jest.png?raw=true" alt="Jest" width="75" height="75" />
-  <img src="https://github.com/WallQ/Basicamente/blob/master/docs/tech/GitHub.png?raw=true" alt="GitHub" width="75" height="37.5" />
+  <img src="https://github.com/WallQ/Basicamente/blob/master/docs/tech/GitHub.png?raw=true" alt="GitHub" width="75" height="75" />
   <img src="https://github.com/WallQ/Basicamente/blob/master/docs/tech/Vercel.png?raw=true" alt="Vercel" width="75" height="75" />
   <img src="https://github.com/WallQ/Basicamente/blob/master/docs/tech/VisualStudioCode.png?raw=true" alt="Visual Studio Code" width="75" height="75" />
 </div>
