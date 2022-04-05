@@ -4,7 +4,7 @@
   <img src="https://github.com/WallQ/Basicamente/blob/master/docs/tech/TypeScript.png?raw=true" alt="TypeScript" width="75" height="75" />
   <img src="https://github.com/WallQ/Basicamente/blob/master/docs/tech/React.png?raw=true" alt="React" width="75" height="75" />
   <img src="https://github.com/WallQ/Basicamente/blob/master/docs/tech/Redux.png?raw=true" alt="Redux" width="75" height="75" />
-  <img src="https://github.com/WallQ/Basicamente/blob/master/docs/tech/GraphQL.png?raw=true" alt="GraphQL" width="75" height="37.5" />
+  <img src="https://github.com/WallQ/Basicamente/blob/master/docs/tech/GraphQL.png?raw=true" alt="GraphQL" width="75" height="75" />
   <img src="https://github.com/WallQ/Basicamente/blob/master/docs/tech/Contentful.png?raw=true" alt="Contentful" width="75" height="75" />
   <img src="https://github.com/WallQ/Basicamente/blob/master/docs/tech/TailwindCSS.png?raw=true" alt="Tailwind CSS" width="37.5" height="75" />
   <img src="https://github.com/WallQ/Basicamente/blob/master/docs/tech/Jest.png?raw=true" alt="Jest" width="75" height="75" />
