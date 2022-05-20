@@ -18,6 +18,7 @@ const Homepage: React.FunctionComponent = () => {
 		alert('Formulário enviado com sucesso!');
 		e.preventDefault();
 	}
+
 	return (
 		<>
 			<div className="flex flex-col items-center justify-center bg-cover bg-center bg-no-repeat py-28 lg:py-44" style={{ backgroundImage: `url(${BannerImage})` }}>

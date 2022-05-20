@@ -1,10 +1,9 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 
-// Components
 import Navbar from '../../components/Navbar/Navbar';
 import Footer from '../../components/Footer/Footer';
-import Scroll from '../../components/Scroll/Scroll';
+import ScrollToTop from '../../components/ScrollToTop/ScrollToTop';
 
 const Main: React.FunctionComponent = () => {
 	return (
@@ -14,7 +13,7 @@ const Main: React.FunctionComponent = () => {
 			</header>
 			<main className='font-poppins'>
 				<Outlet />
-				<Scroll />
+				<ScrollToTop />
 			</main>
 			<footer>
 				<Footer />
