@@ -24,7 +24,6 @@ const SimpleCard: React.FunctionComponent<Props> = ({
 	internalHref,
 	externalHref,
 }) => {
-	console.log(image);
 	return (
 		<>
 			<div className={`flex ${size} flex-col whitespace-pre-wrap`}>
