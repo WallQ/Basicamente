@@ -1,19 +1,47 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import { ApolloClient, InMemoryCache, ApolloProvider, HttpLink, from } from '@apollo/client';
+import { onError } from "@apollo/client/link/error";
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import './index.css';
+// import reportWebVitals from './reportWebVitals';
+
+const httpLink = new HttpLink({
+	uri: `https://graphql.contentful.com/content/v1/spaces/${process.env.REACT_APP_SPACE_ID}`,
+});
+
+const errorLink = onError(({ graphQLErrors, networkError }) => {
+	if (graphQLErrors)
+		graphQLErrors.forEach(({ message, locations, path }) =>  
+			console.log(
+				`[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
+			)
+		);
+	if (networkError) console.log(`[Network error]: ${networkError}`);
+});
+
+const client = new ApolloClient({
+	link: from([errorLink, httpLink]),
+	cache: new InMemoryCache(),
+	connectToDevTools: process.env.NODE_ENV === 'development' ? true : false,
+	headers: {
+		Authorization: `Bearer ${process.env.REACT_APP_ACCESS_TOKEN}`,
+	},
+});
 
 const root = ReactDOM.createRoot(
 	document.getElementById('root') as HTMLElement
 );
+
 root.render(
 	<React.StrictMode>
-		<App />
+		<ApolloProvider client={client}>
+			<App />
+		</ApolloProvider>
 	</React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals(console.log);
+// reportWebVitals(console.log);
