@@ -7,7 +7,7 @@ import './index.css';
 // import reportWebVitals from './reportWebVitals';
 
 const httpLink = new HttpLink({
-	uri: `https://graphql.contentful.com/content/v1/spaces/${process.env.REACT_APP_SPACE_ID}`,
+	uri: `https://graphql.contentful.com/content/v1/spaces/${process.env.REACT_APP_SPACE_ID}?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`,
 });
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
@@ -24,9 +24,6 @@ const client = new ApolloClient({
 	link: from([errorLink, httpLink]),
 	cache: new InMemoryCache(),
 	connectToDevTools: process.env.NODE_ENV === 'development' ? true : false,
-	headers: {
-		Authorization: `Bearer ${process.env.REACT_APP_ACCESS_TOKEN}`,
-	},
 });
 
 const root = ReactDOM.createRoot(
