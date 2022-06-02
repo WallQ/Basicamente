@@ -28,7 +28,7 @@ const Navbar: React.FunctionComponent = () => {
 						Home
 					</NavLink>
 					<Popover className="relative">
-						{({ open }) => (
+						{({ open } : {open:boolean}) => (
 							<>
 								<Popover.Button className={`${open ? 'text-gray-500' : 'text-gray-600'} group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-500 focus:outline-none`}>
 									<span>Soluções</span>
@@ -56,7 +56,7 @@ const Navbar: React.FunctionComponent = () => {
 						Sobre
 					</NavLink>
 					<Popover className="relative">
-						{({ open }) => (
+						{({ open } : {open:boolean}) => (
 							<>
 								<Popover.Button className={`${open ? 'text-gray-500' : 'text-gray-600'} group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-500 focus:outline-none`}>
 									<span>Work</span>
@@ -113,7 +113,7 @@ const Navbar: React.FunctionComponent = () => {
 									Home
 								</Link>
 								<Disclosure>
-									{({ open }) => (
+									{({ open } : {open:boolean}) => (
 										<>
 											<Disclosure.Button className='inline-flex align-middle items-center'>
 												<span className='text-base font-medium text-gray-500 hover:text-gray-600'>Soluções</span>
@@ -135,7 +135,7 @@ const Navbar: React.FunctionComponent = () => {
 									Sobre
 								</Link>
 								<Disclosure>
-									{({ open }) => (
+									{({ open } : {open:boolean}) => (
 										<>
 											<Disclosure.Button className='inline-flex align-middle items-center'>
 												<span className='text-base font-medium text-gray-500 hover:text-gray-600'>Work</span>
