@@ -10,12 +10,14 @@ import WorkLayout from './layouts/Work/Work';
 import Homepage from './pages/Homepage/Homepage';
 import Sobre from './pages/Sobre/Sobre';
 import Contactos from './pages/Contactos/Contactos';
+import Testing from './pages/Testing/Testing';
 
 const App: React.FunctionComponent = () => {
 	return (
 		<Router>
 			<Routes>
 				<Route path="/" element={<Layout />}>
+					<Route path="/test" element={<Testing />} />
 					<Route index element={<Homepage />} />
 					<Route path="/solucoes" element={<SolucoesLayout />}>
 						<Route path="comercio-digital" element={<h1>/solucoes/comercio-digital</h1>} />
