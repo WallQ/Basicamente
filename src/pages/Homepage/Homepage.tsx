@@ -5,22 +5,22 @@ import BreakTitle from '../../components/BreakTitle/BreakTitle';
 import SimpleCard from '../../components/SimpleCard/SimpleCard';
 import InputBox from '../../components/InputBox/InputBox';
 import TextArea from '../../components/TextArea/TextArea';
-
 import Header from '../../components/Header/Header';
+import HeaderLoading from '../../components/Header/HeaderLoading';
 
 // Background Images
 import FooterImage from '../../assets/Homepage/Basicamente-Footer.jpg';
 
 // Data
+import { useQuery } from '@apollo/client';
+import { HOMEPAGE_CONTENT } from '../../graphqL/Queries';
 import { services, works, partners } from './_data';
 
-import { useQuery } from '@apollo/client';
-import { HOMEPAGE_CONTENT } from '../../GraphQL/Queries';
-
 const Homepage: React.FunctionComponent = () => {
-	const { error, loading, data } = useQuery(HOMEPAGE_CONTENT);
+	const { error, loading, data } = useQuery<any>(HOMEPAGE_CONTENT);
 
-	console.log(error);
+	// debug
+	console.error(error);
 	console.log(loading);
 	console.log(data);
 
@@ -30,9 +30,9 @@ const Homepage: React.FunctionComponent = () => {
 	};
 
 	return (
-		<>
+		<React.Fragment>
 			{loading ? (
-				<h1>Loading</h1>
+				<HeaderLoading button={false} />
 			) : (
 				data.homepageHeaderCollection && (
 					<Header
@@ -161,7 +161,7 @@ const Homepage: React.FunctionComponent = () => {
 					</div>
 				</form>
 			</div>
-		</>
+		</React.Fragment>
 	);
 };
 
