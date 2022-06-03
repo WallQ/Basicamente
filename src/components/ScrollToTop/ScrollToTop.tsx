@@ -6,11 +6,8 @@ const Scroll: React.FunctionComponent = () => {
 	const [isVisible, setIsVisible] = React.useState<Boolean>(false);
 
 	const toggleVisibility = () => {
-		if (window.pageYOffset > 300) {
-			setIsVisible(true);
-		} else {
-			setIsVisible(false);
-		}
+		if (window.pageYOffset > 300) return setIsVisible(true);
+		return setIsVisible(false);
 	};
 
 	const scrollToTop = () => {
@@ -26,10 +23,11 @@ const Scroll: React.FunctionComponent = () => {
 			window.removeEventListener('scroll', toggleVisibility);
 		};
 	}, []);
+
 	return (
 		<div className="fixed bottom-2 right-2">
-			<button type="button" onClick={scrollToTop} className={`p-2 shadow-sm text-white bg-primary ease-linear duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-				<ChevronUpIcon className="w-6 h-6" />
+			<button type="button" onClick={scrollToTop} className={`bg-primary p-2 text-white shadow-sm duration-500 ease-linear ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+				<ChevronUpIcon className="h-6 w-6" />
 			</button>
 		</div>
 	);
