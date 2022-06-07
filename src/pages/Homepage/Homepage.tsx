@@ -14,7 +14,7 @@ import FooterImage from '../../assets/Homepage/Basicamente-Footer.jpg';
 
 // Data
 import { useQuery } from '@apollo/client';
-import { HOMEPAGE_CONTENT } from '../../graphqL/Queries';
+import { HOMEPAGE_CONTENT } from '../../graphql/Queries';
 
 const Homepage: React.FunctionComponent = () => {
 	const { error, loading, data } = useQuery<any>(HOMEPAGE_CONTENT);
