@@ -18,7 +18,7 @@ const options = {
 
 const Header: React.FunctionComponent<Props> = ({ image, title, text, button }) => {
 	return (
-		<>
+		<React.Fragment>
 			<div className="flex h-[34rem] max-h-[34rem] min-h-[34rem] flex-col items-center justify-center bg-cover bg-center bg-no-repeat py-20 lg:py-44" style={{ backgroundImage: `url(${image})` }}>
 				<div className="flex w-2/3 flex-col items-center gap-y-8 text-center text-white lg:w-1/2">
 					<h1 className="text-xl font-medium lg:text-4xl">{title}</h1>
@@ -32,7 +32,7 @@ const Header: React.FunctionComponent<Props> = ({ image, title, text, button }) 
 					)}
 				</div>
 			</div>
-		</>
+		</React.Fragment>
 	);
 };
 
