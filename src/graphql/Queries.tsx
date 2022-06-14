@@ -66,3 +66,24 @@ export const HOMEPAGE_CONTENT = gql`
 		}
 	}
 `;
+
+export const TEST = gql`
+	query TestQuery {
+		homepageServicesCollection {
+			items {
+				title
+				question
+				text
+				url
+				image {
+					title
+					description
+					url
+					sys {
+						id
+					}
+				}
+			}
+		}
+	}
+`;
