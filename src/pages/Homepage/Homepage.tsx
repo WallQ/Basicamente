@@ -18,7 +18,9 @@ import { HOMEPAGE_CONTENT } from '../../graphql/Queries';
 
 const Homepage: React.FunctionComponent = () => {
 	const { error, loading, data } = useQuery<any>(HOMEPAGE_CONTENT);
-
+	
+	if(error) return <div>Error! {error.message}</div>;
+	
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		alert('Formulário enviado com sucesso!');
 		e.preventDefault();
@@ -44,7 +46,7 @@ const Homepage: React.FunctionComponent = () => {
 					<h1>Loading Service Cards...</h1>
 				) : (
 					data?.homepageServicesCollection && (
-						<div className="grid grid-cols-1 items-center justify-items-center gap-8 md:grid-cols-2 lg:grid-cols-4">
+						<div className="grid grid-cols-1 items-start justify-items-center gap-8 md:grid-cols-2 lg:grid-cols-4">
 							{data.homepageServicesCollection.items.map((services: any) => (
 								<ServicesCard
 									key={services.image.sys.id}
