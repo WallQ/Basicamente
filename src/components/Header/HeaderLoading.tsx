@@ -6,7 +6,7 @@ interface Props {
 
 const Testing: React.FunctionComponent<Props> = ({ button }) => {
 	return (
-		<>
+		<React.Fragment>
 			<div className="flex h-[34rem] max-h-[34rem] min-h-[34rem] animate-pulse flex-col items-center justify-center bg-gray-400 py-20 lg:py-44">
 				<div className="container mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="flex flex-col flex-wrap items-center justify-center gap-y-8 overflow-hidden">
@@ -18,7 +18,7 @@ const Testing: React.FunctionComponent<Props> = ({ button }) => {
 					</div>
 				</div>
 			</div>
-		</>
+		</React.Fragment>
 	);
 };
 
