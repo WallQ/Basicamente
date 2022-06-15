@@ -1,23 +1,26 @@
 import { gql } from '@apollo/client';
 
-export const HOMEPAGE_CONTENT = gql`
-	query getHomepageContent {
-		homepageHeaderCollection {
-			items {
+// Homepage
+export const HOMEPAGE_HEADER = gql`
+	query getHomepageHeaderContent {
+		homepageHeader(id: "2DDrCQlZSMvizPZT4b6UdM") {
+			title
+			text {
+				json
+			}
+			image {
 				title
-				text {
-					json
-				}
-				image {
-					title
-					description
-					url
-					sys {
-						id
-					}
+				description
+				url
+				sys {
+					id
 				}
 			}
 		}
+	}
+`;
+export const HOMEPAGE_SERVICES = gql`
+	query getHomepageServicesContent {
 		homepageServicesCollection {
 			items {
 				title
@@ -34,6 +37,10 @@ export const HOMEPAGE_CONTENT = gql`
 				}
 			}
 		}
+	}
+`;
+export const HOMEPAGE_PROJECTS = gql`
+	query getHomepageProjectsContent {
 		homepageProjectsCollection {
 			items {
 				title
@@ -49,6 +56,10 @@ export const HOMEPAGE_CONTENT = gql`
 				}
 			}
 		}
+	}
+`;
+export const HOMEPAGE_PARTNERS = gql`
+	query getHomepagePartnersContent {
 		homepagePartnersCollection {
 			items {
 				title
@@ -60,27 +71,6 @@ export const HOMEPAGE_CONTENT = gql`
 						sys {
 							id
 						}
-					}
-				}
-			}
-		}
-	}
-`;
-
-export const TEST = gql`
-	query TestQuery {
-		homepageServicesCollection {
-			items {
-				title
-				question
-				text
-				url
-				image {
-					title
-					description
-					url
-					sys {
-						id
 					}
 				}
 			}
