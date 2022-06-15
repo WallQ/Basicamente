@@ -2,25 +2,26 @@ import React from 'react';
 
 // Components
 import BreakTitle from '../../components/BreakTitle/BreakTitle';
-import ServicesCard from '../../components/ServicesCard/ServicesCard';
-import ProjectCard from '../../components/ProjectCard/ProjectCard';
 import InputBox from '../../components/InputBox/InputBox';
 import TextArea from '../../components/TextArea/TextArea';
-import Header from '../../components/Header/Header';
-import HeaderLoading from '../../components/Header/HeaderLoading';
+
+import HeaderLoadingSkeleton from '../../components/Header/HeaderLoadingSkeleton';
+import ServicesCardLoadingSkeleton from '../../components/ServicesCard/ServicesCardLoadingSkeleton';
+import ProjectsCardLoadingSkeleton from '../../components/ProjectsCard/ProjectsCardLoadingSkeleton';
+import PartnersLoadingSkeleton from '../../components/Partners/PartnersLoadingSkeleton';
 
 // Background Images
 import FooterImage from '../../assets/Homepage/Basicamente-Footer.jpg';
 
-// Data
-import { useQuery } from '@apollo/client';
-import { HOMEPAGE_CONTENT } from '../../graphql/Queries';
+// Queries
+import { HOMEPAGE_HEADER, HOMEPAGE_SERVICES, HOMEPAGE_PROJECTS, HOMEPAGE_PARTNERS } from '../../graphql/Queries';
+
+const Header = React.lazy(() => import('../../components/Header/Header'));
+const ServicesCard = React.lazy(() => import('../../components/ServicesCard/ServicesCard'));
+const ProjectsCard = React.lazy(() => import('../../components/ProjectsCard/ProjectsCard'));
+const Partners = React.lazy(() => import('../../components/Partners/Partners'));
 
 const Homepage: React.FunctionComponent = () => {
-	const { error, loading, data } = useQuery<any>(HOMEPAGE_CONTENT);
-	
-	if(error) return <div>Error! {error.message}</div>;
-	
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		alert('Formulário enviado com sucesso!');
 		e.preventDefault();
@@ -28,80 +29,22 @@ const Homepage: React.FunctionComponent = () => {
 
 	return (
 		<React.Fragment>
-			{loading ? (
-				<HeaderLoading button={false} />
-			) : (
-				data?.homepageHeaderCollection && (
-					<Header
-						image={data.homepageHeaderCollection.items[0].image.url}
-						title={data.homepageHeaderCollection.items[0].title}
-						text={data.homepageHeaderCollection.items[0].text}
-						button={false}
-					/>
-				)
-			)}
+			<React.Suspense fallback={<HeaderLoadingSkeleton />}>
+				<Header query={HOMEPAGE_HEADER} />
+			</React.Suspense>			
 			<div className="container mx-auto px-4 sm:px-6 lg:px-8">
 				<BreakTitle title="Em que podemos ajudar?" />
-				{loading ? (
-					<h1>Loading Service Cards...</h1>
-				) : (
-					data?.homepageServicesCollection && (
-						<div className="grid grid-cols-1 items-start justify-items-center gap-8 md:grid-cols-2 lg:grid-cols-4">
-							{data.homepageServicesCollection.items.map((services: any) => (
-								<ServicesCard
-									key={services.image.sys.id}
-									image={services.image.url}
-									altText={services.image.title}
-									title={services.title}
-									question={services.question}
-									text={services.text}
-									urlTitle={"Saber mais"}
-									url={services.url}
-								/>
-							))}
-						</div>
-					)
-				)}				
+				<React.Suspense fallback={<ServicesCardLoadingSkeleton quantity={4} />}>
+					<ServicesCard query={HOMEPAGE_SERVICES} />
+				</React.Suspense>
 				<BreakTitle title="Projetos em destaque" />
-				{loading ? (
-					<h1>Loading Project Cards...</h1>
-				) : (
-					data?.homepageProjectsCollection && (
-						<div className="grid grid-cols-1 items-center justify-items-center gap-8 md:grid-cols-2 lg:grid-cols-3">
-							{data.homepageProjectsCollection.items.map((projects: any) => (
-								<ProjectCard
-									key={projects.image.sys.id}
-									image={projects.image.url}
-									altText={projects.image.title}
-									title={projects.title}
-									text={projects.text}
-									urlTitle={"Contacte-nos para saber mais"}
-									url={projects.url}
-								/>
-							))}
-						</div>
-					)
-				)}				
+				<React.Suspense fallback={<ProjectsCardLoadingSkeleton quantity={3} />}>
+					<ProjectsCard query={HOMEPAGE_PROJECTS} />
+				</React.Suspense>
 				<BreakTitle title="Dezenas de marcas confiam na Basicamente" />
-				{loading ? (
-					<h1>Loading Partners...</h1>
-				) : (
-					data?.homepagePartnersCollection && (
-						<div className="grid grid-cols-1 items-center justify-items-center gap-8 md:grid-cols-2 lg:grid-cols-3">
-							{data.homepagePartnersCollection.items.map((partners: any, index: number) => (
-								partners.imagesCollection.items.map((partner: any) => (
-									<img
-									key={partner.sys.id}
-									className="w-4/5"
-									src={partner.url}
-									alt={partner.title}
-									loading="lazy"
-								/>
-								))
-							))}
-						</div>
-					)
-				)}
+				<React.Suspense fallback={<PartnersLoadingSkeleton quantity={6} />}>
+					<Partners query={HOMEPAGE_PARTNERS} />
+				</React.Suspense>
 			</div>
 
 
