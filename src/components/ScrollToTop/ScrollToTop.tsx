@@ -25,11 +25,13 @@ const Scroll: React.FunctionComponent = () => {
 	}, []);
 
 	return (
-		<div className="fixed bottom-2 right-2">
-			<button type="button" onClick={scrollToTop} className={`bg-primary p-2 text-white shadow-sm duration-500 ease-linear ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-				<ChevronUpIcon className="h-6 w-6" />
-			</button>
-		</div>
+		<React.Fragment>
+			<div className="fixed bottom-2 right-2">
+				<button type="button" onClick={scrollToTop} className={`bg-primary p-2 text-white shadow-sm duration-500 ease-linear ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+					<ChevronUpIcon className="h-6 w-6" />
+				</button>
+			</div>
+		</React.Fragment>
 	);
 };
 
