@@ -103,7 +103,7 @@ const Footer: React.FunctionComponent = () => {
                 <div className="flex flex-wrap flex-row items-center text-center justify-center gap-x-4 gap-y-2">
                     <Link to="termos-e-condicoes" className='text-xs text-primary border-b border-b-primary hover:opacity-80'>Termos e Condições</Link>
                     <Link to="resolucao-litigios" className='text-xs text-primary border-b border-b-primary hover:opacity-80'>Resolução de Litígios</Link>
-                    <a href="##" target="_blank" rel='noreferrer' className='text-xs text-primary border-b border-b-primary hover:opacity-80'>Livro de Reclamações</a>
+                    <a href="https://www.livroreclamacoes.pt/" target="_blank" rel='noreferrer' className='text-xs text-primary border-b border-b-primary hover:opacity-80'>Livro de Reclamações</a>
                 </div>
 			</div>
 		</div>
