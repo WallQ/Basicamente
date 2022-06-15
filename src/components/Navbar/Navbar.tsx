@@ -18,7 +18,7 @@ const Navbar: React.FunctionComponent = () => {
 					{/* Logo */}
 					<div className="flex flex-1 flex-row justify-start">
 						<Link to="/">
-							<img className="h-12 w-full" src={logo} alt="Basicamente logo" />
+							<img className="h-12 w-full" src={logo} alt="Basicamente logo" width={800} height={150} />
 						</Link>
 					</div>
 					{/* /Logo */}
@@ -113,7 +113,7 @@ const Navbar: React.FunctionComponent = () => {
 								{/* Logo */}
 								<div className="flex flex-1 flex-row justify-start">
 									<Link to="/">
-										<img className="h-12 w-full" src={logo} alt="Basicamente logo" />
+										<img className="h-12 w-full" src={logo} alt="Basicamente logo" width={800} height={150} />
 									</Link>
 								</div>
 								{/* /Logo */}
