@@ -1,7 +1,6 @@
 import React from 'react';
 
-interface Props {
-}
+interface Props { }
 
 const LoadingComponent: React.FunctionComponent<Props> = () => {
 	return (

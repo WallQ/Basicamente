@@ -1,22 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { ApolloClient, InMemoryCache, ApolloProvider, HttpLink, from } from '@apollo/client';
-import { onError } from "@apollo/client/link/error";
+import { onError } from '@apollo/client/link/error';
 import App from './App';
 import './index.css';
 // import reportWebVitals from './reportWebVitals';
 
 const httpLink = new HttpLink({
-	uri: `https://graphql.contentful.com/content/v1/spaces/${process.env.REACT_APP_SPACE_ID}?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`,
+	uri: `https://graphql.contentful.com/content/v1/spaces/${process.env.REACT_APP_SPACE_ID}?access_token=${process.env.REACT_APP_ACCESS_TOKEN}&locale=*`,
 });
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
-	if (graphQLErrors)
-		graphQLErrors.forEach(({ message, locations, path }) =>  
-			console.log(
-				`[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
-			)
-		);
+	if (graphQLErrors) graphQLErrors.forEach(({ message, locations, path }) => console.log(`[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`));
 	if (networkError) console.log(`[Network error]: ${networkError}`);
 });
 

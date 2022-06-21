@@ -1,0 +1,33 @@
+import {
+	HOMEPAGE_HEADER_PT,
+	HOMEPAGE_HEADER_EN,
+	HOMEPAGE_SERVICES_PT,
+	HOMEPAGE_SERVICES_EN,
+	HOMEPAGE_PROJECTS_PT,
+	HOMEPAGE_PROJECTS_EN,
+	HOMEPAGE_PARTNERS_PT,
+	HOMEPAGE_PARTNERS_EN,
+	HOMEPAGE_CONTACT_PT,
+	HOMEPAGE_CONTACT_EN,
+} from '../graphql/Queries';
+
+export const languages = {
+	portuguese: {
+		homepage: {
+			Header: HOMEPAGE_HEADER_PT,
+			Services: HOMEPAGE_SERVICES_PT,
+			Projects: HOMEPAGE_PROJECTS_PT,
+			Partners: HOMEPAGE_PARTNERS_PT,
+			Contact: HOMEPAGE_CONTACT_PT,
+		},
+	},
+	english: {
+		homepage: {
+			Header: HOMEPAGE_HEADER_EN,
+			Services: HOMEPAGE_SERVICES_EN,
+			Projects: HOMEPAGE_PROJECTS_EN,
+			Partners: HOMEPAGE_PARTNERS_EN,
+			Contact: HOMEPAGE_CONTACT_EN,
+		},
+	},
+};

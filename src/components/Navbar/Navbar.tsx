@@ -5,6 +5,8 @@ import { MenuIcon, XIcon } from '@heroicons/react/outline';
 import { ChevronDownIcon } from '@heroicons/react/solid';
 import logo from '../../assets/Basicamente-Logo.gif';
 
+import Test from '../Testing/TestingComponent';
+
 import { solucoes, work } from './_navItems';
 
 const Navbar: React.FunctionComponent = () => {
@@ -36,7 +38,7 @@ const Navbar: React.FunctionComponent = () => {
 										</span>
 										<ChevronDownIcon className="ml-2 h-6 w-6 text-gray-900 group-hover:text-gray-600" aria-hidden="true" />
 									</Popover.Button>
-									<Transition as={React.Fragment} enter="transition ease-out duration-200" enterFrom="opacity-0 translate-y-1" enterTo="opacity-100 translate-y-0" leave="transition ease-in duration-150" leaveFrom="opacity-100 translate-y-0" leaveTo="opacity-0 translate-y-1">
+									<Transition as={React.Fragment} enter="transition ease-out duration-200" enterFrom="transform opacity-0 translate-y-1" enterTo="transform opacity-100 translate-y-0" leave="transition ease-in duration-150" leaveFrom="transform opacity-100 translate-y-0" leaveTo="transform opacity-0 translate-y-1">
 										<Popover.Panel className="absolute left-1/2 z-10 mt-4 w-max max-w-xs -translate-x-1/2 transform">
 											<div className="overflow-hidden shadow-lg ring-1 ring-black ring-opacity-5">
 												<div className="relative bg-white">
@@ -66,7 +68,7 @@ const Navbar: React.FunctionComponent = () => {
 										</span>
 										<ChevronDownIcon className="ml-2 h-6 w-6 text-gray-900 group-hover:text-gray-600" aria-hidden="true" />
 									</Popover.Button>
-									<Transition as={React.Fragment} enter="transition ease-out duration-200" enterFrom="opacity-0 translate-y-1" enterTo="opacity-100 translate-y-0" leave="transition ease-in duration-150" leaveFrom="opacity-100 translate-y-0" leaveTo="opacity-0 translate-y-1">
+									<Transition as={React.Fragment} enter="transition ease-out duration-200" enterFrom="transform opacity-0 translate-y-1" enterTo="transform opacity-100 translate-y-0" leave="transition ease-in duration-150" leaveFrom="transform opacity-100 translate-y-0" leaveTo="transform opacity-0 translate-y-1">
 										<Popover.Panel className="absolute left-1/2 z-10 mt-4 w-max max-w-xs -translate-x-1/2 transform">
 											<div className="overflow-hidden shadow-lg ring-1 ring-black ring-opacity-5">
 												<div className="relative bg-white">
@@ -90,7 +92,8 @@ const Navbar: React.FunctionComponent = () => {
 					</Popover.Group>
 					{/* /Navigation Items */}
 					{/* Button */}
-					<div className="hidden justify-end lg:flex lg:flex-1 lg:flex-row">
+					<div className="hidden justify-end lg:flex lg:flex-1 lg:flex-row gap-x-4">
+						<Test />
 						<Link to="pedir-proposta" className="inline-flex h-12 items-center justify-center rounded-none border border-transparent bg-primary px-4 text-base font-medium text-white shadow-sm hover:opacity-80">
 							Pedir Proposta
 						</Link>
@@ -106,7 +109,7 @@ const Navbar: React.FunctionComponent = () => {
 					{/* /Open Menu Button */}
 				</div>
 				{/* Mobile */}
-				<Transition as={React.Fragment} enter="duration-200 ease-out" enterFrom="opacity-0 scale-100" enterTo="opacity-100 scale-100" leave="duration-100 ease-in" leaveFrom="opacity-100 scale-100" leaveTo="opacity-0 scale-100">
+				<Transition as={React.Fragment} enter="transition duration-200 ease-out" enterFrom="transform opacity-0 scale-100" enterTo="transform opacity-100 scale-100" leave="transition duration-100 ease-in" leaveFrom="transform opacity-100 scale-100" leaveTo="transform opacity-0 scale-100">
 					<Popover.Panel focus className="absolute inset-x-0 top-0 origin-top-right transform transition lg:hidden">
 						<div className="bg-white shadow-lg">
 							<div className="flex flex-row flex-wrap items-center justify-between bg-white py-8 px-4">

@@ -1,7 +1,6 @@
 import React from 'react';
 
-interface Props {
-}
+interface Props { }
 
 const ErrorComponent: React.FunctionComponent<Props> = () => {
 	return (
