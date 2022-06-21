@@ -26,7 +26,7 @@ const Header: React.FunctionComponent<Props> = ({ query }) => {
 		<React.Fragment>
 			{data && data.homepageHeader && (
 				<React.Fragment>
-					<div className="bg-cover bg-center bg-no-repeat py-20 lg:py-44" style={{backgroundImage: `url(${data.homepageHeader.image.url})`}}>
+					<div className="bg-cover bg-center bg-no-repeat py-24 lg:py-48" style={{backgroundImage: `url(${data.homepageHeader.image.url})`}}>
 						<div className="container mx-auto flex flex-col items-center justify-center gap-y-8 px-4 text-center text-white sm:px-6 xl:w-2/3 lg:px-8">
 							<h1 className="text-2xl font-medium lg:text-4xl">
 								{data.homepageHeader.title}

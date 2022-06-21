@@ -24,8 +24,8 @@ const ProjectsCard: React.FunctionComponent<Props> = ({ query }) => {
 							<p className="mt-4 text-sm font-bold text-gray-900">{project.title}</p>
 							<p className="mt-4 text-sm font-normal text-gray-900">{project.text}</p>
 							<a className="mt-4" href={project.url}>
-								<span className="border-b border-b-primary text-sm font-thin text-primary hover:opacity-80">
-									Contacte-nos para saber mais
+								<span className="border-b border-b-primary text-sm font-normal text-primary hover:opacity-80">
+									{project.urlText}
 								</span>
 							</a>
 						</div>
