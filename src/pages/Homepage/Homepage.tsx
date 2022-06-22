@@ -1,24 +1,21 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 import { MultilingualContextType, MultilingualContext } from '../../contexts/MultilingualContext';
-
-import {
-	HOMEPAGE_HEADER,
-	HOMEPAGE_TITLE,
-	HOMEPAGE_SERVICES,
-	HOMEPAGE_PROJECTS,
-	HOMEPAGE_PARTNERS,
-	HOMEPAGE_CONTACT
-} from '../../graphql/Queries';
+import { HOMEPAGE_HEADER, HOMEPAGE_TITLE, HOMEPAGE_SERVICES, HOMEPAGE_PROJECTS, HOMEPAGE_PARTNERS, HOMEPAGE_CONTACT } from '../../graphql/Queries';
 
 // Components
 import BreakTitle from '../../components/BreakTitle/BreakTitle';
 
 // Loading Skeletons
+import PageLoadingSkeleton from '../../components/PageLoadingSkeleton/PageLoadingSkeleton';
 import HeaderLoadingSkeleton from '../../components/Header/HeaderLoadingSkeleton';
 import ServicesCardLoadingSkeleton from '../../components/ServicesCard/ServicesCardLoadingSkeleton';
 import ProjectsCardLoadingSkeleton from '../../components/ProjectsCard/ProjectsCardLoadingSkeleton';
 import PartnersLoadingSkeleton from '../../components/Partners/PartnersLoadingSkeleton';
+import ContactFormLoadingSkeleton from '../../components/ContactForm/ContactFormLoadingSkeleton';
+
+// Error Boundary
+import ErrorBoundary from '../../components/PageErrorBoundary/PageErrorBoundary';
 
 // Components
 const Header = React.lazy(() => import('../../components/Header/Header'));
@@ -31,8 +28,8 @@ const Homepage: React.FunctionComponent = () => {
 	const { language } = React.useContext(MultilingualContext) as MultilingualContextType;
 	const { loading, error, data } = useQuery<any>(HOMEPAGE_TITLE, {variables: { language }});
 
-	if (loading) return <p>Loading...</p>;
-	if (error) return <p>{error.message}</p>;
+	if (loading) return <PageLoadingSkeleton />;
+	if (error) return <ErrorBoundary message={error.message} />;
 
 	return (
 		<React.Fragment>
@@ -53,7 +50,9 @@ const Homepage: React.FunctionComponent = () => {
 					<Partners query={HOMEPAGE_PARTNERS} />
 				</React.Suspense>
 			</div>
-			<ContactForm query={HOMEPAGE_CONTACT} />
+			<React.Suspense fallback={<ContactFormLoadingSkeleton />}>
+				<ContactForm query={HOMEPAGE_CONTACT} />
+			</React.Suspense>	
 		</React.Fragment>
 	);
 };
