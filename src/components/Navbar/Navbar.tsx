@@ -3,10 +3,8 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import { Popover, Transition, Disclosure } from '@headlessui/react';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
 import { ChevronDownIcon } from '@heroicons/react/solid';
+import MultilingualToggle from '../MultilingualToggle/MultilingualToggle';
 import logo from '../../assets/Basicamente-Logo.gif';
-
-import Test from '../Testing/TestingComponent';
-
 import { solucoes, work } from './_navItems';
 
 const Navbar: React.FunctionComponent = () => {
@@ -42,16 +40,14 @@ const Navbar: React.FunctionComponent = () => {
 									</Popover.Button>
 									<Transition as={React.Fragment} enter="transition ease-out duration-200" enterFrom="transform opacity-0 translate-y-1" enterTo="transform opacity-100 translate-y-0" leave="transition ease-in duration-150" leaveFrom="transform opacity-100 translate-y-0" leaveTo="transform opacity-0 translate-y-1">
 										<Popover.Panel className="absolute left-1/2 z-10 mt-4 w-max max-w-xs -translate-x-1/2 transform">
-											<div className="overflow-hidden shadow-lg ring-1 ring-black ring-opacity-5">
-												<div className="relative bg-white">
-													{solucoes.map((item, index) => (
-														<Popover.Button key={`${id}-Solucoes-${index}`} onClick={() => (open = false)} className="min-w-full text-left">
-															<NavLink to={item.routeUrl} className="block px-8 py-2 text-base font-medium text-gray-900 hover:bg-primary hover:text-white">
-																{item.routeTitle}
-															</NavLink>
-														</Popover.Button>
-													))}
-												</div>
+											<div className="relative overflow-hidden bg-white shadow-lg ring-1 ring-black ring-opacity-5">
+												{solucoes.map((item, index) => (
+													<Popover.Button key={`${id}-Solucoes-${index}`} onClick={() => (open = false)} className="min-w-full text-left">
+														<NavLink to={item.routeUrl} className="block px-8 py-2 text-base font-medium text-gray-900 hover:bg-primary hover:text-white">
+															{item.routeTitle}
+														</NavLink>
+													</Popover.Button>
+												))}
 											</div>
 										</Popover.Panel>
 									</Transition>
@@ -74,16 +70,14 @@ const Navbar: React.FunctionComponent = () => {
 									</Popover.Button>
 									<Transition as={React.Fragment} enter="transition ease-out duration-200" enterFrom="transform opacity-0 translate-y-1" enterTo="transform opacity-100 translate-y-0" leave="transition ease-in duration-150" leaveFrom="transform opacity-100 translate-y-0" leaveTo="transform opacity-0 translate-y-1">
 										<Popover.Panel className="absolute left-1/2 z-10 mt-4 w-max max-w-xs -translate-x-1/2 transform">
-											<div className="overflow-hidden shadow-lg ring-1 ring-black ring-opacity-5">
-												<div className="relative bg-white">
-													{work.map((item, index) => (
-														<Popover.Button key={`${id}-Work-${index}`} onClick={() =>(open = false)} className="min-w-full text-left">
-															<NavLink to={item.routeUrl} className="block px-8 py-2 text-base font-medium text-gray-900 hover:bg-primary hover:text-white">
-																{item.routeTitle}
-															</NavLink>
-														</Popover.Button>
-													))}
-												</div>
+											<div className="relative overflow-hidden bg-white shadow-lg ring-1 ring-black ring-opacity-5">
+												{work.map((item, index) => (
+													<Popover.Button key={`${id}-Work-${index}`} onClick={() =>(open = false)} className="min-w-full text-left">
+														<NavLink to={item.routeUrl} className="block px-8 py-2 text-base font-medium text-gray-900 hover:bg-primary hover:text-white">
+															{item.routeTitle}
+														</NavLink>
+													</Popover.Button>
+												))}
 											</div>
 										</Popover.Panel>
 									</Transition>
@@ -98,7 +92,7 @@ const Navbar: React.FunctionComponent = () => {
 					{/* /Navigation Items */}
 					{/* Button */}
 					<div className="hidden items-center justify-end gap-x-4 lg:flex lg:flex-1 lg:flex-row">
-						<Test />
+						<MultilingualToggle />
 						<Link to="pedir-proposta" className="flex h-12 items-center justify-center rounded-none border border-transparent bg-primary px-4 text-base font-medium text-white shadow-sm hover:opacity-80">
 							Pedir Proposta
 						</Link>
