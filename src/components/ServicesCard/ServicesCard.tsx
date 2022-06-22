@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { DocumentNode, useQuery } from '@apollo/client';
+import { MultilingualContextType, MultilingualContext } from '../../contexts/MultilingualContext';
 
 import LoadingSkeleton from './ServicesCardLoadingSkeleton';
 import ErrorBoundary from './ServicesCardErrorBoundary';
@@ -10,7 +11,8 @@ interface Props {
 }
 
 const ServicesCard: React.FunctionComponent<Props> = ({ query }) => {
-	const { loading, error, data } = useQuery<any>(query);
+	const { language } = React.useContext(MultilingualContext) as MultilingualContextType;
+	const { loading, error, data } = useQuery<any>(query, {variables: { language }});
 
 	if (loading) return <LoadingSkeleton quantity={4} />;
 	if (error) return <ErrorBoundary message={error.message} />;

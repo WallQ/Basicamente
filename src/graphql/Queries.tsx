@@ -1,9 +1,9 @@
 import { gql } from '@apollo/client';
 
 // Homepage
-export const HOMEPAGE_HEADER_PT = gql`
-	query getHomepageHeaderContent {
-		homepageHeader(id: "2DDrCQlZSMvizPZT4b6UdM", locale: "pt") {
+export const HOMEPAGE_HEADER = gql`
+	query getHomepageHeaderContent($language: String) {
+		homepageHeader(id: "2DDrCQlZSMvizPZT4b6UdM", locale: $language) {
 			title
 			text {
 				json
@@ -19,27 +19,18 @@ export const HOMEPAGE_HEADER_PT = gql`
 		}
 	}
 `;
-export const HOMEPAGE_HEADER_EN = gql`
-	query getHomepageHeaderContent {
-		homepageHeader(id: "2DDrCQlZSMvizPZT4b6UdM", locale: "en-US") {
-			title
-			text {
-				json
-			}
-			image {
+export const HOMEPAGE_TITLE = gql`
+	query getHomepageTitleContent($language: String) {
+		homepageTitleCollection(locale: $language) {
+			items {
 				title
-				description
-				url
-				sys {
-					id
-				}
 			}
 		}
 	}
 `;
-export const HOMEPAGE_SERVICES_PT = gql`
-	query getHomepageServicesContent {
-		homepageServicesCollection(locale: "pt") {
+export const HOMEPAGE_SERVICES = gql`
+	query getHomepageServicesContent($language: String) {
+		homepageServicesCollection(locale: $language) {
 			items {
 				title
 				question
@@ -58,30 +49,9 @@ export const HOMEPAGE_SERVICES_PT = gql`
 		}
 	}
 `;
-export const HOMEPAGE_SERVICES_EN = gql`
-	query getHomepageServicesContent {
-		homepageServicesCollection(locale: "en-US") {
-			items {
-				title
-				question
-				text
-				urlText
-				url
-				image {
-					title
-					description
-					url
-					sys {
-						id
-					}
-				}
-			}
-		}
-	}
-`;
-export const HOMEPAGE_PROJECTS_PT = gql`
-	query getHomepageProjectsContent {
-		homepageProjectsCollection(locale: "pt") {
+export const HOMEPAGE_PROJECTS = gql`
+	query getHomepageProjectsContent($language: String) {
+		homepageProjectsCollection(locale: $language) {
 			items {
 				title
 				text
@@ -99,29 +69,9 @@ export const HOMEPAGE_PROJECTS_PT = gql`
 		}
 	}
 `;
-export const HOMEPAGE_PROJECTS_EN = gql`
-	query getHomepageProjectsContent {
-		homepageProjectsCollection(locale: "en-US") {
-			items {
-				title
-				text
-				urlText
-				url
-				image {
-					title
-					description
-					url
-					sys {
-						id
-					}
-				}
-			}
-		}
-	}
-`;
-export const HOMEPAGE_PARTNERS_PT = gql`
-	query getHomepagePartnersContent {
-		homepagePartnersCollection(locale: "pt") {
+export const HOMEPAGE_PARTNERS = gql`
+	query getHomepagePartnersContent($language: String) {
+		homepagePartnersCollection(locale: $language) {
 			items {
 				title
 				imagesCollection {
@@ -138,46 +88,13 @@ export const HOMEPAGE_PARTNERS_PT = gql`
 		}
 	}
 `;
-export const HOMEPAGE_PARTNERS_EN = gql`
-	query getHomepagePartnersContent {
-		homepagePartnersCollection(locale: "en-US") {
-			items {
-				title
-				imagesCollection {
-					items {
-						title
-						description
-						url
-						sys {
-							id
-						}
-					}
-				}
-			}
-		}
-	}
-`;
-export const HOMEPAGE_CONTACT_PT = gql`
-	query getHomepageHeaderContent {
-		homepageContact(id: "6r8OfBhsDtlRWQpWRHlKSP", locale: "pt") {
+export const HOMEPAGE_CONTACT = gql`
+	query getHomepageHeaderContent($language: String) {
+		homepageContact(id: "6r8OfBhsDtlRWQpWRHlKSP", locale: $language) {
 			title
 			text
-			image {
-				title
-				description
-				url
-				sys {
-					id
-				}
-			}
-		}
-	}
-`;
-export const HOMEPAGE_CONTACT_EN = gql`
-	query getHomepageHeaderContent {
-		homepageContact(id: "6r8OfBhsDtlRWQpWRHlKSP", locale: "en-US") {
-			title
-			text
+			inputText
+			buttonText
 			image {
 				title
 				description

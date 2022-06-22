@@ -7,7 +7,7 @@ import './index.css';
 // import reportWebVitals from './reportWebVitals';
 
 const httpLink = new HttpLink({
-	uri: `https://graphql.contentful.com/content/v1/spaces/${process.env.REACT_APP_SPACE_ID}?access_token=${process.env.REACT_APP_ACCESS_TOKEN}&locale=*`,
+	uri: `https://graphql.contentful.com/content/v1/spaces/${process.env.REACT_APP_SPACE_ID}?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`,
 });
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {

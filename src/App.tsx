@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-// Layout
+// Layouts
 import Layout from './layouts/Main/Main';
 import SolucoesLayout from './layouts/Solucoes/Solucoes';
 import WorkLayout from './layouts/Work/Work';
@@ -12,13 +12,12 @@ import Sobre from './pages/Sobre/Sobre';
 import Contactos from './pages/Contactos/Contactos';
 import Testing from './pages/Testing/Testing';
 
-// Context
-import { MultilingualContext } from './contexts/LanguageContext';
-import { languages } from './utils/languages';
+// Contexts
+import { MultilingualContextProvider } from './contexts/MultilingualContext';
 
 const App: React.FunctionComponent = () => {
-	return (		
-		<MultilingualContext.Provider value={languages.portuguese}>
+	return (
+		<MultilingualContextProvider>
 			<Router>
 				<Routes>
 					<Route path="/" element={<Layout />}>
@@ -46,7 +45,7 @@ const App: React.FunctionComponent = () => {
 					</Route>
 				</Routes>
 			</Router>
-		</MultilingualContext.Provider>
+		</MultilingualContextProvider>
 	);
 };
 

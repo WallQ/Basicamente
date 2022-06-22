@@ -1,8 +1,7 @@
 import React from 'react';
 import { DocumentNode, useQuery } from '@apollo/client';
 import { useForm } from 'react-hook-form';
-
-import FooterImage from '../../assets/Homepage/Basicamente-Footer.jpg';
+import { MultilingualContextType, MultilingualContext } from '../../contexts/MultilingualContext';
 
 import LoadingSkeleton from './ContactFormLoadingSkeleton';
 import ErrorBoundary from './ContactFormErrorBoundary';
@@ -23,9 +22,11 @@ interface FormData {
 
 const ContactForm: React.FunctionComponent<Props> = ({ query }) => {
 	const id = React.useId();
-	const { register, handleSubmit, formState: { errors } } = useForm<FormData>();
-    const { loading, error, data } = useQuery<any>(query);
-
+    const { register, handleSubmit, formState: { errors } } = useForm<FormData>();
+    
+    const { language } = React.useContext(MultilingualContext) as MultilingualContextType;
+	const { loading, error, data } = useQuery<any>(query, {variables: { language }});
+    
 	if (loading) return <LoadingSkeleton quantity={3} />;
 	if (error) return <ErrorBoundary message={error.message} />;
 
@@ -51,7 +52,7 @@ const ContactForm: React.FunctionComponent<Props> = ({ query }) => {
                                 <div className="flex flex-col gap-x-4 gap-y-4 lg:flex-row">
                                     <div className="flex flex-1 flex-col">
                                         <label htmlFor={`${id}-firstName`} className="block text-sm font-light text-white">
-                                            Nome *
+                                            {data.homepageContact.inputText[0]} *
                                         </label>
                                         <input
                                             type="text"
@@ -85,7 +86,7 @@ const ContactForm: React.FunctionComponent<Props> = ({ query }) => {
                                     </div>
                                     <div className="flex flex-1 flex-col">
                                         <label htmlFor={`${id}-lastName`} className="block text-sm font-light text-white">
-                                            Sobrenome *
+                                            {data.homepageContact.inputText[1]} *
                                         </label>
                                         <input
                                             type="text"
@@ -120,7 +121,7 @@ const ContactForm: React.FunctionComponent<Props> = ({ query }) => {
                                 </div>
                                 <div className="flex flex-col">
                                     <label htmlFor={`${id}-email`} className="block text-sm font-light text-white">
-                                        Email *
+                                        {data.homepageContact.inputText[2]} *
                                     </label>
                                     <input
                                         type="email"
@@ -136,7 +137,7 @@ const ContactForm: React.FunctionComponent<Props> = ({ query }) => {
                                                 message: "O comprimento mínimo é de 8 caracteres!",
                                             },
                                             pattern: {
-                                                value: /\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b/i,
+                                                value: /\b[\w.-]+@[\w.-]+\.\w{2,4}\b/i,
                                                 message: "Exemplo de formato aceite: example@example.com",
                                             },
                                         })}
@@ -150,7 +151,7 @@ const ContactForm: React.FunctionComponent<Props> = ({ query }) => {
                                 </div>
                                 <div className="flex flex-col">
                                     <label htmlFor={`${id}-telephone`} className="block text-sm font-light text-white">
-                                        Telefone *
+                                    {data.homepageContact.inputText[3]} *
                                     </label>
                                     <input
                                         type="tel"
@@ -184,7 +185,7 @@ const ContactForm: React.FunctionComponent<Props> = ({ query }) => {
                                 </div>
                                 <div className="flex flex-col">
                                     <label htmlFor={`${id}-company`} className="block text-sm font-light text-white">
-                                        A sua empresa *
+                                    {data.homepageContact.inputText[4]} *
                                     </label>
                                     <input
                                         type="text"
@@ -213,7 +214,7 @@ const ContactForm: React.FunctionComponent<Props> = ({ query }) => {
                                 </div>
                                 <div className="flex flex-col">
                                     <label htmlFor={`${id}-message`} className="block text-sm font-light text-white">
-                                        Conte-nos acerca do seu projeto *
+                                        {data.homepageContact.inputText[5]} *
                                     </label>
                                     <textarea
                                         id={`${id}-message`}
@@ -238,7 +239,7 @@ const ContactForm: React.FunctionComponent<Props> = ({ query }) => {
                                     {errors.message && <FieldErrorMessage message={errors.message.message} />}
                                 </div>
                                 <button type="submit" className="mx-auto inline-flex h-12 w-full items-center justify-center rounded-none border border-transparent bg-primary px-4 text-base font-light text-white shadow-sm hover:opacity-80 lg:w-fit">
-                                    Desejo ser contactado
+                                    {data.homepageContact.buttonText}
                                 </button>
                             </form>
                         </div>
