@@ -40,7 +40,7 @@ export const HOMEPAGE_SERVICES = gql`
 				image {
 					title
 					description
-					url
+					url(transform: { width: 400, height: 400 })
 					sys {
 						id
 					}
@@ -60,7 +60,7 @@ export const HOMEPAGE_PROJECTS = gql`
 				image {
 					title
 					description
-					url
+					url(transform: { width: 500, height: 500 })
 					sys {
 						id
 					}
@@ -78,7 +78,7 @@ export const HOMEPAGE_PARTNERS = gql`
 					items {
 						title
 						description
-						url
+						url(transform: { width: 500, height: 300 })
 						sys {
 							id
 						}
