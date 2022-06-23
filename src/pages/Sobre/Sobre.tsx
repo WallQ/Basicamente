@@ -1,7 +1,7 @@
 import React from 'react';
 
 // Components
-import BreakTitle from '../../components/BreakTitle/BreakTitle';
+import BreakTitle from '../../components/Title/Title';
 
 // Background Images
 import BannerImage from '../../assets/Sobre/Basicamente-Header.jpg';

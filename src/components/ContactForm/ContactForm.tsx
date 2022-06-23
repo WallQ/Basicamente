@@ -38,7 +38,7 @@ const ContactForm: React.FunctionComponent<Props> = ({ query }) => {
 		<React.Fragment>
             {data && data.homepageContact && (
                 <React.Fragment>
-                    <div className="mt-12 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${data.homepageContact.image.url})` }}>
+                    <div className="mt-12 bg-primary bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${data.homepageContact.image.url})` }}>
                         <div className='container mx-auto flex flex-col items-center justify-center gap-y-8 px-4 pt-12 pb-12 sm:px-6 lg:gap-y-12 lg:px-8'>
                             <div className="space-y-4 text-center text-white">
                                 <h1 className="text-3xl font-medium">

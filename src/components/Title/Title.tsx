@@ -4,7 +4,7 @@ interface Props {
 	title: string;
 }
 
-const BreakTitle: React.FunctionComponent<Props> = ({ title }) => {
+const Title: React.FunctionComponent<Props> = ({ title }) => {
 	return (
 		<React.Fragment>
 			<div className="py-12">
@@ -16,4 +16,4 @@ const BreakTitle: React.FunctionComponent<Props> = ({ title }) => {
 	);
 };
 
-export default BreakTitle;
+export default Title;

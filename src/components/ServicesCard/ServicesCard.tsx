@@ -23,7 +23,7 @@ const ServicesCard: React.FunctionComponent<Props> = ({ query }) => {
 			{data && data.homepageServicesCollection?.items.map((service: any) => (
 				<React.Fragment key={service.image.sys.id}>
 					<div className="flex flex-col">
-						<img src={service.image.url} alt={service.image.title} loading="lazy" width={900} height={640} />
+						<img src={service.image.url} alt={service.image.title} loading="eager" width={900} height={640} />
 						<p className="mt-4 text-sm font-bold text-gray-900">{service.title}</p>
 						<p className="mt-4 text-sm font-normal text-gray-900">{service.question}</p>
 						<p className="mt-4 text-sm font-normal text-gray-900">{service.text}</p>

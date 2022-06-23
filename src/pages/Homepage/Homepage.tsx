@@ -4,7 +4,7 @@ import { MultilingualContextType, MultilingualContext } from '../../contexts/Mul
 import { HOMEPAGE_HEADER, HOMEPAGE_TITLE, HOMEPAGE_SERVICES, HOMEPAGE_PROJECTS, HOMEPAGE_PARTNERS, HOMEPAGE_CONTACT } from '../../graphql/Queries';
 
 // Components
-import BreakTitle from '../../components/BreakTitle/BreakTitle';
+import Title from '../../components/Title/Title';
 
 // Loading Skeletons
 import PageLoadingSkeleton from '../../components/PageLoadingSkeleton/PageLoadingSkeleton';
@@ -35,24 +35,24 @@ const Homepage: React.FunctionComponent = () => {
 		<React.Fragment>
 			<React.Suspense fallback={<HeaderLoadingSkeleton />}>
 				<Header query={HOMEPAGE_HEADER} />
-			</React.Suspense>			
+			</React.Suspense>
 			<div className="container mx-auto px-4 sm:px-6 lg:px-8">
-				<BreakTitle title={data.homepageTitleCollection.items[0].title} />
+				<Title title={data.homepageTitleCollection.items[0].title} />
 				<React.Suspense fallback={<ServicesCardLoadingSkeleton quantity={4} />}>
 					<ServicesCard query={HOMEPAGE_SERVICES} />
 				</React.Suspense>
-				<BreakTitle title={data.homepageTitleCollection.items[1].title} />
+				<Title title={data.homepageTitleCollection.items[1].title} />
 				<React.Suspense fallback={<ProjectsCardLoadingSkeleton quantity={3} />}>
 					<ProjectsCard query={HOMEPAGE_PROJECTS} />
 				</React.Suspense>
-				<BreakTitle title={data.homepageTitleCollection.items[2].title} />
+				<Title title={data.homepageTitleCollection.items[2].title} />
 				<React.Suspense fallback={<PartnersLoadingSkeleton quantity={6} />}>
 					<Partners query={HOMEPAGE_PARTNERS} />
 				</React.Suspense>
 			</div>
 			<React.Suspense fallback={<ContactFormLoadingSkeleton />}>
 				<ContactForm query={HOMEPAGE_CONTACT} />
-			</React.Suspense>	
+			</React.Suspense>
 		</React.Fragment>
 	);
 };
