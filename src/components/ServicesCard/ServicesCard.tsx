@@ -27,8 +27,8 @@ const ServicesCard: React.FunctionComponent<Props> = ({ query }) => {
 						<p className="mt-4 text-sm font-bold text-gray-900">{service.title}</p>
 						<p className="mt-4 text-sm font-normal text-gray-900">{service.question}</p>
 						<p className="mt-4 text-sm font-normal text-gray-900">{service.text}</p>
-						<Link className="mt-4" to={service.url}>
-							<span className="border-b border-b-primary text-sm font-normal text-primary hover:opacity-80">{service.urlText}</span>
+						<Link className="mt-4" to={service.url.url}>
+							<span className="border-b border-b-primary text-sm font-normal text-primary hover:opacity-80">{service.url.urlText}</span>
 						</Link>
 					</div>
 				</React.Fragment>
