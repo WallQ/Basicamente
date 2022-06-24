@@ -3,8 +3,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 // Layouts
 import Layout from './layouts/Main/Main';
-import SolucoesLayout from './layouts/Solucoes/Solucoes';
-import WorkLayout from './layouts/Work/Work';
 
 // Pages
 import Homepage from './pages/Homepage/Homepage';
@@ -23,14 +21,14 @@ const App: React.FunctionComponent = () => {
 					<Route path="/" element={<Layout />}>
 						<Route path="/test" element={<Testing />} />
 						<Route index element={<Homepage />} />
-						<Route path="/solucoes" element={<SolucoesLayout />}>
+						<Route path="/solucoes">
 							<Route path="comercio-digital" element={<h1>/solucoes/comercio-digital</h1>} />
 							<Route path="marketing-digital-performance" element={<h1>/solucoes/marketing-digital-performance</h1>} />
 							<Route path="uiux-design" element={<h1>/solucoes/uiux-design</h1>} />
 							<Route path="websites-workplaces-digitais" element={<h1>/solucoes/websites-workplaces-digitais</h1>} />
 							<Route path="web-development" element={<h1>/solucoes/web-development</h1>} />
 						</Route>
-						<Route path="/work" element={<WorkLayout />}>
+						<Route path="/work">
 							<Route path="websites" element={<h1>/work/websites</h1>} />
 							<Route path="e-commerce" element={<h1>/work/e-commerce</h1>} />
 							<Route path="web-development" element={<h1>/work/web-development</h1>} />
