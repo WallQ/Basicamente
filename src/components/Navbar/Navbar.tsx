@@ -41,7 +41,7 @@ const Navbar: React.FunctionComponent = () => {
 									<Transition as={React.Fragment} enter="transition ease-out duration-200" enterFrom="transform opacity-0 translate-y-1" enterTo="transform opacity-100 translate-y-0" leave="transition ease-in duration-150" leaveFrom="transform opacity-100 translate-y-0" leaveTo="transform opacity-0 translate-y-1">
 										<Popover.Panel className="absolute left-1/2 z-10 mt-4 w-max max-w-xs -translate-x-1/2 transform">
 											<div className="relative overflow-hidden bg-white shadow-lg ring-1 ring-black ring-opacity-5">
-												{solucoes.map((item, index) => (
+												{solucoes.map((item: any, index: number) => (
 													<Popover.Button key={`${id}-Solucoes-${index}`} onClick={() => (open = false)} className="min-w-full text-left">
 														<NavLink to={item.routeUrl} className="block px-8 py-2 text-base font-medium text-gray-900 hover:bg-primary hover:text-white">
 															{item.routeTitle}
@@ -71,7 +71,7 @@ const Navbar: React.FunctionComponent = () => {
 									<Transition as={React.Fragment} enter="transition ease-out duration-200" enterFrom="transform opacity-0 translate-y-1" enterTo="transform opacity-100 translate-y-0" leave="transition ease-in duration-150" leaveFrom="transform opacity-100 translate-y-0" leaveTo="transform opacity-0 translate-y-1">
 										<Popover.Panel className="absolute left-1/2 z-10 mt-4 w-max max-w-xs -translate-x-1/2 transform">
 											<div className="relative overflow-hidden bg-white shadow-lg ring-1 ring-black ring-opacity-5">
-												{work.map((item, index) => (
+												{work.map((item: any, index: number) => (
 													<Popover.Button key={`${id}-Work-${index}`} onClick={() =>(open = false)} className="min-w-full text-left">
 														<NavLink to={item.routeUrl} className="block px-8 py-2 text-base font-medium text-gray-900 hover:bg-primary hover:text-white">
 															{item.routeTitle}
@@ -143,7 +143,7 @@ const Navbar: React.FunctionComponent = () => {
 													<ChevronDownIcon className={`${open ? 'rotate-180 transform duration-200' : 'duration-200'} h-6 w-6`}/>
 												</Disclosure.Button>
 												<Disclosure.Panel className="flex flex-col items-center justify-center border-t border-b border-t-gray-500 border-b-gray-500">
-													{solucoes.map((item, index) => (
+													{solucoes.map((item: any, index: number) => (
 														<Popover.Button key={`${id}-SolucoesMobile-${index}`} onClick={() => (open = false)} className="min-w-full text-left">
 															<NavLink to={item.routeUrl} className="block px-8 py-2 text-base font-medium text-gray-600 hover:bg-primary hover:text-white">
 																{item.routeTitle}
@@ -169,7 +169,7 @@ const Navbar: React.FunctionComponent = () => {
 													<ChevronDownIcon className={`${open ? 'rotate-180 transform duration-200' : 'duration-200'} h-6 w-6`} />
 												</Disclosure.Button>
 												<Disclosure.Panel className="flex flex-col items-center justify-center border-t border-b border-t-gray-500 border-b-gray-500">
-													{work.map((item, index) => (
+													{work.map((item: any, index: number) => (
 														<Popover.Button key={`${id}-WorkMobile-${index}`} onClick={() => (open = false)} className="min-w-full text-left">
 															<NavLink to={item.routeUrl} className="block px-8 py-2 text-base font-medium text-gray-600 hover:bg-primary hover:text-white">
 																{item.routeTitle}
