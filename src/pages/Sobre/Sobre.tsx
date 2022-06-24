@@ -56,7 +56,7 @@ const Sobre = () => {
                         </p>
                     </div>
                 </div>
-                <BreakTitle title="Estamos ao seu lado, sempre!" />
+                {/* <BreakTitle title="Estamos ao seu lado, sempre!" /> */}
                 <div className="grid grid-cols-1 content-center justify-items-center gap-y-6 gap-x-4 pb-12 lg:grid-cols-3">
                     {partners.map((partner, index) => (
                         <img

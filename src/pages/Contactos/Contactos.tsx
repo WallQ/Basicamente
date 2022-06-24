@@ -1,71 +1,63 @@
 import React from 'react';
+import { useQuery } from '@apollo/client';
+import { MultilingualContextType, MultilingualContext } from '../../contexts/MultilingualContext';
+import { CONTACTPAGE_CONTACT } from '../../graphql/Queries';
 
-// Square Logo
-import SquareLogo from '../../assets/Contactos/Basicamente-Contactos.jpg';
+// Loading Skeletons
+import PageLoadingSkeleton from '../../components/PageLoadingSkeleton/PageLoadingSkeleton';
+// Error Boundary
+import ErrorBoundary from '../../components/PageErrorBoundary/PageErrorBoundary';
 
 const Contactos = () => {
+	const id = React.useId();
+	const { language } = React.useContext(MultilingualContext) as MultilingualContextType;
+	const { loading, error, data } = useQuery<any>(CONTACTPAGE_CONTACT, {variables: { language }});
+
+	if (loading) return <PageLoadingSkeleton />;
+	if (error) return <ErrorBoundary message={error.message} />;
+
 	return (
-		<>
-			<div className="container mx-auto max-w-max px-12 lg:px-48 py-10">
-				<div className="flex flex-col lg:flex-row items-center justify-between">
-                    <img width="750" height="500" src={SquareLogo} alt="Basicamente Square Logo" className="w-max md:w-1/2 h-auto" />
-					<div className="flex flex-col grow gap-y-6 py-14 lg:py-28 lg:px-28">
-						<h1 className='text-4xl font-medium'>Contactar a Basicamente</h1>
-						<a href="mailto:askus@basicamente.io?subject=Contacto%20feito%20em%20Basicamente.pt">
-                            <span className="font-thin text-sm border-b border-b-gray-900">
-                                askus@basicamente.io
-							</span>
-						</a>
-						<div className="flex flex-col text-gray-900">
-							<p className="font-base text-base font-bold">
-								Porto
-							</p>
-							<span className="text-sm font-thin">
-								Av. 1º Maio 1080, Ed. Carvalhido, Ent 3, 7ºEQ,
-								4600-013 Amarante
-							</span>
-							<a href="tel:+351220946850" className=" font-thin">
-								<span className="font-thin text-sm border-b border-b-gray-900">
-									+351 220 946 850
-								</span>
+		<React.Fragment>
+			{data && data.contact && (
+				<React.Fragment>
+					<div className="container mx-auto grid grid-cols-1 gap-x-8 gap-y-8 px-4 pb-8 sm:px-6 lg:grid-cols-2 lg:px-8">
+						<img src={data.contact.image.url} alt={data.contact.image.title} className="aspect-auto" width={2500} height={1920} />
+						<div className="px-18 flex flex-col justify-center gap-y-8">
+							<h1 className="text-4xl font-medium">
+								{data.contact.title}
+							</h1>
+							<a className="text-sm font-light underline" href={`mailto:${data.contact.email}`}>
+								{data.contact.email}
 							</a>
-						</div>
-						<div className="flex flex-col text-gray-900">
-							<p className="font-base text-base font-bold">
-								Lisboa
-							</p>
-							<span className="text-sm font-thin">
-								Rocha Conde d'Óbidos 1350-352 Lisboa
-							</span>
-							<a href="tel:+351211374667" className=" font-thin">
-								<span className="font-thin text-sm border-b border-b-gray-900">
-									+351 211 374 667
-								</span>
-							</a>
-						</div>
-						<div className="flex flex-col">
-							<ul className="space-y-1 text-sm font-thin text-gray-900">
-								<li>
-									<a href="https://www.facebook.com/basicamentedigital/" target="_blank" rel="noreferrer" className="border-b border-b-gray-900">
-										Facebook
-									</a>
-								</li>
-								<li>
-									<a href="https://www.instagram.com/basicamente.digital/" target="_blank" rel="noreferrer" className="border-b border-b-gray-900">
-										Instagram
-									</a>
-								</li>
-								<li>
-									<a href="https://pt.linkedin.com/company/basicamente/" target="_blank" rel="noreferrer" className="border-b border-b-gray-900">
-										Linkedin
-									</a>
-								</li>
-							</ul>
+							{data.contact.contactCollection?.items.map((contact: any, index: number) => (
+								<React.Fragment key={`${id}-Contact-${index}`}>
+									<div className="flex flex-col">
+										<span className="text-base font-bold">
+											{contact.city}
+										</span>
+										<span className="text-sm font-light">
+											{contact.address}
+										</span>
+										<a className="text-sm font-light underline" href={`tel:${contact.telephone}`}>
+											{contact.telephone}
+										</a>
+									</div>
+								</React.Fragment>
+							))}							
+							<div className="flex flex-col">
+								{data.contact.socialMediaCollection?.items.map((socialMedia: any, index: number) => (
+									<React.Fragment key={`${id}-SocialMedia-${index}`}>
+											<a className="text-sm font-light underline" href={socialMedia.url} target="_blank" rel="noreferrer">
+												{socialMedia.title}
+											</a>
+									</React.Fragment>
+								))}
+							</div>
 						</div>
 					</div>
-				</div>
-			</div>
-		</>
+				</React.Fragment>
+			)}
+		</React.Fragment>
 	);
 };
 
