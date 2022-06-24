@@ -2,11 +2,12 @@ import React from 'react';
 import { DocumentNode, useQuery } from '@apollo/client';
 import { useForm } from 'react-hook-form';
 import { MultilingualContextType, MultilingualContext } from '../../contexts/MultilingualContext';
-import ReCAPTCHA from 'react-google-recaptcha';
 
 import LoadingSkeleton from './ContactFormLoadingSkeleton';
 import ErrorBoundary from './ContactFormErrorBoundary';
 import FieldErrorMessage from './ContactFormFieldErrorMessage';
+
+const ReCAPTCHA = React.lazy(() => import('react-google-recaptcha'));
 
 interface Props {
 	query: DocumentNode;
@@ -245,13 +246,15 @@ const ContactForm: React.FunctionComponent<Props> = ({ query }) => {
                                     />
                                     {errors.message && <FieldErrorMessage message={errors.message.message} />}
                                 </div>
-                                <ReCAPTCHA
-                                    sitekey={"6LdFf5ogAAAAACkHELEt6Geq7htm6bdRkKF6RznB"}
-                                    onChange={onChange}
-                                    theme={"light"}
-                                    type={"image"}
-                                    size={"normal"}
-                                />
+                                <React.Suspense fallback={<p className="text-sm font-light text-white">Loading reCAPTCHA...</p>}>
+                                    <ReCAPTCHA
+                                        sitekey={"6LdFf5ogAAAAACkHELEt6Geq7htm6bdRkKF6RznB"}
+                                        onChange={onChange}
+                                        theme={"light"}
+                                        type={"image"}
+                                        size={"normal"}
+                                    />
+                                </React.Suspense>
                                 <button type="submit" className={`mx-auto inline-flex h-12 w-full items-center justify-center rounded-none border border-transparent bg-primary px-4 text-base font-light text-white shadow-sm hover:opacity-80 lg:w-fit ${verified ? 'cursor-pointer' : 'cursor-not-allowed opacity-80'}`} disabled={!verified}>
                                     {data.homepageContact.buttonText}
                                 </button>
