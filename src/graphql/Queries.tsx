@@ -21,10 +21,22 @@ export const HOMEPAGE_HEADER = gql`
 `;
 export const HOMEPAGE_TITLE = gql`
 	query getHomepageTitleContent($language: String) {
-		homepageTitleCollection(locale: $language) {
-			items {
-				title
-			}
+		homepageTitle(id: "5wazryATP6lIZLyrdazoIc", locale: $language) {
+			title
+		}
+	}
+`;
+export const HOMEPAGE_TITLE_2 = gql`
+	query getHomepageTitleContent($language: String) {
+		homepageTitle(id: "1MWeYqrRD8PmxHEM8v7cZd", locale: $language) {
+			title
+		}
+	}
+`;
+export const HOMEPAGE_TITLE_3 = gql`
+	query getHomepageTitleContent($language: String) {
+		homepageTitle(id: "1dpkqrtVmqdQrjCMkFw9ma", locale: $language) {
+			title
 		}
 	}
 `;
@@ -35,8 +47,10 @@ export const HOMEPAGE_SERVICES = gql`
 				title
 				question
 				text
-				urlText
-				url
+				url {
+					urlText
+					url
+				}
 				image {
 					title
 					description
@@ -99,6 +113,37 @@ export const HOMEPAGE_CONTACT = gql`
 				title
 				description
 				url
+				sys {
+					id
+				}
+			}
+		}
+	}
+`;
+
+// Contact
+export const CONTACTPAGE_CONTACT = gql`
+	query getContactContactContent($language: String) {
+		contact(id: "3yGzhij6Gwpa7o9DSVE2II", locale: $language) {
+			title
+			email
+			socialMediaCollection {
+				items {
+					title
+					url
+				}
+			}
+			contactCollection {
+				items {
+					city
+					address
+					telephone
+				}
+			}
+			image {
+				title
+				description
+				url(transform: { width: 750, height: 600 })
 				sys {
 					id
 				}
