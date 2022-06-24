@@ -11,7 +11,7 @@ const Main: React.FunctionComponent = () => {
 			<header>
 				<Navbar />
 			</header>
-			<main className='font-poppins'>
+			<main>
 				<Outlet />
 				<ScrollToTop />
 			</main>
