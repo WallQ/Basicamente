@@ -19,7 +19,7 @@ const Navbar: React.FunctionComponent = () => {
 					{/* Logo */}
 					<div className="flex flex-1 flex-row justify-start">
 						<Link to="/">
-							<img className="h-12 w-full" src={logo} alt="Basicamente logo" width={800} height={150} />
+							<img className="h-8 w-3/4 lg:h-12 lg:w-full" src={logo} alt="Basicamente logo" width={800} height={150} />
 						</Link>
 					</div>
 					{/* /Logo */}
@@ -36,7 +36,7 @@ const Navbar: React.FunctionComponent = () => {
 										<span className={currentPath === 'solucoes' ? 'border-b border-b-gray-900' : ''}>
 											Soluções
 										</span>
-										<ChevronDownIcon className="h-6 w-6 text-gray-900 group-hover:text-gray-600" aria-hidden="true" />
+										<ChevronDownIcon className={`${open ? 'rotate-180 transform duration-200' : 'duration-200'} h-6 w-6 text-gray-900 group-hover:text-gray-600`} aria-hidden="true" />
 									</Popover.Button>
 									<Transition as={React.Fragment} enter="transition ease-out duration-200" enterFrom="transform opacity-0 translate-y-1" enterTo="transform opacity-100 translate-y-0" leave="transition ease-in duration-150" leaveFrom="transform opacity-100 translate-y-0" leaveTo="transform opacity-0 translate-y-1">
 										<Popover.Panel className="absolute left-1/2 z-10 mt-4 w-max max-w-xs -translate-x-1/2 transform">
@@ -66,7 +66,7 @@ const Navbar: React.FunctionComponent = () => {
 										<span className={currentPath === 'work' ? 'border-b border-b-gray-900' : '' }>
 											Work
 										</span>
-										<ChevronDownIcon className="h-6 w-6 text-gray-900 group-hover:text-gray-600" aria-hidden="true" />
+										<ChevronDownIcon className={`${open ? 'rotate-180 transform duration-200' : 'duration-200'} h-6 w-6 text-gray-900 group-hover:text-gray-600`} aria-hidden="true" />
 									</Popover.Button>
 									<Transition as={React.Fragment} enter="transition ease-out duration-200" enterFrom="transform opacity-0 translate-y-1" enterTo="transform opacity-100 translate-y-0" leave="transition ease-in duration-150" leaveFrom="transform opacity-100 translate-y-0" leaveTo="transform opacity-0 translate-y-1">
 										<Popover.Panel className="absolute left-1/2 z-10 mt-4 w-max max-w-xs -translate-x-1/2 transform">
@@ -115,7 +115,7 @@ const Navbar: React.FunctionComponent = () => {
 								{/* Logo */}
 								<div className="flex flex-1 flex-row justify-start">
 									<Link to="/">
-										<img className="h-12 w-full" src={logo} alt="Basicamente logo" width={800} height={150} />
+										<img className="h-8 w-3/4 lg:h-12 lg:w-full" src={logo} alt="Basicamente logo" width={800} height={150} />
 									</Link>
 								</div>
 								{/* /Logo */}
