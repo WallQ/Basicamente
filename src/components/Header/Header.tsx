@@ -1,6 +1,5 @@
 import React from 'react';
 import { DocumentNode, useQuery } from '@apollo/client';
-import { MARKS } from '@contentful/rich-text-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { MultilingualContextType, MultilingualContext } from '../../contexts/MultilingualContext';
 
@@ -13,7 +12,7 @@ interface Props {
 
 const options = {
 	renderMark: {
-		[MARKS.BOLD]: (text: any) => <span className="font-bold">{text}</span>,
+		"bold": (text: any) => <span className="font-bold">{text}</span>,
 	},
 };
 
