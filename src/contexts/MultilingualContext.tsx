@@ -12,7 +12,7 @@ export type MultilingualContextProviderType = {
 export const MultilingualContext = React.createContext<MultilingualContextType | null>(null);
 
 export const MultilingualContextProvider = ({ children }: MultilingualContextProviderType) => {
-	const [language, setLanguage] = React.useState<string>('pt-PT');
+	const [language, setLanguage] = React.useState<string>(localStorage.getItem("BasicamenteLang") || 'pt-PT');
 
 	return (
 		<MultilingualContext.Provider value={{ language, setLanguage }}>
