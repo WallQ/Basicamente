@@ -1,9 +1,6 @@
 import React from 'react';
 import { HOMEPAGE_HEADER, HOMEPAGE_TITLE, HOMEPAGE_TITLE_2, HOMEPAGE_TITLE_3, HOMEPAGE_SERVICES, HOMEPAGE_PROJECTS, HOMEPAGE_PARTNERS, HOMEPAGE_CONTACT } from '../../graphql/Queries';
 
-// Contexts
-import { SubmitModalContextProvider } from '../../contexts/SubmitModalContext';
-
 // Loading Skeletons
 import HeaderLoadingSkeleton from '../../components/Header/HeaderLoadingSkeleton';
 import TitleLoadingSkeleton from '../../components/Title/TitleLoadingSkeleton';
@@ -47,9 +44,7 @@ const Homepage: React.FunctionComponent = () => {
 				</React.Suspense>
 			</div>
 			<React.Suspense fallback={<ContactFormLoadingSkeleton />}>
-				<SubmitModalContextProvider>
-					<ContactForm query={HOMEPAGE_CONTACT} />
-				</SubmitModalContextProvider>
+				<ContactForm query={HOMEPAGE_CONTACT} />
 			</React.Suspense>
 		</React.Fragment>
 	);

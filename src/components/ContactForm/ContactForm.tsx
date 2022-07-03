@@ -3,14 +3,14 @@ import { DocumentNode, useQuery } from '@apollo/client';
 import { useForm } from 'react-hook-form';
 import emailjs from '@emailjs/browser';
 import { MultilingualContextType, MultilingualContext } from '../../contexts/MultilingualContext';
-import { SubmitModalContextType, SubmitModalContext } from '../../contexts/SubmitModalContext';
+import { ToastNotificationContextType, ToastNotificationContext } from '../../contexts/ToastNotificationContext';
 
 import LoadingSkeleton from './ContactFormLoadingSkeleton';
 import ErrorBoundary from './ContactFormErrorBoundary';
 import FieldErrorMessage from './ContactFormFieldErrorMessage';
 
 const ReCAPTCHA = React.lazy(() => import('react-google-recaptcha'));
-const Modal = React.lazy(() => import('../SubmitModal/SubmitModal'));
+const ToastNotification = React.lazy(() => import('../ToastNotification/ToastNotification'));
 
 interface Props {
 	query: DocumentNode;
@@ -34,9 +34,7 @@ const ContactForm: React.FunctionComponent<Props> = ({ query }) => {
     const { language } = React.useContext(MultilingualContext) as MultilingualContextType;
 	const { loading, error, data } = useQuery<any>(query, {variables: { language }});
     
-    const { setOpenModal } = React.useContext(SubmitModalContext) as SubmitModalContextType;
-    const [success, setSuccess] = React.useState<boolean | null>(null);
-    const [message, setMessage] = React.useState<any>({});
+    const { setShow, setSuccess, setMessage } = React.useContext(ToastNotificationContext) as ToastNotificationContextType;
 
 	if (loading) return <LoadingSkeleton />;
 	if (error) return <ErrorBoundary message={error.message} />;
@@ -57,19 +55,19 @@ const ContactForm: React.FunctionComponent<Props> = ({ query }) => {
             message: data.message
         };
 
-        // emailjs
-        //     .send(process.env.REACT_APP_EMAILJS_SERVICE_ID || '', language === 'pt-PT' ? 'template_foqrnve' : 'template_d4qdtte', templateParams, process.env.REACT_APP_EMAILJS_USER_ID || '')
-        //     .then((response) => console.log(`Email successfully sent => ${response.status} - ${response.text}`))
-        //     .catch((error) => console.error(`Something went wrong => ${error}`));
-
         reset();
-        setSuccess(false);
-        setMessage({
-            title: 'Correu tudo bacano',
-            text: 'Tudo fixe vai ao email',
-        });
-        setOpenModal(true);
-        console.log(`E-mail enviado com successo!`);
+        emailjs
+            .send(process.env.REACT_APP_EMAILJS_SERVICE_ID || '', language === 'pt-PT' ? 'template_foqrnve' : 'template_d4qdtte', templateParams, process.env.REACT_APP_EMAILJS_USER_ID || '')
+            .then((response) => {
+                setSuccess(true);
+                setMessage("We've sent you an email with more details.");
+                setShow(true);
+            })
+            .catch((error) => {
+                setSuccess(false);
+                setMessage("Please try again later.");
+                setShow(true);
+            });
 	};
 
 	return (
@@ -289,7 +287,7 @@ const ContactForm: React.FunctionComponent<Props> = ({ query }) => {
                                     {data.homepageContact.buttonText}
                                 </button>
                             </form>
-                            <Modal success={success} message={message} />
+                            <ToastNotification />
                         </div>
                     </div>
                 </React.Fragment>

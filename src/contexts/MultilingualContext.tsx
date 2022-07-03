@@ -2,7 +2,7 @@ import React from 'react';
 
 export type MultilingualContextType = {
 	language: any;
-	setLanguage: React.Dispatch<any>;
+	setLanguage: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export type MultilingualContextProviderType = {
