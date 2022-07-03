@@ -47,4 +47,4 @@ const MultilingualToggle: React.FunctionComponent = () => {
 	);
 };
 
-export default MultilingualToggle;
+export default React.memo(MultilingualToggle);
