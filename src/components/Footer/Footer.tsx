@@ -17,27 +17,27 @@ const Footer: React.FunctionComponent = () => {
 						<div className="flex flex-col">
 							<ul className="text-base text-white space-y-1">
 								<li>
-									<Link to="solucoes/comercio-digital" className="border-b border-b-white">
+									<Link to="services/digital-commerce" className="border-b border-b-white">
                                         Comércio Digital
 									</Link>
 								</li>
 								<li>
-									<Link to="solucoes/marketing-digital-performance" className="border-b border-b-white">
+									<Link to="services/marketing-digital-performance" className="border-b border-b-white">
                                         Marketing Digital e Performance
 									</Link>
 								</li>
 								<li>
-									<Link to="solucoes/uiux-design" className="border-b border-b-white">
+									<Link to="services/uiux-design" className="border-b border-b-white">
                                         UI/UX Design
 									</Link>
 								</li>
                                 <li>
-									<Link to="solucoes/websites-workplaces-digitais" className="border-b border-b-white">
+									<Link to="services/websites-workplaces-digitals" className="border-b border-b-white">
                                         Websites e Workplaces Digitais
 									</Link>
 								</li>
 								<li>
-									<Link to="solucoes/web-development" className="border-b border-b-white">
+									<Link to="services/web-development" className="border-b border-b-white">
                                         Web Development
 									</Link>
 								</li>
@@ -101,8 +101,8 @@ const Footer: React.FunctionComponent = () => {
             </div>
 			<div className="py-8 px-8 bg-white">
                 <div className="flex flex-wrap flex-row items-center text-center justify-center gap-x-4 gap-y-2">
-                    <Link to="termos-e-condicoes" className='text-xs text-primary border-b border-b-primary hover:opacity-80'>Termos e Condições</Link>
-                    <Link to="resolucao-litigios" className='text-xs text-primary border-b border-b-primary hover:opacity-80'>Resolução de Litígios</Link>
+                    <Link to="terms-conditions" className='text-xs text-primary border-b border-b-primary hover:opacity-80'>Termos e Condições</Link>
+                    <Link to="dispute-resolution" className='text-xs text-primary border-b border-b-primary hover:opacity-80'>Resolução de Litígios</Link>
                     <a href="https://www.livroreclamacoes.pt/" target="_blank" rel='noreferrer' className='text-xs text-primary border-b border-b-primary hover:opacity-80'>Livro de Reclamações</a>
                 </div>
 			</div>

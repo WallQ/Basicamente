@@ -5,9 +5,11 @@ import { MenuIcon, XIcon } from '@heroicons/react/outline';
 import { ChevronDownIcon } from '@heroicons/react/solid';
 import MultilingualToggle from '../MultilingualToggle/MultilingualToggle';
 import logo from '../../assets/Basicamente-Logo.gif';
-import { solucoes, work } from './_navItems';
+import { services, portfolio } from './_navItems';
+import { MultilingualContextType, MultilingualContext } from '../../contexts/MultilingualContext';
 
 const Navbar: React.FunctionComponent = () => {
+	const { isPortuguese } = React.useContext(MultilingualContext) as MultilingualContextType;
 	const id = React.useId();
 	const location = useLocation();
 	const currentPath = location.pathname.split('/')[1];
@@ -19,7 +21,7 @@ const Navbar: React.FunctionComponent = () => {
 					{/* Logo */}
 					<div className="flex flex-1 flex-row justify-start">
 						<Link to="/">
-							<img className="h-8 w-3/4 lg:h-12 lg:w-full" src={logo} alt="Basicamente logo" width={800} height={150} />
+							<img className="h-12 w-auto" src={logo} alt="Basicamente logo" width={800} height={150} loading={"eager"} />
 						</Link>
 					</div>
 					{/* /Logo */}
@@ -28,21 +30,21 @@ const Navbar: React.FunctionComponent = () => {
 						<NavLink to="/" className={({ isActive }) => isActive ? 'border-b border-b-gray-900 text-base font-medium text-gray-900 hover:text-gray-600' : 'text-base font-medium text-gray-900 hover:text-gray-600'}>
 							Home
 						</NavLink>
-						{/* Solucoes */}
+						{/* Services */}
 						<Popover className="relative">
 							{({ open }: { open: boolean }) => (
 								<React.Fragment>
 									<Popover.Button className="group inline-flex items-center gap-x-1 rounded-md text-base font-medium text-gray-900 hover:text-gray-600 focus:outline-none">
-										<span className={currentPath === 'solucoes' ? 'border-b border-b-gray-900' : ''}>
-											Soluções
+										<span className={currentPath === 'services' ? 'border-b border-b-gray-900' : ''}>
+											{isPortuguese() ? 'Serviços' : 'Services'}
 										</span>
 										<ChevronDownIcon className={`${open ? 'rotate-180 transform duration-200' : 'duration-200'} h-6 w-6 text-gray-900 group-hover:text-gray-600`} aria-hidden="true" />
 									</Popover.Button>
 									<Transition as={React.Fragment} enter="transition ease-out duration-200" enterFrom="transform opacity-0 translate-y-1" enterTo="transform opacity-100 translate-y-0" leave="transition ease-in duration-150" leaveFrom="transform opacity-100 translate-y-0" leaveTo="transform opacity-0 translate-y-1">
 										<Popover.Panel className="absolute left-1/2 z-10 mt-4 w-max max-w-xs -translate-x-1/2 transform">
 											<div className="relative overflow-hidden bg-white shadow-lg ring-1 ring-black ring-opacity-5">
-												{solucoes.map((item: any, index: number) => (
-													<Popover.Button key={`${id}-Solucoes-${index}`} onClick={() => (open = false)} className="min-w-full text-left">
+												{services.map((item: any, index: number) => (
+													<Popover.Button key={`${id}-Services-${index}`} onClick={() => (open = false)} className="min-w-full text-left">
 														<NavLink to={item.routeUrl} className="block px-8 py-2 text-base font-medium text-gray-900 hover:bg-primary hover:text-white">
 															{item.routeTitle}
 														</NavLink>
@@ -54,25 +56,22 @@ const Navbar: React.FunctionComponent = () => {
 								</React.Fragment>
 							)}
 						</Popover>						
-						{/* /Solucoes */}
-						<NavLink to="sobre-a-basicamente" className={({ isActive }) => isActive ? 'border-b border-b-gray-900 text-base font-medium text-gray-900 hover:text-gray-600' : 'text-base font-medium text-gray-900 hover:text-gray-600'}>
-							Sobre
-						</NavLink>
-						{/* Work */}
+						{/* /Services */}
+						{/* Portfolio */}
 						<Popover className="relative">
 							{({ open }: { open: boolean }) => (
 								<React.Fragment>
 									<Popover.Button className="group inline-flex items-center gap-x-1 rounded-md text-base font-medium text-gray-900 hover:text-gray-600 focus:outline-none">
-										<span className={currentPath === 'work' ? 'border-b border-b-gray-900' : '' }>
-											Work
+										<span className={currentPath === 'portfolio' ? 'border-b border-b-gray-900' : '' }>
+											{isPortuguese() ? 'Portfólio' : 'Portfolio'}
 										</span>
 										<ChevronDownIcon className={`${open ? 'rotate-180 transform duration-200' : 'duration-200'} h-6 w-6 text-gray-900 group-hover:text-gray-600`} aria-hidden="true" />
 									</Popover.Button>
 									<Transition as={React.Fragment} enter="transition ease-out duration-200" enterFrom="transform opacity-0 translate-y-1" enterTo="transform opacity-100 translate-y-0" leave="transition ease-in duration-150" leaveFrom="transform opacity-100 translate-y-0" leaveTo="transform opacity-0 translate-y-1">
 										<Popover.Panel className="absolute left-1/2 z-10 mt-4 w-max max-w-xs -translate-x-1/2 transform">
 											<div className="relative overflow-hidden bg-white shadow-lg ring-1 ring-black ring-opacity-5">
-												{work.map((item: any, index: number) => (
-													<Popover.Button key={`${id}-Work-${index}`} onClick={() =>(open = false)} className="min-w-full text-left">
+												{portfolio.map((item: any, index: number) => (
+													<Popover.Button key={`${id}-Portfolio-${index}`} onClick={() =>(open = false)} className="min-w-full text-left">
 														<NavLink to={item.routeUrl} className="block px-8 py-2 text-base font-medium text-gray-900 hover:bg-primary hover:text-white">
 															{item.routeTitle}
 														</NavLink>
@@ -84,17 +83,20 @@ const Navbar: React.FunctionComponent = () => {
 								</React.Fragment>
 							)}
 						</Popover>
-						{/* /Work */}
-						<NavLink to="contactos" className={({ isActive }) => isActive ? 'border-b border-b-gray-900 text-base font-medium text-gray-900 hover:text-gray-600' : 'text-base font-medium text-gray-900 hover:text-gray-600'}>
-							Contactos
+						{/* /Portfolio */}
+						<NavLink to="about" className={({ isActive }) => isActive ? 'border-b border-b-gray-900 text-base font-medium text-gray-900 hover:text-gray-600' : 'text-base font-medium text-gray-900 hover:text-gray-600'}>
+							{isPortuguese() ? 'Sobre' : 'About'}
+						</NavLink>
+						<NavLink to="contact" className={({ isActive }) => isActive ? 'border-b border-b-gray-900 text-base font-medium text-gray-900 hover:text-gray-600' : 'text-base font-medium text-gray-900 hover:text-gray-600'}>
+							{isPortuguese() ? 'Contactos' : 'Contacts'}
 						</NavLink>
 					</Popover.Group>
 					{/* /Navigation Items */}
 					{/* Button */}
 					<div className="hidden items-center justify-end gap-x-4 lg:flex lg:flex-1 lg:flex-row">
 						<MultilingualToggle />
-						<Link to="pedir-proposta" className="flex h-12 items-center justify-center rounded-none border border-transparent bg-primary px-4 text-base font-medium text-white shadow-sm hover:opacity-80">
-							Pedir Proposta
+						<Link to="get-quote" className="flex h-12 items-center justify-center rounded-none border border-transparent bg-primary px-4 text-base font-medium text-white shadow-sm hover:opacity-80">
+							{isPortuguese() ? 'Pedir Proposta' : 'Get a Quote'}
 						</Link>
 					</div>
 					{/* /Button */}
@@ -115,7 +117,7 @@ const Navbar: React.FunctionComponent = () => {
 								{/* Logo */}
 								<div className="flex flex-1 flex-row justify-start">
 									<Link to="/">
-										<img className="h-8 w-3/4 lg:h-12 lg:w-full" src={logo} alt="Basicamente logo" width={800} height={150} />
+										<img className="h-12 w-auto" src={logo} alt="Basicamente logo" width={800} height={150} loading={"eager"} />
 									</Link>
 								</div>
 								{/* /Logo */}
@@ -132,19 +134,19 @@ const Navbar: React.FunctionComponent = () => {
 									<NavLink to="/" className="text-base font-medium text-gray-900 hover:text-gray-600">
 										Home
 									</NavLink>
-									{/* Solucoes */}
+									{/* Services */}
 									<Disclosure>
 										{({ open }: { open: boolean }) => (
 											<React.Fragment>
 												<Disclosure.Button className="inline-flex items-center align-middle">
 													<span className="text-base font-medium text-gray-900 hover:text-gray-600">
-														Soluções
+														{isPortuguese() ? 'Serviços' : 'Services'}
 													</span>
 													<ChevronDownIcon className={`${open ? 'rotate-180 transform duration-200' : 'duration-200'} h-6 w-6`}/>
 												</Disclosure.Button>
 												<Disclosure.Panel className="flex flex-col items-center justify-center border-t border-b border-t-gray-500 border-b-gray-500">
-													{solucoes.map((item: any, index: number) => (
-														<Popover.Button key={`${id}-SolucoesMobile-${index}`} onClick={() => (open = false)} className="min-w-full text-left">
+													{services.map((item: any, index: number) => (
+														<Popover.Button key={`${id}-ServicesMobile-${index}`} onClick={() => (open = false)} className="min-w-full text-left">
 															<NavLink to={item.routeUrl} className="block px-8 py-2 text-base font-medium text-gray-600 hover:bg-primary hover:text-white">
 																{item.routeTitle}
 															</NavLink>
@@ -154,23 +156,20 @@ const Navbar: React.FunctionComponent = () => {
 											</React.Fragment>
 										)}
 									</Disclosure>
-									{/* /Solucoes */}
-									<NavLink to="sobre-a-basicamente" className="text-base font-medium text-gray-900 hover:text-gray-600">
-										Sobre
-									</NavLink>
-									{/* Work */}
+									{/* /Services */}
+									{/* Portfolio */}
 									<Disclosure>
 										{({ open }: { open: boolean }) => (
 											<React.Fragment>
 												<Disclosure.Button className="inline-flex items-center align-middle">
 													<span className="text-base font-medium text-gray-900 hover:text-gray-600">
-														Work
+														{isPortuguese() ? 'Portfólio' : 'Portfolio'}
 													</span>
 													<ChevronDownIcon className={`${open ? 'rotate-180 transform duration-200' : 'duration-200'} h-6 w-6`} />
 												</Disclosure.Button>
 												<Disclosure.Panel className="flex flex-col items-center justify-center border-t border-b border-t-gray-500 border-b-gray-500">
-													{work.map((item: any, index: number) => (
-														<Popover.Button key={`${id}-WorkMobile-${index}`} onClick={() => (open = false)} className="min-w-full text-left">
+													{portfolio.map((item: any, index: number) => (
+														<Popover.Button key={`${id}-PortfolioMobile-${index}`} onClick={() => (open = false)} className="min-w-full text-left">
 															<NavLink to={item.routeUrl} className="block px-8 py-2 text-base font-medium text-gray-600 hover:bg-primary hover:text-white">
 																{item.routeTitle}
 															</NavLink>
@@ -180,16 +179,19 @@ const Navbar: React.FunctionComponent = () => {
 											</React.Fragment>
 										)}
 									</Disclosure>
-									{/* /Work */}
-									<NavLink to="contactos" className="text-base font-medium text-gray-900 hover:text-gray-600">
-										Contactos
+									{/* /Portfolio */}
+									<NavLink to="about" className="text-base font-medium text-gray-900 hover:text-gray-600">
+										{isPortuguese() ? 'Sobre' : 'About'}
+									</NavLink>
+									<NavLink to="contact" className="text-base font-medium text-gray-900 hover:text-gray-600">
+										{isPortuguese() ? 'Contactos' : 'Contacts'}
 									</NavLink>
 								</div>
 								{/* /Navigation Items */}
 								{/* Button */}
 								<div className="mt-6">
-									<Link to="pedir-proposta" className="inline-flex h-12 items-center justify-center rounded-none border border-transparent bg-primary px-4 text-base font-medium text-white shadow-sm hover:opacity-80">
-										Pedir Proposta
+									<Link to="get-quote" className="inline-flex h-12 items-center justify-center rounded-none border border-transparent bg-primary px-4 text-base font-medium text-white shadow-sm hover:opacity-80">
+										{isPortuguese() ? 'Pedir Proposta' : 'Get a Quote'}
 									</Link>
 								</div>
 								{/* /Button */}

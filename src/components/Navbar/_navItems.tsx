@@ -1,41 +1,41 @@
-export const solucoes = [
+export const services = [
 	{
 		routeTitle: 'Comércio Digital',
-		routeUrl: 'solucoes/comercio-digital',
+		routeUrl: 'services/digital-commerce',
 	},
 	{
 		routeTitle: 'Marketing Digital e Performance',
-		routeUrl: 'solucoes/marketing-digital-performance',
+		routeUrl: 'services/marketing-digital-performance',
 	},
 	{
 		routeTitle: 'UI/UI Design',
-		routeUrl: 'solucoes/uiux-design',
+		routeUrl: 'services/uiux-design',
 	},
 	{
 		routeTitle: 'Websites e Workplaces Digitais',
-		routeUrl: 'solucoes/websites-workplaces-digitais',
+		routeUrl: 'services/websites-workplaces-digitals',
 	},
 	{
 		routeTitle: 'Web Development',
-		routeUrl: 'solucoes/web-development',
+		routeUrl: 'services/web-development',
 	},
 ];
 
-export const work = [
+export const portfolio = [
 	{
 		routeTitle: 'Websites',
-		routeUrl: 'work/websites',
+		routeUrl: 'portfolio/websites',
 	},
 	{
 		routeTitle: 'eCommerce',
-		routeUrl: 'work/e-commerce',
+		routeUrl: 'portfolio/e-commerce',
 	},
 	{
 		routeTitle: 'Web Development',
-		routeUrl: 'work/web-development',
+		routeUrl: 'portfolio/web-development',
 	},
 	{
 		routeTitle: 'Marketing Digital e Performance',
-		routeUrl: 'work/marketing-digital-performance',
+		routeUrl: 'portfolio/marketing-digital-performance',
 	},
 ];
