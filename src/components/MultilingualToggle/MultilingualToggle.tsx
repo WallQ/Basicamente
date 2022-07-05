@@ -14,7 +14,7 @@ const MultilingualToggle: React.FunctionComponent = () => {
 
 	return (
 		<React.Fragment>
-			<Popover className="relative">
+			<Popover className="relative flex flex-row items-center">
 				{({ open }: { open: boolean }) => (
 					<React.Fragment>
 						<Popover.Button className="group inline-flex items-center gap-x-1 rounded-md text-base font-medium text-gray-900 hover:text-gray-600 focus:outline-none">
@@ -25,7 +25,7 @@ const MultilingualToggle: React.FunctionComponent = () => {
 							<ChevronDownIcon className={`${open ? 'rotate-180 transform duration-200' : 'duration-200'} h-6 w-6 text-gray-900 group-hover:text-gray-600`} aria-hidden="true" />
 						</Popover.Button>
 						<Transition as={React.Fragment} enter="transition ease-out duration-200" enterFrom="transform opacity-0 translate-y-1" enterTo="transform opacity-100 translate-y-0" leave="transition ease-in duration-150" leaveFrom="transform opacity-100 translate-y-0" leaveTo="transform opacity-0 translate-y-1">
-							<Popover.Panel className="absolute z-10 mt-4">
+							<Popover.Panel className="absolute z-10 mt-36">
 								<div className="relative flex flex-1 flex-col flex-wrap overflow-hidden bg-white shadow-lg ring-1 ring-black ring-opacity-5">
 									<Popover.Button as={'button'} className="text-left" onClick={() => handleClick('pt-PT')}>
 										<span className="block px-8 py-2 text-base font-medium text-gray-900 hover:bg-primary hover:text-white">
