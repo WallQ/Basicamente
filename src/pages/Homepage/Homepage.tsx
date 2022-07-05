@@ -1,5 +1,5 @@
 import React from 'react';
-import { HOMEPAGE_HEADER, HOMEPAGE_TITLE, HOMEPAGE_TITLE_2, HOMEPAGE_TITLE_3, HOMEPAGE_SERVICES, HOMEPAGE_PROJECTS, HOMEPAGE_PARTNERS, HOMEPAGE_CONTACT } from '../../graphql/Queries';
+import { HOMEPAGE_HEADER, HOMEPAGE_TITLE, HOMEPAGE_TITLE_2, HOMEPAGE_TITLE_3, HOMEPAGE_SERVICES, HOMEPAGE_PROJECTS, HOMEPAGE_PARTNERS, CONTACT_FORM } from '../../graphql/Queries';
 
 // Loading Skeletons
 import HeaderLoadingSkeleton from '../../components/Header/HeaderLoadingSkeleton';
@@ -44,7 +44,7 @@ const Homepage: React.FunctionComponent = () => {
 				</React.Suspense>
 			</div>
 			<React.Suspense fallback={<ContactFormLoadingSkeleton />}>
-				<ContactForm query={HOMEPAGE_CONTACT} />
+				<ContactForm query={CONTACT_FORM} />
 			</React.Suspense>
 		</React.Fragment>
 	);
