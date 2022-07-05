@@ -1,9 +1,29 @@
 import { gql } from '@apollo/client';
 
+// General Contact Form
+export const CONTACT_FORM = gql`
+	query getContactFormContent($language: String) {
+		contactForm(id: "42G0NtmamjcMg55Capubi", locale: $language) {
+			title
+			text
+			inputText
+			buttonText
+			image {
+				title
+				description
+				url
+				sys {
+					id
+				}
+			}
+		}
+	}
+`;
+
 // Homepage
 export const HOMEPAGE_HEADER = gql`
 	query getHomepageHeaderContent($language: String) {
-		homepageHeader(id: "2DDrCQlZSMvizPZT4b6UdM", locale: $language) {
+		header(id: "1U1rbuhNVpBRyFw1AMnGKZ", locale: $language) {
 			title
 			text {
 				json
@@ -27,14 +47,14 @@ export const HOMEPAGE_TITLE = gql`
 	}
 `;
 export const HOMEPAGE_TITLE_2 = gql`
-	query getHomepageTitleContent($language: String) {
+	query getHomepageTitle2Content($language: String) {
 		homepageTitle(id: "1MWeYqrRD8PmxHEM8v7cZd", locale: $language) {
 			title
 		}
 	}
 `;
 export const HOMEPAGE_TITLE_3 = gql`
-	query getHomepageTitleContent($language: String) {
+	query getHomepageTitle3Content($language: String) {
 		homepageTitle(id: "1dpkqrtVmqdQrjCMkFw9ma", locale: $language) {
 			title
 		}
@@ -102,19 +122,49 @@ export const HOMEPAGE_PARTNERS = gql`
 		}
 	}
 `;
-export const HOMEPAGE_CONTACT = gql`
-	query getHomepageHeaderContent($language: String) {
-		homepageContact(id: "6r8OfBhsDtlRWQpWRHlKSP", locale: $language) {
+
+// About
+export const ABOUTPAGE_HEADER = gql`
+	query getAboutHeaderContent($language: String) {
+		header(id: "6aX9Fxq9NWDCejjZi1MnN4", locale: $language) {
 			title
-			text
-			inputText
-			buttonText
+			text {
+				json
+			}
 			image {
 				title
 				description
 				url
 				sys {
 					id
+				}
+			}
+		}
+	}
+`;
+export const ABOUTPAGE_TEXT = gql`
+	query getAboutTextContent($language: String) {
+		aboutText(id: "1hkRm4UXu1h5Qguad6b1pW", locale: $language) {
+			text {
+				json
+			}
+		}
+	}
+`;
+export const ABOUTPAGE_PARTNERS = gql`
+	query getAboutPartnersContent($language: String) {
+		aboutPartnersCollection(locale: $language) {
+			items {
+				title
+				imagesCollection {
+					items {
+						title
+						description
+						url(transform: { width: 500, height: 300 })
+						sys {
+							id
+						}
+					}
 				}
 			}
 		}

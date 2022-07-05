@@ -1,6 +1,7 @@
 import React from 'react';
 import { DocumentNode, useQuery } from '@apollo/client';
 import { useForm } from 'react-hook-form';
+import ReCAPTCHA from 'react-google-recaptcha';
 import emailjs from '@emailjs/browser';
 import { MultilingualContextType, MultilingualContext } from '../../contexts/MultilingualContext';
 import { ToastNotificationContextType, ToastNotificationContext } from '../../contexts/ToastNotificationContext';
@@ -9,7 +10,6 @@ import LoadingSkeleton from './ContactFormLoadingSkeleton';
 import ErrorBoundary from './ContactFormErrorBoundary';
 import FieldErrorMessage from './ContactFormFieldErrorMessage';
 
-const ReCAPTCHA = React.lazy(() => import('react-google-recaptcha'));
 const ToastNotification = React.lazy(() => import('../ToastNotification/ToastNotification'));
 
 interface Props {
@@ -29,9 +29,10 @@ const ContactForm: React.FunctionComponent<Props> = ({ query }) => {
 	const id = React.useId();
     const { register, handleSubmit, formState: { errors, isValid }, reset } = useForm<FormData>({ mode: 'onChange' });
     
+    const recaptchaRef = React.createRef<ReCAPTCHA>();
     const [verified, setVerified] = React.useState<boolean>(false);
 
-    const { language } = React.useContext(MultilingualContext) as MultilingualContextType;
+    const { language, isPortuguese } = React.useContext(MultilingualContext) as MultilingualContextType;
 	const { loading, error, data } = useQuery<any>(query, {variables: { language }});
     
     const { setShow, setSuccess, setMessage } = React.useContext(ToastNotificationContext) as ToastNotificationContextType;
@@ -56,39 +57,48 @@ const ContactForm: React.FunctionComponent<Props> = ({ query }) => {
         };
 
         reset();
+        recaptchaRef.current?.reset();
         emailjs
-            .send(process.env.REACT_APP_EMAILJS_SERVICE_ID || '', language === 'pt-PT' ? 'template_foqrnve' : 'template_d4qdtte', templateParams, process.env.REACT_APP_EMAILJS_USER_ID || '')
+            .send(process.env.REACT_APP_EMAILJS_SERVICE_ID || '', isPortuguese() ? 'template_foqrnve' : 'template_d4qdtte', templateParams, process.env.REACT_APP_EMAILJS_USER_ID || '')
             .then((response) => {
                 setSuccess(true);
-                setMessage("We've sent you an email with more details.");
+                setMessage(
+                    isPortuguese()
+                        ? "Enviamos-lhe um e-mail com mais detalhes."
+                        : "We've sent you an email with more details."
+                );
                 setShow(true);
             })
             .catch((error) => {
                 setSuccess(false);
-                setMessage("Please try again later.");
+                setMessage(
+                    isPortuguese()
+                        ? "Por favor, tente novamente mais tarde."
+                        : "Please, try again later."
+                );
                 setShow(true);
             });
 	};
 
 	return (
 		<React.Fragment>
-            {data && data.homepageContact && (
+            {data && data.contactForm && (
                 <React.Fragment>
-                    <div className="mt-12 bg-primary bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${data.homepageContact.image.url})` }}>
+                    <div className="mt-12 bg-primary bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${data.contactForm.image.url})` }}>
                         <div className='container mx-auto flex flex-col items-center justify-center gap-y-8 px-4 pt-12 pb-12 sm:px-6 lg:gap-y-12 lg:px-8'>
                             <div className="space-y-4 text-center text-white">
                                 <h1 className="text-3xl font-medium">
-                                    {data.homepageContact.title}
+                                    {data.contactForm.title}
                                 </h1>
                                 <p className="text-base font-light">
-                                    {data.homepageContact.text}
+                                    {data.contactForm.text}
                                 </p>
                             </div>
                             <form id={`${id}-form`} onSubmit={handleSubmit(onSubmit)} className="flex w-full flex-col flex-wrap gap-y-4 xl:w-2/3">
                                 <div className="flex flex-col gap-x-4 gap-y-4 lg:flex-row">
                                     <div className="flex flex-1 flex-col">
                                         <label htmlFor={`${id}-firstName`} className="block text-sm font-light text-white">
-                                            {data.homepageContact.inputText[0]} *
+                                            {data.contactForm.inputText[0]} *
                                         </label>
                                         <input
                                             type="text"
@@ -122,7 +132,7 @@ const ContactForm: React.FunctionComponent<Props> = ({ query }) => {
                                     </div>
                                     <div className="flex flex-1 flex-col">
                                         <label htmlFor={`${id}-lastName`} className="block text-sm font-light text-white">
-                                            {data.homepageContact.inputText[1]} *
+                                            {data.contactForm.inputText[1]} *
                                         </label>
                                         <input
                                             type="text"
@@ -157,7 +167,7 @@ const ContactForm: React.FunctionComponent<Props> = ({ query }) => {
                                 </div>
                                 <div className="flex flex-col">
                                     <label htmlFor={`${id}-email`} className="block text-sm font-light text-white">
-                                        {data.homepageContact.inputText[2]} *
+                                        {data.contactForm.inputText[2]} *
                                     </label>
                                     <input
                                         type="email"
@@ -187,7 +197,7 @@ const ContactForm: React.FunctionComponent<Props> = ({ query }) => {
                                 </div>
                                 <div className="flex flex-col">
                                     <label htmlFor={`${id}-telephone`} className="block text-sm font-light text-white">
-                                    {data.homepageContact.inputText[3]} *
+                                    {data.contactForm.inputText[3]} *
                                     </label>
                                     <input
                                         type="tel"
@@ -221,7 +231,7 @@ const ContactForm: React.FunctionComponent<Props> = ({ query }) => {
                                 </div>
                                 <div className="flex flex-col">
                                     <label htmlFor={`${id}-company`} className="block text-sm font-light text-white">
-                                    {data.homepageContact.inputText[4]} *
+                                    {data.contactForm.inputText[4]} *
                                     </label>
                                     <input
                                         type="text"
@@ -250,7 +260,7 @@ const ContactForm: React.FunctionComponent<Props> = ({ query }) => {
                                 </div>
                                 <div className="flex flex-col">
                                     <label htmlFor={`${id}-message`} className="block text-sm font-light text-white">
-                                        {data.homepageContact.inputText[5]} *
+                                        {data.contactForm.inputText[5]} *
                                     </label>
                                     <textarea
                                         id={`${id}-message`}
@@ -276,6 +286,7 @@ const ContactForm: React.FunctionComponent<Props> = ({ query }) => {
                                 </div>
                                 <React.Suspense fallback={<p className="text-sm font-light text-white">Loading reCAPTCHA...</p>}>
                                     <ReCAPTCHA
+                                        ref={recaptchaRef}
                                         sitekey={process.env.REACT_APP_GOOGLE_RECAPTCHA_KEY || ""}
                                         onChange={onChange}
                                         theme={"light"}
@@ -284,7 +295,7 @@ const ContactForm: React.FunctionComponent<Props> = ({ query }) => {
                                     />
                                 </React.Suspense>
                                 <button type="submit" className={`mx-auto inline-flex h-12 w-full items-center justify-center rounded-none border border-transparent bg-primary px-4 text-base font-light text-white shadow-sm hover:opacity-80 lg:w-fit ${verified ? 'cursor-pointer' : 'cursor-not-allowed opacity-80'} ${isValid ? 'cursor-pointer' : 'cursor-not-allowed opacity-80'}`} disabled={!verified && !isValid}>
-                                    {data.homepageContact.buttonText}
+                                    {data.contactForm.buttonText}
                                 </button>
                             </form>
                             <ToastNotification />
