@@ -7,7 +7,7 @@ import { MultilingualContextType, MultilingualContext } from '../../contexts/Mul
 import { ToastNotificationContextType, ToastNotificationContext } from '../../contexts/ToastNotificationContext';
 
 const ToastNotification: React.FunctionComponent = () => {
-    const { language } = React.useContext(MultilingualContext) as MultilingualContextType;
+    const { isPortuguese } = React.useContext(MultilingualContext) as MultilingualContextType;
 	const { show, setShow, success, message } = React.useContext(ToastNotificationContext) as ToastNotificationContextType;
 
 	return (
@@ -28,9 +28,9 @@ const ToastNotification: React.FunctionComponent = () => {
                                         <p className="text-sm font-medium text-gray-900">
                                             {success 
                                                 ? 
-                                                    language === 'pt-PT' ? 'Mensagem enviada com sucesso!' : 'Message successfully sent!' 
+                                                    isPortuguese() ? 'Mensagem enviada com sucesso!' : 'Message successfully sent!' 
                                                 : 
-                                                    language === 'pt-PT' ? 'Ocorreu um erro inesperado!' : 'An unexpected error has occurred!'
+                                                    isPortuguese() ? 'Ocorreu um erro inesperado!' : 'An unexpected error has occurred!'
                                             }
                                         </p>
                                         <p className="mt-1 text-sm text-gray-500">
