@@ -18,13 +18,11 @@ const Title: React.FunctionComponent<Props> = ({ query }) => {
 
 	return (
 		<React.Fragment>
-			{data && data.homepageTitle && (
+			{data && data.title && (
 				<React.Fragment>
-					<div className="py-12">
-						<h2 className="text-center text-2xl font-medium text-primary">
-							{data.homepageTitle.title}
-						</h2>
-					</div>
+					<h2 className="text-center text-2xl font-medium text-primary">
+						{data.title.title}
+					</h2>
 				</React.Fragment>
 			)}
 		</React.Fragment>

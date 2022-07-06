@@ -18,7 +18,7 @@ const ProjectsCard: React.FunctionComponent<Props> = ({ query }) => {
 
 	return (
 		<React.Fragment>
-			<div className="grid grid-cols-1 items-start justify-items-center gap-8 md:grid-cols-3 lg:grid-cols-3">
+			<div className="grid grid-cols-1 items-start justify-items-center gap-8 py-12 md:grid-cols-3 lg:grid-cols-3">
 				{data && data.homepageProjectsCollection?.items.map((project: any) => (
 					<React.Fragment key={project.image.sys.id}>
 						<div className="flex flex-col">

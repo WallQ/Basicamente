@@ -23,7 +23,7 @@ const Homepage: React.FunctionComponent = () => {
 			<React.Suspense fallback={<HeaderLoadingSkeleton />}>
 				<Header query={HOMEPAGE_HEADER} />
 			</React.Suspense>
-			<div className="container mx-auto px-4 sm:px-6 lg:px-8">
+			<div className="container mx-auto px-4 pt-12 sm:px-6 lg:px-8">
 				<React.Suspense fallback={<TitleLoadingSkeleton />}>
 					<Title query={HOMEPAGE_TITLE} />
 				</React.Suspense>

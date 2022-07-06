@@ -19,7 +19,7 @@ const ServicesCard: React.FunctionComponent<Props> = ({ query }) => {
 
 	return (
 		<React.Fragment>
-			<div className="grid grid-cols-1 items-start justify-items-center gap-8 md:grid-cols-2 lg:grid-cols-4">
+			<div className="grid grid-cols-1 items-start justify-items-center gap-8 py-12 md:grid-cols-2 lg:grid-cols-4">
 			{data && data.homepageServicesCollection?.items.map((service: any) => (
 				<React.Fragment key={service.image.sys.id}>
 					<div className="flex flex-col">
