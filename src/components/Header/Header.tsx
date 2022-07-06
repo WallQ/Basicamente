@@ -2,6 +2,7 @@ import React from 'react';
 import { DocumentNode, useQuery } from '@apollo/client';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { MultilingualContextType, MultilingualContext } from '../../contexts/MultilingualContext';
+import richTextOptions from '../../utils/richTextOptions';
 
 import LoadingSkeleton from './HeaderLoadingSkeleton';
 import ErrorBoundary from './HeaderErrorBoundary';
@@ -9,14 +10,6 @@ import ErrorBoundary from './HeaderErrorBoundary';
 interface Props {
 	query: DocumentNode;
 }
-
-const options = {
-	renderMark: {
-		"bold": (text: any) => <span className="font-bold">{text}</span>,
-		"paragraph": (text: any) => <p>{text}</p>,
-		"italic": (text: any) => <span className="italic">{text}</span>,
-	},
-};
 
 const Header: React.FunctionComponent<Props> = ({ query }) => {
 	const { language } = React.useContext(MultilingualContext) as MultilingualContextType;
@@ -35,7 +28,7 @@ const Header: React.FunctionComponent<Props> = ({ query }) => {
 								{data.header.title}
 							</h1>
 							<div className="text-base font-light lg:text-2xl">
-								{documentToReactComponents(data.header.text.json, options)}
+								{documentToReactComponents(data.header.text.json, richTextOptions)}
 							</div>
 						</div>
 					</div>
