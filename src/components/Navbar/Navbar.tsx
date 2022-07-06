@@ -10,6 +10,7 @@ import { MultilingualContextType, MultilingualContext } from '../../contexts/Mul
 
 const Navbar: React.FunctionComponent = () => {
 	const { isPortuguese } = React.useContext(MultilingualContext) as MultilingualContextType;
+
 	const id = React.useId();
 	const location = useLocation();
 	const currentPath = location.pathname.split('/')[1];
@@ -94,7 +95,7 @@ const Navbar: React.FunctionComponent = () => {
 					{/* /Navigation Items */}
 					{/* Button */}
 					<div className="hidden items-center justify-end gap-x-4 lg:flex lg:flex-1 lg:flex-row">
-						<MultilingualToggle />
+						<MultilingualToggle mobile={false} />
 						<Link to="get-quote" className="flex h-12 items-center justify-center rounded-none border border-transparent bg-primary px-4 text-base font-medium text-white shadow-sm hover:opacity-80">
 							{isPortuguese() ? 'Pedir Proposta' : 'Get a Quote'}
 						</Link>
@@ -186,6 +187,7 @@ const Navbar: React.FunctionComponent = () => {
 									<NavLink to="contact" className="text-base font-medium text-gray-900 hover:text-gray-600">
 										{isPortuguese() ? 'Contactos' : 'Contacts'}
 									</NavLink>
+									<MultilingualToggle mobile={true} />
 								</div>
 								{/* /Navigation Items */}
 								{/* Button */}

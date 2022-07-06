@@ -1,9 +1,13 @@
 import React from 'react';
-import { Popover, Transition } from '@headlessui/react';
+import { Popover, Transition, Disclosure } from '@headlessui/react';
 import { GlobeAltIcon, ChevronDownIcon } from '@heroicons/react/solid';
 import { MultilingualContextType, MultilingualContext } from '../../contexts/MultilingualContext';
 
-const MultilingualToggle: React.FunctionComponent = () => {
+interface Props {
+	mobile: boolean;
+}
+
+const MultilingualToggle: React.FunctionComponent<Props> = ({ mobile }) => {
 	const { language, setLanguage } = React.useContext(MultilingualContext) as MultilingualContextType;
 
 	const handleClick = (languageChosen: string) => {
@@ -12,7 +16,7 @@ const MultilingualToggle: React.FunctionComponent = () => {
 		localStorage.setItem('BasicamenteLang', languageChosen);
 	}
 
-	return (
+	return !mobile ? (
 		<React.Fragment>
 			<Popover className="relative flex flex-row items-center">
 				{({ open }: { open: boolean }) => (
@@ -43,6 +47,34 @@ const MultilingualToggle: React.FunctionComponent = () => {
 					</React.Fragment>
 				)}
 			</Popover>
+		</React.Fragment>
+	) : (
+		<React.Fragment>
+			<Disclosure>
+				{({ open }: { open: boolean }) => (
+					<React.Fragment>
+						<Disclosure.Button className="group inline-flex items-center justify-center align-middle gap-x-1 rounded-md text-base font-medium text-gray-900 hover:text-gray-600 focus:outline-none">
+							<GlobeAltIcon className="h-6 w-6 text-gray-900 group-hover:text-gray-600" aria-hidden="true" />
+							<span className="text-base font-medium text-gray-900 hover:text-gray-600">
+								{language === 'pt-PT' ? 'Português' : 'English'}
+							</span>
+							<ChevronDownIcon className={`${open ? 'rotate-180 transform duration-200' : 'duration-200'} h-6 w-6 text-gray-900 group-hover:text-gray-600`} aria-hidden="true" />
+						</Disclosure.Button>
+						<Disclosure.Panel className="flex flex-col flex-1 flex-grow w-full items-center justify-center border-t border-b border-t-gray-500 border-b-gray-500">
+								<Popover.Button onClick={() => {(open = false); handleClick('pt-PT')}} className="min-w-full text-left">
+									<span className="block px-8 py-2 text-base font-medium text-gray-600 hover:bg-primary hover:text-white">
+										Português
+									</span>
+								</Popover.Button>
+								<Popover.Button onClick={() => {(open = false); handleClick('en-US')}} className="min-w-full text-left">
+									<span className="block px-8 py-2 text-base font-medium text-gray-600 hover:bg-primary hover:text-white">
+										English
+									</span>
+								</Popover.Button>
+						</Disclosure.Panel>
+					</React.Fragment>
+				)}
+			</Disclosure>
 		</React.Fragment>
 	);
 };
