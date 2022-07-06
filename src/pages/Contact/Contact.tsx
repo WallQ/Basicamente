@@ -5,7 +5,7 @@ import { CONTACTPAGE_CONTACT } from '../../graphql/Queries';
 import { CONTACT_FORM } from '../../graphql/Queries';
 
 // Loading Skeletons
-import PageLoadingSkeleton from '../../components/PageLoadingSkeleton/PageLoadingSkeleton';
+import PageLoadingSkeleton from '../../components/PageLoading/PageLoading';
 import ContactFormLoadingSkeleton from '../../components/ContactForm/ContactFormLoadingSkeleton';
 
 // Error Boundary
