@@ -41,21 +41,21 @@ export const HOMEPAGE_HEADER = gql`
 `;
 export const HOMEPAGE_TITLE = gql`
 	query getHomepageTitleContent($language: String) {
-		homepageTitle(id: "5wazryATP6lIZLyrdazoIc", locale: $language) {
+		title(id: "4HrZ6scTRKri1x5ewXLseq", locale: $language) {
 			title
 		}
 	}
 `;
 export const HOMEPAGE_TITLE_2 = gql`
 	query getHomepageTitle2Content($language: String) {
-		homepageTitle(id: "1MWeYqrRD8PmxHEM8v7cZd", locale: $language) {
+		title(id: "5J9POJCn9MEJk8rKEVwnvA", locale: $language) {
 			title
 		}
 	}
 `;
 export const HOMEPAGE_TITLE_3 = gql`
 	query getHomepageTitle3Content($language: String) {
-		homepageTitle(id: "1dpkqrtVmqdQrjCMkFw9ma", locale: $language) {
+		title(id: "2Mcm5EGyofRoi3YcSyd5Te", locale: $language) {
 			title
 		}
 	}
@@ -105,17 +105,15 @@ export const HOMEPAGE_PROJECTS = gql`
 `;
 export const HOMEPAGE_PARTNERS = gql`
 	query getHomepagePartnersContent($language: String) {
-		homepagePartnersCollection(locale: $language) {
-			items {
-				title
-				imagesCollection {
-					items {
-						title
-						description
-						url(transform: { width: 500, height: 300 })
-						sys {
-							id
-						}
+		partners(id: "4jVzFlrSMc4f4Uj7t2z5Io", locale: $language) {
+			title
+			imagesCollection {
+				items {
+					title
+					description
+					url(transform: { width: 500, height: 300 })
+					sys {
+						id
 					}
 				}
 			}
@@ -144,26 +142,31 @@ export const ABOUTPAGE_HEADER = gql`
 `;
 export const ABOUTPAGE_TEXT = gql`
 	query getAboutTextContent($language: String) {
-		aboutText(id: "1hkRm4UXu1h5Qguad6b1pW", locale: $language) {
+		text(id: "1dfJf7mf9JMcUiHtQQkHUr", locale: $language) {
 			text {
 				json
 			}
 		}
 	}
 `;
+export const ABOUTPAGE_TITLE = gql`
+	query getAboutTitleContent($language: String) {
+		title(id: "2Mcm5EGyofRoi3YcSyd5Te", locale: $language) {
+			title
+		}
+	}
+`;
 export const ABOUTPAGE_PARTNERS = gql`
 	query getAboutPartnersContent($language: String) {
-		aboutPartnersCollection(locale: $language) {
-			items {
-				title
-				imagesCollection {
-					items {
-						title
-						description
-						url(transform: { width: 500, height: 300 })
-						sys {
-							id
-						}
+		partners(id: "P3MbFMASXYnuJZlPSwwJL", locale: $language) {
+			title
+			imagesCollection {
+				items {
+					title
+					description
+					url(transform: { width: 500, height: 300 })
+					sys {
+						id
 					}
 				}
 			}
