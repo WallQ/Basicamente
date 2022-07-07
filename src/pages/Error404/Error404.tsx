@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 const Error404: React.FunctionComponent = () => {
 	return (
 		<React.Fragment>
-			<div className="mx-auto flex flex-col items-center justify-center py-24">
-				<div className="flex flex-col items-center justify-center gap-y-4">
+			<div className="container mx-auto px-4 py-24 sm:px-6 lg:px-8">
+				<div className="flex flex-col items-center justify-center gap-y-4 text-center">
 					<h1 className="text-9xl font-bold text-primary">404</h1>
 					<h5 className="text-2xl font-bold text-gray-900">
 						Oops! Esta página não foi encontrada!
@@ -23,10 +23,3 @@ const Error404: React.FunctionComponent = () => {
 };
 
 export default Error404;
-
-// h1 9xl
-// h2 8xl
-// h3 7xl
-// h4 6xl
-// h5 5xl
-// h6 4xl
