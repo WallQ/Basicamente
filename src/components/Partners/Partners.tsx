@@ -7,13 +7,14 @@ import ErrorBoundary from './PartnersErrorBoundary';
 
 interface Props {
 	query: DocumentNode;
+	quantity?: number;
 }
 
-const Partners: React.FunctionComponent<Props> = ({ query }) => {
+const Partners: React.FunctionComponent<Props> = ({ query, quantity }) => {
 	const { language } = React.useContext(MultilingualContext) as MultilingualContextType;
 	const { loading, error, data } = useQuery<any>(query, { variables: { language } });
 
-	if (loading) return <LoadingSkeleton quantity={3} />;
+	if (loading) return <LoadingSkeleton quantity={quantity || 3} />;
 	if (error) return <ErrorBoundary message={error.message} />;
 
 	return (

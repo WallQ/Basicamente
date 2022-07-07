@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface Props {
 	quantity: number;
@@ -7,7 +7,7 @@ interface Props {
 const PartnersLoadingSkeleton: React.FunctionComponent<Props> = ({ quantity }) => {
 	return (
 		<React.Fragment>
-			<div className="grid grid-cols-1 items-start justify-items-center gap-8 md:grid-cols-3 lg:grid-cols-3">
+			<div className="grid grid-cols-1 items-start justify-items-center gap-8 py-12 md:grid-cols-3 lg:grid-cols-3">
 				{Array.from({ length: quantity }, (_, index) => (
 					<React.Fragment key={`Partners-${index}`}>
 						<div className="flex w-full animate-pulse flex-col gap-y-4 bg-blue-200">
