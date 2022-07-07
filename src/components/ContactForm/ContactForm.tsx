@@ -104,6 +104,7 @@ const ContactForm: React.FunctionComponent<Props> = ({ query }) => {
                                             type="text"
                                             id={`${id}-firstName`}
                                             autoComplete="on"
+                                            placeholder="Foo"
                                             {...register("firstName", {
                                                 required: {
                                                     value: true,
@@ -138,6 +139,7 @@ const ContactForm: React.FunctionComponent<Props> = ({ query }) => {
                                             type="text"
                                             id={`${id}-lastName`}
                                             autoComplete="on"
+                                            placeholder="Bar"
                                             {...register("lastName", {
                                                 required: {
                                                     value: true,
@@ -173,6 +175,7 @@ const ContactForm: React.FunctionComponent<Props> = ({ query }) => {
                                         type="email"
                                         id={`${id}-email`}
                                         autoComplete="on"
+                                        placeholder="example@example.com"
                                         {...register("email", {
                                             required: {
                                                 value: true,
@@ -203,6 +206,7 @@ const ContactForm: React.FunctionComponent<Props> = ({ query }) => {
                                         type="tel"
                                         id={`${id}-telephone`}
                                         autoComplete="on"
+                                        placeholder="+351 999 999 999"
                                         {...register("telephone", {
                                             required: {
                                                 value: true,
@@ -236,6 +240,7 @@ const ContactForm: React.FunctionComponent<Props> = ({ query }) => {
                                     <input
                                         type="text"
                                         id={`${id}-company`}
+                                        placeholder="Foo & Bar"
                                         {...register("company", {
                                             required: {
                                                 value: true,
@@ -266,6 +271,7 @@ const ContactForm: React.FunctionComponent<Props> = ({ query }) => {
                                         id={`${id}-message`}
                                         cols={2}
                                         rows={4}
+                                        placeholder="Lorem ipsum..."
                                         {...register("message", {
                                             required: {
                                                 value: true,
