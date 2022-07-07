@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 // General Contact Form
 export const CONTACT_FORM = gql`
@@ -200,6 +200,25 @@ export const CONTACTPAGE_CONTACT = gql`
 				sys {
 					id
 				}
+			}
+		}
+	}
+`;
+
+export const TERMSCONDITIONS_TEXT = gql`
+	query getTermsConditionsTextContent($language: String) {
+		text(id: "2YPdefJVv6o54MJ2DANqTu", locale: $language) {
+			text {
+				json
+			}
+		}
+	}
+`;
+export const DISPUTERESOLUTION_TEXT = gql`
+	query getDisputeResolutionTextContent($language: String) {
+		text(id: "1oScufHLU3JPHPuvVZwl6Q", locale: $language) {
+			text {
+				json
 			}
 		}
 	}
