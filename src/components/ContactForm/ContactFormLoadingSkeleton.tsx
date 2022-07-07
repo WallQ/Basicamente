@@ -3,7 +3,7 @@ import React from 'react';
 const ProjectsCardLoadingSkeleton: React.FunctionComponent = () => {
 	return (
 		<React.Fragment>
-			<div className="mt-12 animate-pulse bg-blue-200">
+			<div className="animate-pulse bg-blue-200">
 				<div className="container mx-auto flex flex-col items-center justify-center gap-y-8 px-4 pt-12 pb-12 sm:px-6 lg:gap-y-12 lg:px-8">
 					<div className="flex w-full flex-1 flex-col flex-wrap items-center justify-center gap-y-4">
 						<div className="h-8 w-1/2 animate-pulse bg-blue-300" />
