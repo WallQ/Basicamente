@@ -17,7 +17,7 @@ const ProjectsCard = React.lazy(() => import('../../components/ProjectsCard/Proj
 const Partners = React.lazy(() => import('../../components/Partners/Partners'));
 const ContactForm = React.lazy(() => import('../../components/ContactForm/ContactForm'));
 
-const Homepage: React.FunctionComponent = () => {
+const Home: React.FunctionComponent = () => {
 	return (
 		<React.Fragment>
 			<React.Suspense fallback={<HeaderLoadingSkeleton />}>
@@ -50,4 +50,4 @@ const Homepage: React.FunctionComponent = () => {
 	);
 };
 
-export default Homepage;
+export default Home;

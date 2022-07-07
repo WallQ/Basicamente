@@ -12,11 +12,14 @@ import Layout from './layouts/Main/Main';
 import PageLoading from './components/PageLoading/PageLoading';
 
 // Pages
-const Homepage = React.lazy(() => import('./pages/Homepage/Homepage'));
-const About = React.lazy(() => import('./pages/About/About'));
-const Contact = React.lazy(() => import('./pages/Contact/Contact'));
 const Testing = React.lazy(() => import('./pages/Testing/Testing'));
 
+
+const Home = React.lazy(() => import('./pages/Home/Home'));
+
+const About = React.lazy(() => import('./pages/About/About'));
+const Contact = React.lazy(() => import('./pages/Contact/Contact'));
+const RequestProposal = React.lazy(() => import('./pages/RequestProposal/RequestProposal'));
 const TermsConditions = React.lazy(() => import('./pages/TermsConditions/TermsConditions'));
 const DisputeResolution = React.lazy(() => import('./pages/DisputeResolution/DisputeResolution'));
 const Error404 = React.lazy(() => import('./pages/Error404/Error404'));
@@ -31,7 +34,7 @@ const App: React.FunctionComponent = () => {
 							<Route path="/" element={<Layout />}>
 								{/* Remove after dev */}
 								<Route path="/test" element={<Testing />} />
-								<Route index element={<Homepage />} />
+								<Route index element={<Home />} />
 								<Route path="/services">
 									<Route path="digital-commerce" element={<h1>/services/digital-commerce</h1>} />
 									<Route path="marketing-digital-performance" element={<h1>/services/marketing-digital-performance</h1>} />
@@ -47,7 +50,7 @@ const App: React.FunctionComponent = () => {
 								</Route>
 								<Route path="about" element={<About />} />
 								<Route path="contact" element={<Contact />} />
-								<Route path="get-quote" element={<h1>/get-quote</h1>} />
+								<Route path="request-proposal" element={<RequestProposal />} />
 								<Route path="terms-conditions" element={<TermsConditions />} />
 								<Route path="dispute-resolution" element={<DisputeResolution />} />
 								<Route path="*" element={<Error404 />} />
