@@ -20,17 +20,15 @@ const About: React.FunctionComponent = () => {
 				<Header query={ABOUTPAGE_HEADER} />
 			</React.Suspense>
 			<div className="container mx-auto px-4 sm:px-6 lg:px-8">
-				<div className="py-20">
-					<React.Suspense fallback={<TextLoadingSkeleton />}>
-						<Text query={ABOUTPAGE_TEXT} />
-					</React.Suspense>
-				</div>
+				<React.Suspense fallback={<TextLoadingSkeleton />}>
+					<Text query={ABOUTPAGE_TEXT} />
+				</React.Suspense>
 				<React.Suspense fallback={<TitleLoadingSkeleton />}>
 					<Title query={ABOUTPAGE_TITLE} />
 				</React.Suspense>
 				<React.Suspense
 					fallback={<PartnersLoadingSkeleton quantity={18} />}>
-					<Partners query={ABOUTPAGE_PARTNERS} />
+					<Partners query={ABOUTPAGE_PARTNERS} quantity={18} />
 				</React.Suspense>
 			</div>
 		</React.Fragment>
