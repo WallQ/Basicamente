@@ -25,7 +25,7 @@ const Contact: React.FunctionComponent = () => {
 		<React.Fragment>
 			{data && data.contact && (
 				<React.Fragment>
-					<div className="container mx-auto grid grid-cols-1 gap-x-8 gap-y-8 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
+					<div className="container mx-auto grid grid-cols-1 gap-x-8 gap-y-8 px-4 py-12 sm:px-6 lg:grid-cols-2 lg:px-8">
 						<img src={data.contact.image.url} alt={data.contact.image.title} className="aspect-auto" width={2500} height={1920} />
 						<div className="px-18 flex flex-col justify-center gap-y-8">
 							<h1 className="text-4xl font-medium">
