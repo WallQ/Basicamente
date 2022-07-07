@@ -1,7 +1,25 @@
 import { gql } from "@apollo/client";
 
-// General Contact Form
+// General
 export const CONTACT_FORM = gql`
+	query getContactFormContent($language: String) {
+		contactForm(id: "42G0NtmamjcMg55Capubi", locale: $language) {
+			title
+			text
+			inputText
+			buttonText
+			image {
+				title
+				description
+				url
+				sys {
+					id
+				}
+			}
+		}
+	}
+`;
+export const PROPOSAL_FORM = gql`
 	query getContactFormContent($language: String) {
 		contactForm(id: "42G0NtmamjcMg55Capubi", locale: $language) {
 			title

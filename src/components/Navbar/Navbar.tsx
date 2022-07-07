@@ -96,8 +96,8 @@ const Navbar: React.FunctionComponent = () => {
 					{/* Button */}
 					<div className="hidden items-center justify-end gap-x-4 lg:flex lg:flex-1 lg:flex-row">
 						<MultilingualToggle mobile={false} />
-						<Link to="get-quote" className="flex h-12 items-center justify-center rounded-none border border-transparent bg-primary px-4 text-base font-medium text-white shadow-sm hover:opacity-80">
-							{isPortuguese() ? 'Pedir Proposta' : 'Get a Quote'}
+						<Link to="request-proposal" className="flex h-12 items-center justify-center rounded-none border border-transparent bg-primary px-4 text-base font-medium text-white shadow-sm hover:opacity-80">
+							{isPortuguese() ? 'Pedir Proposta' : 'Request Proposal'}
 						</Link>
 					</div>
 					{/* /Button */}
@@ -192,8 +192,8 @@ const Navbar: React.FunctionComponent = () => {
 								{/* /Navigation Items */}
 								{/* Button */}
 								<div className="mt-6">
-									<Link to="get-quote" className="inline-flex h-12 items-center justify-center rounded-none border border-transparent bg-primary px-4 text-base font-medium text-white shadow-sm hover:opacity-80">
-										{isPortuguese() ? 'Pedir Proposta' : 'Get a Quote'}
+									<Link to="request-proposal" className="inline-flex h-12 items-center justify-center rounded-none border border-transparent bg-primary px-4 text-base font-medium text-white shadow-sm hover:opacity-80">
+										{isPortuguese() ? 'Pedir Proposta' : 'Request Proposal'}
 									</Link>
 								</div>
 								{/* /Button */}

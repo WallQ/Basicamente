@@ -1,0 +1,592 @@
+import React from 'react';
+import { DocumentNode, useQuery } from '@apollo/client';
+import { useForm } from 'react-hook-form';
+import ReCAPTCHA from 'react-google-recaptcha';
+import emailjs from '@emailjs/browser';
+import { MultilingualContextType, MultilingualContext } from '../../contexts/MultilingualContext';
+import { ToastNotificationContextType, ToastNotificationContext } from '../../contexts/ToastNotificationContext';
+
+import LoadingSkeleton from './ProposalFormLoadingSkeleton';
+import ErrorBoundary from './ProposalFormErrorBoundary';
+import FieldErrorMessage from './ProposalFormFieldErrorMessage';
+
+const ToastNotification = React.lazy(() => import('../ToastNotification/ToastNotification'));
+
+interface Props {
+	query: DocumentNode;
+}
+
+interface Services {
+    value: string;
+}
+
+interface FormData {
+	firstName: string;
+	lastName: string;
+	email: string;
+	telephone: string;
+	company: string;
+    service: [Services];
+    budget: number;
+    time: string;
+	message: string;
+}
+
+const ProposalForm: React.FunctionComponent<Props> = ({ query }) => {
+	const id = React.useId();
+    const { register, handleSubmit, formState: { errors, isValid }, reset } = useForm<FormData>({ mode: 'onChange' });
+    
+    const recaptchaRef = React.createRef<ReCAPTCHA>();
+    const [verified, setVerified] = React.useState<boolean>(false);
+
+    // const { language, isPortuguese } = React.useContext(MultilingualContext) as MultilingualContextType;
+	// const { loading, error, data } = useQuery<any>(query, {variables: { language }});
+    
+    const { setShow, setSuccess, setMessage } = React.useContext(ToastNotificationContext) as ToastNotificationContextType;
+
+	// if (loading) return <LoadingSkeleton />;
+	// if (error) return <ErrorBoundary message={error.message} />;
+
+    const onChange = () => {
+        setVerified(currentValue => !currentValue);
+    };
+
+	const onSubmit = (data: FormData) => {
+        // const templateParams = {
+        //     subject: 'Email via Contact Form',
+        //     full_name: `${data.firstName} ${data.lastName}`,
+        //     first_name: data.firstName,
+        //     last_name: data.lastName,
+        //     email: data.email,
+        //     telephone: data.telephone,
+        //     company: data.company,
+        //     message: data.message
+        // };
+
+        // reset();
+        // recaptchaRef.current?.reset();
+        // emailjs
+        //     .send(process.env.REACT_APP_EMAILJS_SERVICE_ID || '', isPortuguese() ? 'template_foqrnve' : 'template_d4qdtte', templateParams, process.env.REACT_APP_EMAILJS_USER_ID || '')
+        //     .then((response) => {
+        //         setSuccess(true);
+        //         setMessage(
+        //             isPortuguese()
+        //                 ? "Enviamos-lhe um e-mail com mais detalhes."
+        //                 : "We've sent you an email with more details."
+        //         );
+        //         setShow(true);
+        //     })
+        //     .catch((error) => {
+        //         setSuccess(false);
+        //         setMessage(
+        //             isPortuguese()
+        //                 ? "Por favor, tente novamente mais tarde."
+        //                 : "Please, try again later."
+        //         );
+        //         setShow(true);
+        //     });
+        console.log('Submited!');
+        console.log('DATA => ',data);
+	};
+
+    return (
+        <React.Fragment>
+            <form id={`${id}-form`} onSubmit={handleSubmit(onSubmit)} className="flex w-full flex-col flex-wrap gap-y-4 xl:w-2/3">
+                <div className="flex flex-col gap-x-4 gap-y-4 lg:flex-row">
+                    <div className="flex flex-1 flex-col">
+                        <label htmlFor={`${id}-firstName`} className="block text-base font-medium text-primary">
+                            Nome *
+                        </label>
+                        <input
+                            type="text"
+                            id={`${id}-firstName`}
+                            autoComplete="on"
+                            placeholder="Foo"
+                            {...register("firstName", {
+                                required: {
+                                    value: true,
+                                    message: "O nome é um campo obrigatório a preencher!",
+                                },
+                                minLength: {
+                                    value: 2,
+                                    message: "O comprimento mínimo é de 2 caracteres!",
+                                },
+                                maxLength: {
+                                    value: 80,
+                                    message: "O comprimento máximo é de 80 caracteres!",
+                                },
+                                pattern: {
+                                    value: /^[a-zA-Z-_\s]*$/i,
+                                    message: "Apenas é premitido o uso de letras de A a Z!",
+                                },
+                            })}
+                            className={`mt-1 block w-full rounded-sm py-2.5 pl-4 text-gray-600 shadow-sm sm:text-sm 
+                                ${errors.firstName 
+                                    ? "border-red-500 focus:border-red-500 focus:ring-red-500"
+                                    : "border-gray-300 focus:border-primary focus:ring-primary"} 
+                            `}
+                        />
+                        {errors.firstName && <FieldErrorMessage message={errors.firstName.message} />}
+                    </div>
+                    <div className="flex flex-1 flex-col">
+                        <label htmlFor={`${id}-lastName`} className="block text-base font-medium text-primary">
+                            Sobrenome *
+                        </label>
+                        <input
+                            type="text"
+                            id={`${id}-lastName`}
+                            autoComplete="on"
+                            placeholder="Bar"
+                            {...register("lastName", {
+                                required: {
+                                    value: true,
+                                    message: "O sobrenome é um campo obrigatório a preencher!",
+                                },
+                                minLength: {
+                                    value: 2,
+                                    message: "O comprimento mínimo é de 2 caracteres!",
+                                },
+                                maxLength: {
+                                    value: 80,
+                                    message: "O comprimento máximo é de 80 caracteres!",
+                                },
+                                pattern: {
+                                    value: /^[a-zA-Z-_\s]*$/i,
+                                    message: "Apenas é premitido o uso de letras de A a Z!",
+                                },
+                            })}
+                            className={`mt-1 block w-full rounded-sm py-2.5 pl-4 text-gray-600 shadow-sm sm:text-sm 
+                                ${errors.lastName 
+                                    ? "border-red-500 focus:border-red-500 focus:ring-red-500"
+                                    : "border-gray-300 focus:border-primary focus:ring-primary"} 
+                            `}
+                        />
+                        {errors.lastName && <FieldErrorMessage message={errors.lastName.message} />}
+                    </div>
+                </div>
+                <div className="flex flex-col gap-x-4 gap-y-4 lg:flex-row">
+                    <div className="flex flex-1 flex-col">
+                        <label htmlFor={`${id}-email`} className="block text-base font-medium text-primary">
+                            E-mail *
+                        </label>
+                        <input
+                            type="email"
+                            id={`${id}-email`}
+                            autoComplete="on"
+                            placeholder="example@example.com"
+                            {...register("email", {
+                                required: {
+                                    value: true,
+                                    message: "O email é um campo obrigatório a preencher!",
+                                },
+                                minLength: {
+                                    value: 8,
+                                    message: "O comprimento mínimo é de 8 caracteres!",
+                                },
+                                pattern: {
+                                    value: /\b[\w.-]+@[\w.-]+\.\w{2,4}\b/i,
+                                    message: "Exemplo de formato aceite: example@example.com",
+                                },
+                            })}
+                            className={`mt-1 block w-full rounded-sm py-2.5 pl-4 text-gray-600 shadow-sm sm:text-sm 
+                                ${errors.email 
+                                    ? "border-red-500 focus:border-red-500 focus:ring-red-500"
+                                    : "border-gray-300 focus:border-primary focus:ring-primary"} 
+                            `}
+                        />
+                        {errors.email && <FieldErrorMessage message={errors.email.message} />}
+                    </div>
+                    <div className="flex flex-1 flex-col">
+                        <label htmlFor={`${id}-telephone`} className="block text-base font-medium text-primary">
+                            Telefone *
+                        </label>
+                        <input
+                            type="tel"
+                            id={`${id}-telephone`}
+                            autoComplete="on"
+                            placeholder="+351 999 999 999"
+                            {...register("telephone", {
+                                required: {
+                                    value: true,
+                                    message: "O telefone é um campo obrigatório a preencher!",
+                                },
+                                minLength: {
+                                    value: 9,
+                                    message: "O comprimento mínimo é de 9 caracteres!",
+                                },
+                                maxLength: {
+                                    value: 16,
+                                    message: "O comprimento máximo é de 16 caracteres!",
+                                },
+                                pattern: {
+                                    value: /^(\+?\d{3}|00)?\s?(\d{3})\s?(\d{3})\s?(\d{3})$/i,
+                                    message: "Exemplo de formato aceite: +351 999 999 999",
+                                },
+                            })}
+                            className={`mt-1 block w-full rounded-sm py-2.5 pl-4 text-gray-600 shadow-sm sm:text-sm 
+                                ${errors.telephone
+                                    ? "border-red-500 focus:border-red-500 focus:ring-red-500"
+                                    : "border-gray-300 focus:border-primary focus:ring-primary"} 
+                            `}
+                        />
+                        {errors.telephone && <FieldErrorMessage message={errors.telephone.message} />}
+                    </div>
+                </div>
+                <div className="flex flex-col">
+                    <label htmlFor={`${id}-company`} className="block text-base font-medium text-primary">
+                        A sua empresa *
+                    </label>
+                    <input
+                        type="text"
+                        id={`${id}-company`}
+                        placeholder="Foo & Bar"
+                        {...register("company", {
+                            required: {
+                                value: true,
+                                message: "A sua empresa é um campo obrigatório a preencher!",
+                            },
+                            minLength: {
+                                value: 2,
+                                message: "O comprimento mínimo é de 2 caracteres!",
+                            },
+                            pattern: {
+                                value: /^[a-zA-Z0-9.,_&-\s]*$/i,
+                                message: "Exemplo de formato aceite: Example & Example, Lda.",
+                            },
+                        })}
+                        className={`mt-1 block w-full rounded-sm py-2.5 pl-4 text-gray-600 shadow-sm sm:text-sm 
+                            ${errors.company
+                                ? "border-red-500 focus:border-red-500 focus:ring-red-500"
+                                : "border-gray-300 focus:border-primary focus:ring-primary"} 
+                        `}
+                    />
+                    {errors.company && <FieldErrorMessage message={errors.company.message} />}
+                </div>
+                <div className="flex flex-1 flex-col gap-x-4 gap-y-4 lg:flex-row">
+                    <div className="flex flex-1 flex-col gap-y-1">
+                        <h6 className="text-base font-medium text-primary">QUAIS SERVIÇOS PROCURA?</h6>
+                        <div className="flex flex-1 flex-row items-center gap-x-2">
+                            <input 
+                                type="checkbox"
+                                id={`${id}-service-1`}
+                                placeholder="service"
+                                value="Comércio Digital"
+                                {...register("service", {
+                                    required: {
+                                        value: true,
+                                        message: "O serviço é um campo obrigatório a preencher!",
+                                    },
+                                })}
+                                className="focus:border-primary focus:ring-primary h-4 w-4 text-primary border-gray-300 rounded-sm"
+                            />
+                            <label htmlFor={`${id}-service-1`} className="block text-sm font-light text-black">
+                                Comércio Digital
+                            </label>
+                        </div>
+                        <div className="flex flex-1 flex-row items-center gap-x-2">
+                            <input 
+                                type="checkbox"
+                                id={`${id}-service-2`}
+                                placeholder="service"
+                                value="Marketing Digital e Performance"
+                                {...register("service", {
+                                    required: {
+                                        value: true,
+                                        message: "O serviço é um campo obrigatório a preencher!",
+                                    },
+                                })}
+                                className="focus:border-primary focus:ring-primary h-4 w-4 text-primary border-gray-300 rounded-sm"
+                            />
+                            <label htmlFor={`${id}-service-2`} className="block text-sm font-light text-black">
+                                Marketing Digital e Performance
+                            </label>
+                        </div>
+                        <div className="flex flex-1 flex-row items-center gap-x-2">
+                            <input 
+                                type="checkbox"
+                                id={`${id}-service-3`}
+                                placeholder="service"
+                                value="UI/UX Design"
+                                {...register("service", {
+                                    required: {
+                                        value: true,
+                                        message: "O serviço é um campo obrigatório a preencher!",
+                                    },
+                                })}
+                                className="focus:border-primary focus:ring-primary h-4 w-4 text-primary border-gray-300 rounded-sm"
+                            />
+                            <label htmlFor={`${id}-service-3`} className="block text-sm font-light text-black">
+                                UI/UX Design
+                            </label>
+                        </div>
+                        <div className="flex flex-1 flex-row items-center gap-x-2">
+                            <input 
+                                type="checkbox"
+                                id={`${id}-service-4`}
+                                placeholder="service"
+                                value="Websites e Workplaces Digitais"
+                                {...register("service", {
+                                    required: {
+                                        value: true,
+                                        message: "O serviço é um campo obrigatório a preencher!",
+                                    },
+                                })}
+                                className="focus:border-primary focus:ring-primary h-4 w-4 text-primary border-gray-300 rounded-sm"
+                            />
+                            <label htmlFor={`${id}-service-4`} className="block text-sm font-light text-black">
+                                Websites e Workplaces Digitais
+                            </label>
+                        </div>
+                        <div className="flex flex-1 flex-row items-center gap-x-2">
+                            <input 
+                                type="checkbox"
+                                id={`${id}-service-5`}
+                                placeholder="service"
+                                value="Web Development"
+                                {...register("service", {
+                                    required: {
+                                        value: true,
+                                        message: "O serviço é um campo obrigatório a preencher!",
+                                    },
+                                })}
+                                className="focus:border-primary focus:ring-primary h-4 w-4 text-primary border-gray-300 rounded-sm"
+                            />
+                            <label htmlFor={`${id}-service-5`} className="block text-sm font-light text-black">
+                                Web Development
+                            </label>
+                        </div>
+                    </div>
+                    <div className="flex flex-1 flex-col gap-y-1">
+                        <h6 className="text-base font-medium text-primary">QUAL O ORÇAMENTO DISPONÍVEL?</h6>
+                        <div className="flex flex-1 flex-row items-center gap-x-2">
+                            <input 
+                                type="radio"
+                                id={`${id}-budget-1`}
+                                placeholder="budget"
+                                value="Até 2500€"
+                                {...register("budget", {
+                                    required: {
+                                        value: true,
+                                        message: "O orçamento é um campo obrigatório a preencher!",
+                                    },
+                                })}
+                                className="focus:border-primary focus:ring-primary h-4 w-4 text-primary border-gray-300 rounded-sm"
+                            />
+                            <label htmlFor={`${id}-budget-1`} className="block text-sm font-light text-black">
+                                Até 2500€
+                            </label>
+                        </div>
+                        <div className="flex flex-1 flex-row items-center gap-x-2">
+                            <input 
+                                type="radio"
+                                id={`${id}-budget-2`}
+                                placeholder="budget"
+                                value="De 2.500€ a 5.000€"
+                                {...register("budget", {
+                                    required: {
+                                        value: true,
+                                        message: "O orçamento é um campo obrigatório a preencher!",
+                                    },
+                                })}
+                                className="focus:border-primary focus:ring-primary h-4 w-4 text-primary border-gray-300 rounded-sm"
+                            />
+                            <label htmlFor={`${id}-budget-2`} className="block text-sm font-light text-black">
+                                De 2.500€ a 5.000€
+                            </label>
+                        </div>
+                        <div className="flex flex-1 flex-row items-center gap-x-2">
+                            <input 
+                                type="radio"
+                                id={`${id}-budget-3`}
+                                placeholder="budget"
+                                value="De 5.000€ a 15.000"
+                                {...register("budget", {
+                                    required: {
+                                        value: true,
+                                        message: "O orçamento é um campo obrigatório a preencher!",
+                                    },
+                                })}
+                                className="focus:border-primary focus:ring-primary h-4 w-4 text-primary border-gray-300 rounded-sm"
+                            />
+                            <label htmlFor={`${id}-budget-3`} className="block text-sm font-light text-black">
+                                De 5.000€ a 15.000€
+                            </label>
+                        </div>
+                        <div className="flex flex-1 flex-row items-center gap-x-2">
+                            <input 
+                                type="radio"
+                                id={`${id}-budget-4`}
+                                placeholder="budget"
+                                value="De 15.000€ a 35.000€"
+                                {...register("budget", {
+                                    required: {
+                                        value: true,
+                                        message: "O orçamento é um campo obrigatório a preencher!",
+                                    },
+                                })}
+                                className="focus:border-primary focus:ring-primary h-4 w-4 text-primary border-gray-300 rounded-sm"
+                            />
+                            <label htmlFor={`${id}-budget-4`} className="block text-sm font-light text-black">
+                                De 15.000€ a 35.000€
+                            </label>
+                        </div>
+                        <div className="flex flex-1 flex-row items-center gap-x-2">
+                            <input 
+                                type="radio"
+                                id={`${id}-budget-5`}
+                                placeholder="budget"
+                                value="Mais de 35.000€"
+                                {...register("budget", {
+                                    required: {
+                                        value: true,
+                                        message: "O orçamento é um campo obrigatório a preencher!",
+                                    },
+                                })}
+                                className="focus:border-primary focus:ring-primary h-4 w-4 text-primary border-gray-300 rounded-sm"
+                            />
+                            <label htmlFor={`${id}-budget-5`} className="block text-sm font-light text-black">
+                                Mais de 35.000€
+                            </label>
+                        </div>
+                    </div>
+                    <div className="flex flex-1 flex-col gap-y-1">
+                        <h6 className="text-base font-medium text-primary">PRIORIDADE PARA O PROJETO</h6>
+                        <div className="flex flex-1 flex-row items-center gap-x-2">
+                            <input 
+                                type="radio"
+                                id={`${id}-time-1`}
+                                placeholder="time"
+                                value="Urgente"
+                                {...register("time", {
+                                    required: {
+                                        value: true,
+                                        message: "O prioridade é um campo obrigatório a preencher!",
+                                    },
+                                })}
+                                className="focus:border-primary focus:ring-primary h-4 w-4 text-primary border-gray-300 rounded-sm"
+                            />
+                            <label htmlFor={`${id}-time-1`} className="block text-sm font-light text-black">
+                                Urgente
+                            </label>
+                        </div>
+                        <div className="flex flex-1 flex-row items-center gap-x-2">
+                            <input 
+                                type="radio"
+                                id={`${id}-time-2`}
+                                placeholder="time"
+                                value="3 meses"
+                                {...register("time", {
+                                    required: {
+                                        value: true,
+                                        message: "O prioridade é um campo obrigatório a preencher!",
+                                    },
+                                })}
+                                className="focus:border-primary focus:ring-primary h-4 w-4 text-primary border-gray-300 rounded-sm"
+                            />
+                            <label htmlFor={`${id}-time-2`} className="block text-sm font-light text-black">
+                                3 meses
+                            </label>
+                        </div>
+                        <div className="flex flex-1 flex-row items-center gap-x-2">
+                            <input 
+                                type="radio"
+                                id={`${id}-time-3`}
+                                placeholder="time"
+                                value="6 meses"
+                                {...register("time", {
+                                    required: {
+                                        value: true,
+                                        message: "O prioridade é um campo obrigatório a preencher!",
+                                    },
+                                })}
+                                className="focus:border-primary focus:ring-primary h-4 w-4 text-primary border-gray-300 rounded-sm"
+                            />
+                            <label htmlFor={`${id}-time-3`} className="block text-sm font-light text-black">
+                                6 meses
+                            </label>
+                        </div>
+                        <div className="flex flex-1 flex-row items-center gap-x-2">
+                            <input 
+                                type="radio"
+                                id={`${id}-time-4`}
+                                placeholder="time"
+                                value="9 meses"
+                                {...register("time", {
+                                    required: {
+                                        value: true,
+                                        message: "O prioridade é um campo obrigatório a preencher!",
+                                    },
+                                })}
+                                className="focus:border-primary focus:ring-primary h-4 w-4 text-primary border-gray-300 rounded-sm"
+                            />
+                            <label htmlFor={`${id}-time-4`} className="block text-sm font-light text-black">
+                                9 meses
+                            </label>
+                        </div>
+                        <div className="flex flex-1 flex-row items-center gap-x-2">
+                            <input 
+                                type="radio"
+                                id={`${id}-time-5`}
+                                placeholder="time"
+                                value="12 meses"
+                                {...register("time", {
+                                    required: {
+                                        value: true,
+                                        message: "O prioridade é um campo obrigatório a preencher!",
+                                    },
+                                })}
+                                className="focus:border-primary focus:ring-primary h-4 w-4 text-primary border-gray-300 rounded-sm"
+                            />
+                            <label htmlFor={`${id}-time-5`} className="block text-sm font-light text-black">
+                                12 meses
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="flex flex-col">
+                    <label htmlFor={`${id}-message`} className="block text-base font-medium text-primary">
+                        Conte-nos acerca do seu projeto *
+                    </label>
+                    <textarea
+                        id={`${id}-message`}
+                        cols={2}
+                        rows={4}
+                        placeholder="Lorem ipsum..."
+                        {...register("message", {
+                            required: {
+                                value: true,
+                                message: "A sua ideia de projeto é um campo obrigatório a preencher!",
+                            },
+                            minLength: {
+                                value: 16,
+                                message: "O comprimento mínimo é de 16 caracteres!",
+                            },
+                        })}
+                        className={`mt-1 block w-full rounded-sm py-2.5 pl-4 text-gray-600 shadow-sm sm:text-sm 
+                            ${errors.message
+                                ? "border-red-500 focus:border-red-500 focus:ring-red-500"
+                                : "border-gray-300 focus:border-primary focus:ring-primary"} 
+                        `}
+                    />
+                    {errors.message && <FieldErrorMessage message={errors.message.message} />}
+                </div>
+                <React.Suspense fallback={<p className="text-sm font-light text-white">Loading reCAPTCHA...</p>}>
+                    <ReCAPTCHA
+                        ref={recaptchaRef}
+                        sitekey={process.env.REACT_APP_GOOGLE_RECAPTCHA_KEY || ""}
+                        onChange={onChange}
+                        theme={"light"}
+                        type={"image"}
+                        size={"normal"}
+                    />
+                </React.Suspense>
+                <button type="submit" className={`mx-auto inline-flex h-12 w-full items-center justify-center rounded-none border border-transparent bg-primary px-4 text-base font-light text-white shadow-sm hover:opacity-80 lg:w-fit ${verified ? 'cursor-pointer' : 'cursor-not-allowed opacity-80'} ${isValid ? 'cursor-pointer' : 'cursor-not-allowed opacity-80'}`} disabled={!verified && !isValid}>
+                    Pedir Proposta
+                </button>
+            </form>
+        </React.Fragment>
+    );
+};
+
+export default ProposalForm;
