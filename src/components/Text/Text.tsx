@@ -18,8 +18,6 @@ const Text: React.FunctionComponent<Props> = ({ query }) => {
 	if (loading) return <LoadingSkeleton />;
 	if (error) return <ErrorBoundary message={error.message} />;
 
-	console.log(data);
-
 	return (
 		<React.Fragment>
 			{data && data.text && (
