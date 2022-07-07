@@ -17,6 +17,10 @@ const About = React.lazy(() => import('./pages/About/About'));
 const Contact = React.lazy(() => import('./pages/Contact/Contact'));
 const Testing = React.lazy(() => import('./pages/Testing/Testing'));
 
+const TermsConditions = React.lazy(() => import('./pages/TermsConditions/TermsConditions'));
+const DisputeResolution = React.lazy(() => import('./pages/DisputeResolution/DisputeResolution'));
+const Error404 = React.lazy(() => import('./pages/Error404/Error404'));
+
 const App: React.FunctionComponent = () => {
 	return (
 		<React.Suspense fallback={<PageLoading />}>
@@ -25,6 +29,7 @@ const App: React.FunctionComponent = () => {
 					<Router>
 						<Routes>
 							<Route path="/" element={<Layout />}>
+								{/* Remove after dev */}
 								<Route path="/test" element={<Testing />} />
 								<Route index element={<Homepage />} />
 								<Route path="/services">
@@ -43,9 +48,9 @@ const App: React.FunctionComponent = () => {
 								<Route path="about" element={<About />} />
 								<Route path="contact" element={<Contact />} />
 								<Route path="get-quote" element={<h1>/get-quote</h1>} />
-								<Route path="terms-conditions" element={<h1>/terms-conditions</h1>} />
-								<Route path="dispute-resolution" element={<h1>/dispute-resolution</h1>} />
-								<Route path="*" element={<h1>Error 404!</h1>} />
+								<Route path="terms-conditions" element={<TermsConditions />} />
+								<Route path="dispute-resolution" element={<DisputeResolution />} />
+								<Route path="*" element={<Error404 />} />
 							</Route>
 						</Routes>
 					</Router>
