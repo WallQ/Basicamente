@@ -1,11 +1,11 @@
-import React from 'react';
-import { DocumentNode, useQuery } from '@apollo/client';
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { MultilingualContextType, MultilingualContext } from '../../contexts/MultilingualContext';
-import richTextOptions from '../../utils/richTextOptions';
+import React from "react";
+import { DocumentNode, useQuery } from "@apollo/client";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import { MultilingualContextType, MultilingualContext } from "../../contexts/MultilingualContext";
+import richTextOptions from "../../utils/richTextOptions";
 
-import LoadingSkeleton from './TextLoadingSkeleton';
-import ErrorBoundary from './TextErrorBoundary';
+import LoadingSkeleton from "./TextLoadingSkeleton";
+import ErrorBoundary from "./TextErrorBoundary";
 
 interface Props {
 	query: DocumentNode;
@@ -18,13 +18,15 @@ const Text: React.FunctionComponent<Props> = ({ query }) => {
 	if (loading) return <LoadingSkeleton />;
 	if (error) return <ErrorBoundary message={error.message} />;
 
+	console.log(data);
+
 	return (
 		<React.Fragment>
 			{data && data.text && (
-				<div className="mx-auto max-w-5xl py-48">
+				<div className="mx-auto py-12">
 					<div className="flex flex-col flex-wrap items-center justify-center gap-y-4">
-						<div className="whitespace-pre-wrap text-center text-sm font-light text-gray-900">
-                            {documentToReactComponents(data.text.text.json, richTextOptions)}
+						<div className="whitespace-pre-wrap text-center text-base font-normal text-gray-900">
+							{documentToReactComponents(data.text.text.json, richTextOptions)}
 						</div>
 					</div>
 				</div>
