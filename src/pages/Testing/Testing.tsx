@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-import TestingComponent from '../../components/Testing/TestingComponent';
+import TestingComponent from "../../components/Testing/TestingComponent";
 
 const Testing: React.FunctionComponent = () => {
 	return (

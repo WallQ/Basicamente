@@ -3,12 +3,10 @@ import { Fragment } from 'react';
 import { Transition } from '@headlessui/react';
 import { CheckCircleIcon, XCircleIcon } from '@heroicons/react/outline';
 import { XIcon } from '@heroicons/react/solid';
-import { MultilingualContextType, MultilingualContext } from '../../contexts/MultilingualContext';
 import { ToastNotificationContextType, ToastNotificationContext } from '../../contexts/ToastNotificationContext';
 
 const ToastNotification: React.FunctionComponent = () => {
-    const { isPortuguese } = React.useContext(MultilingualContext) as MultilingualContextType;
-	const { show, setShow, success, message } = React.useContext(ToastNotificationContext) as ToastNotificationContextType;
+	const { show, setShow, success, title, message } = React.useContext(ToastNotificationContext) as ToastNotificationContextType;
 
 	return (
         <React.Fragment>
@@ -26,12 +24,7 @@ const ToastNotification: React.FunctionComponent = () => {
                                     </div>
                                     <div className="ml-3 w-0 flex-1 pt-0.5">
                                         <p className="text-sm font-medium text-gray-900">
-                                            {success 
-                                                ? 
-                                                    isPortuguese() ? 'Mensagem enviada com sucesso!' : 'Message successfully sent!' 
-                                                : 
-                                                    isPortuguese() ? 'Ocorreu um erro inesperado!' : 'An unexpected error has occurred!'
-                                            }
+                                            {title}
                                         </p>
                                         <p className="mt-1 text-sm text-gray-500">
                                             {message}

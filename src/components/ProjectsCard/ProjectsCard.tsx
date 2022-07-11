@@ -1,9 +1,9 @@
-import React from 'react';
-import { DocumentNode, useQuery } from '@apollo/client';
-import { MultilingualContextType, MultilingualContext } from '../../contexts/MultilingualContext';
+import React from "react";
+import { DocumentNode, useQuery } from "@apollo/client";
+import { MultilingualContextType, MultilingualContext } from "../../contexts/MultilingualContext";
 
-import LoadingSkeleton from './ProjectsCardLoadingSkeleton';
-import ErrorBoundary from './ProjectsCardErrorBoundary';
+import LoadingSkeleton from "./ProjectsCardLoadingSkeleton";
+import ErrorBoundary from "./ProjectsCardErrorBoundary";
 
 interface Props {
 	query: DocumentNode;
@@ -11,7 +11,7 @@ interface Props {
 
 const ProjectsCard: React.FunctionComponent<Props> = ({ query }) => {
 	const { language } = React.useContext(MultilingualContext) as MultilingualContextType;
-	const { loading, error, data } = useQuery<any>(query, {variables: { language }});
+	const { loading, error, data } = useQuery<any>(query, { variables: { language } });
 
 	if (loading) return <LoadingSkeleton quantity={3} />;
 	if (error) return <ErrorBoundary message={error.message} />;
@@ -22,9 +22,13 @@ const ProjectsCard: React.FunctionComponent<Props> = ({ query }) => {
 				{data && data.homepageProjectsCollection?.items.map((project: any) => (
 					<React.Fragment key={project.image.sys.id}>
 						<div className="flex flex-col">
-							<img src={project.image.url} alt={project.image.title} loading="lazy" width={1476} height={996} />
-							<p className="mt-4 text-sm font-bold text-gray-900">{project.title}</p>
-							<p className="mt-4 text-sm font-normal text-gray-900">{project.text}</p>
+							<img src={project.image.url} alt={project.image.title} loading="lazy" width={500} height={500} />
+							<p className="mt-4 text-sm font-bold text-gray-900">
+								{project.title}
+							</p>
+							<p className="mt-4 text-sm font-normal text-gray-900">
+								{project.text}
+							</p>
 							<a className="mt-4" href={project.url}>
 								<span className="border-b border-b-primary text-sm font-normal text-primary hover:opacity-80">
 									{project.urlText}
@@ -38,4 +42,4 @@ const ProjectsCard: React.FunctionComponent<Props> = ({ query }) => {
 	);
 };
 
-export default ProjectsCard;
+export default React.memo(ProjectsCard);

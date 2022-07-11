@@ -10,7 +10,7 @@ const Error404: React.FunctionComponent = () => {
 					<h5 className="text-2xl font-bold text-gray-900">
 						Oops! Esta página não foi encontrada!
 					</h5>
-					<p className="text-sm font-normal text-gray-600">
+					<p className="text-base font-normal text-gray-600">
 						Algo de errado aconteceu ou a página não existe mais.
 					</p>
 					<Link to={"/"} className={"inline-flex h-12 items-center justify-center rounded-none border border-transparent bg-primary px-4 text-base font-medium text-white shadow-sm hover:opacity-80"}>

@@ -1,9 +1,9 @@
-import React from 'react';
-import { DocumentNode, useQuery } from '@apollo/client';
-import { MultilingualContextType, MultilingualContext } from '../../contexts/MultilingualContext';
+import React from "react";
+import { DocumentNode, useQuery } from "@apollo/client";
+import { MultilingualContextType, MultilingualContext } from "../../contexts/MultilingualContext";
 
-import LoadingSkeleton from './PartnersLoadingSkeleton';
-import ErrorBoundary from './PartnersErrorBoundary';
+import LoadingSkeleton from "./PartnersLoadingSkeleton";
+import ErrorBoundary from "./PartnersErrorBoundary";
 
 interface Props {
 	query: DocumentNode;
@@ -21,19 +21,11 @@ const Partners: React.FunctionComponent<Props> = ({ query, quantity }) => {
 		<React.Fragment>
 			<div className="grid grid-cols-1 items-start justify-items-center gap-8 py-12 md:grid-cols-2 lg:grid-cols-3">
 				{data && data.partners.imagesCollection?.items.map((partner: any) => (
-					<img
-						key={partner.sys.id}
-						className="h-auto w-full"
-						src={partner.url}
-						alt={partner.title}
-						width={1500}
-						height={300}
-						loading="lazy"
-					/>
+					<img key={partner.sys.id} className="h-auto w-full" src={partner.url} alt={partner.title} loading="lazy" width={500} height={300} />
 				))}
 			</div>
 		</React.Fragment>
 	);
 };
 
-export default Partners;
+export default React.memo(Partners);

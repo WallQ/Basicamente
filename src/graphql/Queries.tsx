@@ -20,20 +20,33 @@ export const CONTACT_FORM = gql`
 	}
 `;
 export const PROPOSAL_FORM = gql`
-	query getContactFormContent($language: String) {
-		contactForm(id: "42G0NtmamjcMg55Capubi", locale: $language) {
+	query getProposalFormContent($language: String) {
+		proposalForm(id: "2X9cFiQJjhU9R2sP0Kjy0R", locale: $language) {
 			title
 			text
 			inputText
-			buttonText
-			image {
-				title
-				description
-				url
-				sys {
-					id
+			servicesTitle
+			servicesCollection(locale: $language) {
+				items {
+					title
+					value
 				}
 			}
+			budgetsTitle
+			budgetsCollection(locale: $language) {
+				items {
+					title
+					value
+				}
+			}
+			timesTitle
+			timesCollection(locale: $language) {
+				items {
+					title
+					value
+				}
+			}
+			buttonText
 		}
 	}
 `;
@@ -198,25 +211,11 @@ export const CONTACTPAGE_CONTACT = gql`
 		contact(id: "3yGzhij6Gwpa7o9DSVE2II", locale: $language) {
 			title
 			email
-			socialMediaCollection {
-				items {
-					title
-					url
-				}
-			}
 			contactCollection {
 				items {
 					city
 					address
 					telephone
-				}
-			}
-			image {
-				title
-				description
-				url(transform: { width: 750, height: 600 })
-				sys {
-					id
 				}
 			}
 		}
