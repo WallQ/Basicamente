@@ -26,7 +26,12 @@ const Contact: React.FunctionComponent = () => {
 		<React.Fragment>
 			{data && data.contact && (
 				<React.Fragment>
-					<div className="container mx-auto grid grid-cols-1 gap-y-8 px-4 py-12 sm:px-6 lg:grid-cols-2 lg:px-8">
+					<div className="container mx-auto grid grid-cols-1 gap-y-8 gap-x-8 px-4 py-12 sm:px-6 lg:grid-cols-3 lg:px-8">
+						<div className="col-span-2">
+							<React.Suspense fallback={<ContactFormLoadingSkeleton />}>
+								<ContactForm query={CONTACT_FORM} />
+							</React.Suspense>
+						</div>
 						<div className="flex flex-col justify-center gap-y-8">
 							<h1 className="text-4xl font-medium text-primary">
 								{data.contact.title}
@@ -34,21 +39,23 @@ const Contact: React.FunctionComponent = () => {
 							<a className="text-sm font-light underline" href={`mailto:${data.contact.email}`}>
 								{data.contact.email}
 							</a>
-							{data.contact.contactCollection?.items.map((contact: any, index: number) => (
-								<React.Fragment key={`${id}-Contact-${index}`}>
-									<div className="flex flex-col">
-										<h6 className="text-base font-medium text-gray-900">
-											{contact.city}
-										</h6>
-										<span className="text-sm font-light">
-											{contact.address}
-										</span>
-										<a className="text-sm font-light underline" href={`tel:${contact.telephone}`}>
-											{contact.telephone}
-										</a>
-									</div>
-								</React.Fragment>
-							))}
+							{data.contact.contactCollection?.items.map(
+								(contact: any, index: number) => (
+									<React.Fragment key={`${id}-Contact-${index}`}>
+										<div className="flex flex-col">
+											<h6 className="text-base font-medium text-gray-900">
+												{contact.city}
+											</h6>
+											<span className="text-sm font-light">
+												{contact.address}
+											</span>
+											<a className="text-sm font-light underline" href={`tel:${contact.telephone}`}>
+												{contact.telephone}
+											</a>
+										</div>
+									</React.Fragment>
+								),
+							)}
 							<div className="flex flex-row justify-start gap-x-2 lg:justify-start">
 								<a href="https://www.instagram.com/basicamente.digital/" target="_blank" rel="noreferrer" className="group rounded-full border-2 border-primary p-1.5 text-primary hover:opacity-80">
 									<span className="sr-only">Instagram</span>
@@ -64,9 +71,6 @@ const Contact: React.FunctionComponent = () => {
 								</a>
 							</div>
 						</div>
-						<React.Suspense fallback={<ContactFormLoadingSkeleton />}>
-							<ContactForm query={CONTACT_FORM} />
-						</React.Suspense>
 					</div>
 				</React.Fragment>
 			)}

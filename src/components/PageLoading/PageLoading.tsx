@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const PageLoading: React.FunctionComponent = () => {
 	const [show, setShow] = React.useState<boolean>(false);

@@ -39,7 +39,7 @@ const ProposalFormLoadingSkeleton: React.FunctionComponent = () => {
 								<div className="mb-1 h-5 w-20 animate-pulse bg-blue-300" />
 								{Array.from({ length: 5 }, (_, index) => (
 									<React.Fragment key={`${index}-ServiceLoading`}>
-										<div className="flex flex-1 flex-row items-center gap-x-2 mt-4">
+										<div className="mt-4 flex flex-1 flex-row items-center gap-x-2">
 											<div className="h-5 w-48 animate-pulse bg-blue-300" />
 										</div>
 									</React.Fragment>

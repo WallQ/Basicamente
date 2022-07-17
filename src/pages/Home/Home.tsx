@@ -1,21 +1,21 @@
-import React from 'react';
-import { HOMEPAGE_HEADER, HOMEPAGE_TITLE, HOMEPAGE_TITLE_2, HOMEPAGE_TITLE_3, HOMEPAGE_SERVICES, HOMEPAGE_PROJECTS, HOMEPAGE_PARTNERS, CONTACT_FORM } from '../../graphql/Queries';
+import React from "react";
+import { HOMEPAGE_HEADER, HOMEPAGE_TITLE, HOMEPAGE_TITLE_2, HOMEPAGE_TITLE_3, HOMEPAGE_SERVICES, HOMEPAGE_PROJECTS, HOMEPAGE_PARTNERS, CONTACT_FORM } from "../../graphql/Queries";
 
 // Loading Skeletons
-import HeaderLoadingSkeleton from '../../components/Header/HeaderLoadingSkeleton';
-import TitleLoadingSkeleton from '../../components/Title/TitleLoadingSkeleton';
-import ServicesCardLoadingSkeleton from '../../components/ServicesCard/ServicesCardLoadingSkeleton';
-import ProjectsCardLoadingSkeleton from '../../components/ProjectsCard/ProjectsCardLoadingSkeleton';
-import PartnersLoadingSkeleton from '../../components/Partners/PartnersLoadingSkeleton';
-import ContactFormLoadingSkeleton from '../../components/ContactForm/ContactFormLoadingSkeleton';
+import HeaderLoadingSkeleton from "../../components/Header/HeaderLoadingSkeleton";
+import TitleLoadingSkeleton from "../../components/Title/TitleLoadingSkeleton";
+import ServicesCardLoadingSkeleton from "../../components/ServicesCard/ServicesCardLoadingSkeleton";
+import ProjectsCardLoadingSkeleton from "../../components/ProjectsCard/ProjectsCardLoadingSkeleton";
+import PartnersLoadingSkeleton from "../../components/Partners/PartnersLoadingSkeleton";
+import ContactFormLoadingSkeleton from "../../components/ContactForm/ContactFormLoadingSkeleton";
 
 // Components
-const Header = React.lazy(() => import('../../components/Header/Header'));
-const Title = React.lazy(() => import('../../components/Title/Title'));
-const ServicesCard = React.lazy(() => import('../../components/ServicesCard/ServicesCard'));
-const ProjectsCard = React.lazy(() => import('../../components/ProjectsCard/ProjectsCard'));
-const Partners = React.lazy(() => import('../../components/Partners/Partners'));
-const ContactForm = React.lazy(() => import('../../components/ContactForm/ContactForm'));
+const Header = React.lazy(() => import("../../components/Header/Header"));
+const Title = React.lazy(() => import("../../components/Title/Title"));
+const ServicesCard = React.lazy(() => import("../../components/ServicesCard/ServicesCard"));
+const ProjectsCard = React.lazy(() => import("../../components/ProjectsCard/ProjectsCard"));
+const Partners = React.lazy(() => import("../../components/Partners/Partners"));
+const ContactForm = React.lazy(() => import("../../components/ContactForm/ContactForm"));
 
 const Home: React.FunctionComponent = () => {
 	return (

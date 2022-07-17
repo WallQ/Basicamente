@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { PROPOSAL_FORM } from "../../graphql/Queries";
 
 // Loading Skeletons

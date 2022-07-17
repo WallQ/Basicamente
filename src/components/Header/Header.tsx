@@ -22,13 +22,20 @@ const Header: React.FunctionComponent<Props> = ({ query }) => {
 		<React.Fragment>
 			{data && data.header && (
 				<React.Fragment>
-					<div className="bg-primary bg-cover bg-center bg-no-repeat py-24 lg:py-48" style={{backgroundImage: `url(${data.header.image.url})`}}>
+					<div
+						className="bg-primary bg-cover bg-center bg-no-repeat py-24 lg:py-48"
+						style={{
+							backgroundImage: `url(${data.header.image.url})`,
+						}}>
 						<div className="container mx-auto flex flex-col items-center justify-center gap-y-8 px-4 text-center text-white sm:px-6 lg:px-8 xl:w-2/3">
 							<h1 className="text-2xl font-medium lg:text-4xl">
 								{data.header.title}
 							</h1>
 							<div className="text-base font-light lg:text-2xl">
-								{documentToReactComponents(data.header.text.json, richTextOptions)}
+								{documentToReactComponents(
+									data.header.text.json,
+									richTextOptions,
+								)}
 							</div>
 						</div>
 					</div>

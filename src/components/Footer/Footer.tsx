@@ -1,6 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { FaInstagram, FaFacebookF, FaLinkedinIn } from 'react-icons/fa';
+import React from "react";
+import { Link } from "react-router-dom";
+import { FaInstagram, FaFacebookF, FaLinkedinIn } from "react-icons/fa";
 
 const Footer: React.FunctionComponent = () => {
 	return (
@@ -8,54 +8,59 @@ const Footer: React.FunctionComponent = () => {
 			<h2 id="footer-heading" className="sr-only">
 				Footer
 			</h2>
-			<div className="mx-auto lg:py-12 py-8 px-8">
-				<div className="flex flex-col lg:flex-row gap-y-8 lg:gap-y-0 lg:justify-evenly lg:text-left lg:items-start">
-                    <div className="space-y-4 lg:space-y-8">
+			<div className="mx-auto py-8 px-8 lg:py-12">
+				<div className="flex flex-col gap-y-8 lg:flex-row lg:items-start lg:justify-evenly lg:gap-y-0 lg:text-left">
+					<div className="space-y-4 lg:space-y-8">
 						<h4 className="text-xl font-bold text-white">
-                            Soluções Basicamente
+							Soluções Basicamente
 						</h4>
 						<div className="flex flex-col">
-							<ul className="text-base text-white space-y-1">
+							<ul className="space-y-1 text-base text-white">
 								<li>
 									<Link to="services/digital-commerce" className="border-b border-b-white">
-                                        Comércio Digital
+										Comércio Digital
 									</Link>
 								</li>
 								<li>
 									<Link to="services/marketing-digital-performance" className="border-b border-b-white">
-                                        Marketing Digital e Performance
+										Marketing Digital e Performance
 									</Link>
 								</li>
 								<li>
 									<Link to="services/uiux-design" className="border-b border-b-white">
-                                        UI/UX Design
-									</Link>
-								</li>
-                                <li>
-									<Link to="services/websites-workplaces-digitals" className="border-b border-b-white">
-                                        Websites e Workplaces Digitais
+										UI/UX Design
 									</Link>
 								</li>
 								<li>
 									<Link to="services/web-development" className="border-b border-b-white">
-                                        Web Development
+										Web Development
+									</Link>
+								</li>
+								<li>
+									<Link to="services/websites-digital-workplaces" className="border-b border-b-white">
+										Websites e Workplaces Digitais
 									</Link>
 								</li>
 							</ul>
 						</div>
 					</div>
-                    <div className="space-y-4 lg:space-y-8">
+					<div className="space-y-4 lg:space-y-8">
 						<h4 className="text-xl font-bold text-white">
-                            Onde estamos?
+							Onde estamos?
 						</h4>
 						<div className="flex flex-col gap-y-4">
 							<div className="text-base text-white">
-								<p className='font-base font-bold'>Porto</p>
-                                <span>Av. 1º Maio 1080, Ed. Carvalhido, Ent 3, 7ºEQ, 4600-013 Amarante</span>
-                            </div>
-                            <div className="text-base text-white">
-                                <p className='font-base font-bold'>Lisboa</p>
-                                <span>Rocha Conde d'Óbidos 1350-352 Lisboa</span>
+								<p className="font-base font-bold">Porto</p>
+								<span>
+									Av. 1º Maio 1080, Ed. Carvalhido, Ent 3,
+									7ºEQ, 4600-013 Amarante
+								</span>
+							</div>
+							<div className="text-base text-white">
+								<p className="font-base font-bold">Lisboa</p>
+								<span>
+									Rocha Conde d&aspos;Óbidos 1350-352 Lisboa
+								</span>
 							</div>
 						</div>
 					</div>
@@ -64,7 +69,7 @@ const Footer: React.FunctionComponent = () => {
 							Contacte-nos:
 						</h4>
 						<div className="flex flex-col">
-							<ul className="text-base text-white space-y-1">
+							<ul className="space-y-1 text-base text-white">
 								<li>
 									<a href="tel:+351211374667" className="border-b border-b-white">
 										+351 211 374 667
@@ -82,29 +87,35 @@ const Footer: React.FunctionComponent = () => {
 								</li>
 							</ul>
 						</div>
-						<div className="flex flex-row justify-start lg:justify-start gap-x-2">
-							<a href="https://www.instagram.com/basicamente.digital/" target="_blank" rel='noreferrer' className="rounded-full border-2 border-white p-1.5 text-gray-400 hover:text-gray-500">
+						<div className="flex flex-row justify-start gap-x-2 lg:justify-start">
+							<a href="https://www.instagram.com/basicamente.digital/" target="_blank" rel="noreferrer" className="rounded-full border-2 border-white p-1.5 text-gray-400 hover:text-gray-500">
 								<span className="sr-only">Instagram</span>
 								<FaInstagram className="text-white" />
 							</a>
-							<a href="https://www.facebook.com/basicamentedigital/" target="_blank" rel='noreferrer' className="rounded-full border-2 border-white p-1.5 text-gray-400 hover:text-gray-500">
+							<a href="https://www.facebook.com/basicamentedigital/" target="_blank" rel="noreferrer" className="rounded-full border-2 border-white p-1.5 text-gray-400 hover:text-gray-500">
 								<span className="sr-only">Facebook</span>
 								<FaFacebookF className="text-white" />
 							</a>
-							<a href="https://pt.linkedin.com/company/basicamente/" target="_blank" rel='noreferrer' className="rounded-full border-2 border-white p-1.5 text-gray-400 hover:text-gray-500">
+							<a href="https://pt.linkedin.com/company/basicamente/" target="_blank" rel="noreferrer" className="rounded-full border-2 border-white p-1.5 text-gray-400 hover:text-gray-500">
 								<span className="sr-only">LinkedIn</span>
 								<FaLinkedinIn className="text-white" />
 							</a>
 						</div>
 					</div>
 				</div>
-            </div>
-			<div className="py-8 px-8 bg-white">
-                <div className="flex flex-wrap flex-row items-center text-center justify-center gap-x-4 gap-y-2">
-                    <Link to="terms-conditions" className='text-xs text-primary border-b border-b-primary hover:opacity-80'>Termos e Condições</Link>
-                    <Link to="dispute-resolution" className='text-xs text-primary border-b border-b-primary hover:opacity-80'>Resolução de Litígios</Link>
-                    <a href="https://www.livroreclamacoes.pt/" target="_blank" rel='noreferrer' className='text-xs text-primary border-b border-b-primary hover:opacity-80'>Livro de Reclamações</a>
-                </div>
+			</div>
+			<div className="bg-white py-8 px-8">
+				<div className="flex flex-row flex-wrap items-center justify-center gap-x-4 gap-y-2 text-center">
+					<Link to="terms-conditions" className="border-b border-b-primary text-xs text-primary hover:opacity-80">
+						Termos e Condições
+					</Link>
+					<Link to="dispute-resolution" className="border-b border-b-primary text-xs text-primary hover:opacity-80">
+						Resolução de Litígios
+					</Link>
+					<a href="https://www.livroreclamacoes.pt/" target="_blank" rel="noreferrer" className="border-b border-b-primary text-xs text-primary hover:opacity-80">
+						Livro de Reclamações
+					</a>
+				</div>
 			</div>
 		</div>
 	);

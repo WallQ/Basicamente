@@ -35,7 +35,7 @@ const ContactForm: React.FunctionComponent<Props> = ({ query }) => {
 	const { language, isPortuguese } = React.useContext(MultilingualContext) as MultilingualContextType;
 	const { loading, error, data } = useQuery<any>(query, { variables: { language } });
 
-	const { setShow, setSuccess, setTitle, setMessage } = React.useContext(ToastNotificationContext) as ToastNotificationContextType;
+	const { show, setShow, setSuccess, setTitle, setMessage } = React.useContext(ToastNotificationContext) as ToastNotificationContextType;
 
 	if (loading) return <LoadingSkeleton />;
 	if (error) return <ErrorBoundary message={error.message} />;
@@ -59,8 +59,14 @@ const ContactForm: React.FunctionComponent<Props> = ({ query }) => {
 		reset();
 		recaptchaRef.current?.reset();
 		emailjs
-			.send(process.env.REACT_APP_EMAILJS_SERVICE_ID || "", isPortuguese() ? "template_foqrnve" : "template_d4qdtte", templateParams, process.env.REACT_APP_EMAILJS_USER_ID || "")
+			.send(
+				process.env.REACT_APP_EMAILJS_SERVICE_ID || "",
+				isPortuguese() ? "template_foqrnve" : "template_d4qdtte",
+				templateParams,
+				process.env.REACT_APP_EMAILJS_USER_ID || "",
+			)
 			.then((response) => {
+				console.log(response);
 				setSuccess(true);
 				setTitle(
 					isPortuguese()
@@ -75,6 +81,7 @@ const ContactForm: React.FunctionComponent<Props> = ({ query }) => {
 				setShow(true);
 			})
 			.catch((error) => {
+				console.error(error);
 				setSuccess(false);
 				setTitle(
 					isPortuguese()
@@ -94,7 +101,11 @@ const ContactForm: React.FunctionComponent<Props> = ({ query }) => {
 		<React.Fragment>
 			{data && data.contactForm && (
 				<React.Fragment>
-					<div className="bg-primary bg-cover bg-center bg-no-repeat" style={{backgroundImage: `url(${data.contactForm.image.url})`}}>
+					<div
+						className="bg-primary bg-cover bg-center bg-no-repeat"
+						style={{
+							backgroundImage: `url(${data.contactForm.image.url})`,
+						}}>
 						<div className="container mx-auto flex flex-col items-center justify-center gap-y-8 px-4 pt-12 pb-12 sm:px-6 lg:gap-y-12 lg:px-8">
 							<div className="space-y-4 text-left lg:text-center">
 								<h1 className="text-3xl font-medium text-white">
@@ -104,10 +115,15 @@ const ContactForm: React.FunctionComponent<Props> = ({ query }) => {
 									{data.contactForm.text}
 								</p>
 							</div>
-							<form id={`${id}-form`} onSubmit={handleSubmit(onSubmit)} className="flex w-full flex-col flex-wrap gap-y-4 xl:w-2/3">
+							<form
+								id={`${id}-form`}
+								onSubmit={handleSubmit(onSubmit)}
+								className="flex w-full flex-col flex-wrap gap-y-4 xl:w-2/3">
 								<div className="flex flex-col gap-x-4 gap-y-4 lg:flex-row">
 									<div className="flex flex-1 flex-col">
-										<label htmlFor={`${id}-firstName`} className="block text-base font-normal text-white">
+										<label
+											htmlFor={`${id}-firstName`}
+											className="block text-base font-normal text-white">
 											{data.contactForm.inputText[0]} *
 										</label>
 										<input
@@ -145,10 +161,18 @@ const ContactForm: React.FunctionComponent<Props> = ({ query }) => {
 												} 
                                             `}
 										/>
-										{errors.firstName && (<FieldErrorMessage message={errors.firstName.message} />)}
+										{errors.firstName && (
+											<FieldErrorMessage
+												message={
+													errors.firstName.message
+												}
+											/>
+										)}
 									</div>
 									<div className="flex flex-1 flex-col">
-										<label htmlFor={`${id}-lastName`} className="block text-base font-normal text-white">
+										<label
+											htmlFor={`${id}-lastName`}
+											className="block text-base font-normal text-white">
 											{data.contactForm.inputText[1]} *
 										</label>
 										<input
@@ -186,11 +210,19 @@ const ContactForm: React.FunctionComponent<Props> = ({ query }) => {
 												} 
                                             `}
 										/>
-										{errors.lastName && (<FieldErrorMessage message={errors.lastName.message} />)}
+										{errors.lastName && (
+											<FieldErrorMessage
+												message={
+													errors.lastName.message
+												}
+											/>
+										)}
 									</div>
 								</div>
 								<div className="flex flex-col">
-									<label htmlFor={`${id}-email`} className="block text-base font-normal text-white">
+									<label
+										htmlFor={`${id}-email`}
+										className="block text-base font-normal text-white">
 										{data.contactForm.inputText[2]} *
 									</label>
 									<input
@@ -223,10 +255,16 @@ const ContactForm: React.FunctionComponent<Props> = ({ query }) => {
 											} 
                                         `}
 									/>
-									{errors.email && (<FieldErrorMessage message={errors.email.message} />)}
+									{errors.email && (
+										<FieldErrorMessage
+											message={errors.email.message}
+										/>
+									)}
 								</div>
 								<div className="flex flex-col">
-									<label htmlFor={`${id}-telephone`} className="block text-base font-normal text-white">
+									<label
+										htmlFor={`${id}-telephone`}
+										className="block text-base font-normal text-white">
 										{data.contactForm.inputText[3]} *
 									</label>
 									<input
@@ -264,10 +302,16 @@ const ContactForm: React.FunctionComponent<Props> = ({ query }) => {
 											} 
                                         `}
 									/>
-									{errors.telephone && (<FieldErrorMessage message={errors.telephone.message}/>)}
+									{errors.telephone && (
+										<FieldErrorMessage
+											message={errors.telephone.message}
+										/>
+									)}
 								</div>
 								<div className="flex flex-col">
-									<label htmlFor={`${id}-company`} className="block text-base font-normal text-white">
+									<label
+										htmlFor={`${id}-company`}
+										className="block text-base font-normal text-white">
 										{data.contactForm.inputText[4]} *
 									</label>
 									<input
@@ -299,10 +343,16 @@ const ContactForm: React.FunctionComponent<Props> = ({ query }) => {
 											} 
                                         `}
 									/>
-									{errors.company && (<FieldErrorMessage message={errors.company.message} />)}
+									{errors.company && (
+										<FieldErrorMessage
+											message={errors.company.message}
+										/>
+									)}
 								</div>
 								<div className="flex flex-col">
-									<label htmlFor={`${id}-message`} className="block text-base font-normal text-white">
+									<label
+										htmlFor={`${id}-message`}
+										className="block text-base font-normal text-white">
 										{data.contactForm.inputText[5]} *
 									</label>
 									<textarea
@@ -330,12 +380,25 @@ const ContactForm: React.FunctionComponent<Props> = ({ query }) => {
 											} 
                                         `}
 									/>
-									{errors.message && (<FieldErrorMessage message={errors.message.message} />)}
+									{errors.message && (
+										<FieldErrorMessage
+											message={errors.message.message}
+										/>
+									)}
 								</div>
-								<React.Suspense fallback={<p className="text-sm font-light text-white">Loading reCAPTCHA...</p>}>
+								<React.Suspense
+									fallback={
+										<p className="text-sm font-light text-white">
+											Loading reCAPTCHA...
+										</p>
+									}>
 									<ReCAPTCHA
 										ref={recaptchaRef}
-										sitekey={process.env.REACT_APP_GOOGLE_RECAPTCHA_KEY || ""}
+										sitekey={
+											process.env
+												.REACT_APP_GOOGLE_RECAPTCHA_KEY ||
+											""
+										}
 										onChange={onChange}
 										theme={"light"}
 										type={"image"}
@@ -357,7 +420,7 @@ const ContactForm: React.FunctionComponent<Props> = ({ query }) => {
 									{data.contactForm.buttonText}
 								</button>
 							</form>
-							<ToastNotification />
+							{show ? <ToastNotification /> : null}
 						</div>
 					</div>
 				</React.Fragment>

@@ -20,9 +20,20 @@ const Partners: React.FunctionComponent<Props> = ({ query, quantity }) => {
 	return (
 		<React.Fragment>
 			<div className="grid grid-cols-1 items-start justify-items-center gap-8 py-12 md:grid-cols-2 lg:grid-cols-3">
-				{data && data.partners.imagesCollection?.items.map((partner: any) => (
-					<img key={partner.sys.id} className="h-auto w-full" src={partner.url} alt={partner.title} loading="lazy" width={500} height={300} />
-				))}
+				{data &&
+					data.partners.imagesCollection?.items.map(
+						(partner: any) => (
+							<img
+								key={partner.sys.id}
+								className="h-auto w-full"
+								src={partner.url}
+								alt={partner.title}
+								loading="lazy"
+								width={500}
+								height={300}
+							/>
+						),
+					)}
 			</div>
 		</React.Fragment>
 	);

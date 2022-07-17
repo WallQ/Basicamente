@@ -24,7 +24,7 @@ export const ToastNotificationContextProvider = ({ children }: ToastNotification
 	const [message, setMessage] = React.useState<string>("");
 
 	return (
-		<ToastNotificationContext.Provider value={{show, setShow, success, setSuccess, title, setTitle, message, setMessage }}>
+		<ToastNotificationContext.Provider value={{ show, setShow, success, setSuccess, title, setTitle, message, setMessage }}>
 			{children}
 		</ToastNotificationContext.Provider>
 	);

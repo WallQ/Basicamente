@@ -1,5 +1,5 @@
-import React from 'react';
-import { XCircleIcon } from '@heroicons/react/solid';
+import React from "react";
+import { XCircleIcon } from "@heroicons/react/solid";
 
 interface Props {
 	message: string;

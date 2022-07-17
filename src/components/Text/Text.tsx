@@ -23,8 +23,11 @@ const Text: React.FunctionComponent<Props> = ({ query }) => {
 			{data && data.text && (
 				<div className="mx-auto py-12">
 					<div className="flex flex-col flex-wrap items-center justify-center gap-y-4">
-						<div className="whitespace-pre-wrap text-center text-base font-normal text-gray-900">
-							{documentToReactComponents(data.text.text.json, richTextOptions)}
+						<div className="whitespace-pre-wrap text-base font-normal text-gray-900">
+							{documentToReactComponents(
+								data.text.text.json,
+								richTextOptions,
+							)}
 						</div>
 					</div>
 				</div>
