@@ -507,8 +507,66 @@ export const PORTFOLIO_ECOMMERCE_PORTFOLIO = gql`
 `;
 
 // Portfolio - Marketing Digital Performance
+export const PORTFOLIO_MARKETINGDIGITALPERFORMANCEPAGE_PORTFOLIO = gql`
+	query getMarketingDigitalPerformancePortfolioContent($language: String) {
+		portfolio(id: "QFBaKSz8nGPiJ4dukLZa7", locale: $language) {
+			title
+			text
+			portfolioCollection {
+				items {
+					image {
+						title
+						description
+						url
+						sys {
+							id
+						}
+					}
+					title
+					subtitle
+					text {
+						json
+					}
+					url {
+						text
+						url
+					}
+				}
+			}
+		}
+	}
+`;
 
 // Portfolio - WebDevelopment
+export const PORTFOLIO_WEBDEVELOPMENTPAGE_PORTFOLIO = gql`
+	query getWebDevelopmentPortfolioContent($language: String) {
+		portfolio(id: "4xmMwTDmlecJLFdzDXxLif", locale: $language) {
+			title
+			text
+			portfolioCollection {
+				items {
+					image {
+						title
+						description
+						url
+						sys {
+							id
+						}
+					}
+					title
+					subtitle
+					text {
+						json
+					}
+					url {
+						text
+						url
+					}
+				}
+			}
+		}
+	}
+`;
 
 // Portfolio - Websites
 export const PORTFOLIO_WEBSITESPAGE_PORTFOLIO = gql`

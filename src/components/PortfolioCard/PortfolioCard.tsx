@@ -38,7 +38,7 @@ const PortfolioCard: React.FunctionComponent<Props> = ({ query }) => {
 							<React.Fragment key={`${id}-PortfolioProject-${index}`}>
 								<div className={`${index === 0 ? "bg-primary" : ""}`}>
 									<div className="container mx-auto px-4 sm:px-6 lg:px-8">
-										<div className="grid grid-cols-1 gap-8 py-12 lg:grid-cols-2">
+										<div className="grid grid-cols-1 gap-8 py-12 lg:grid-cols-2 items-center">
 											<img
 												key={project.image.sys.id}
 												className="aspect-auto"
@@ -53,7 +53,7 @@ const PortfolioCard: React.FunctionComponent<Props> = ({ query }) => {
 													{project.title}
 												</h5>
 												<h6 className={`${index === 0 ? "text-white" : "text-primary"} text-xl font-medium`}>
-													{project.subTitle}
+													{project.subtitle}
 												</h6>
 												<div className={`${index === 0 ? "text-white" : "text-gray-900"} text-base font-normal`}>
 													{documentToReactComponents(
@@ -61,9 +61,11 @@ const PortfolioCard: React.FunctionComponent<Props> = ({ query }) => {
 														richTextOptions,
 													)}
 												</div>
-												<a className={`${index === 0 ? "text-white" : "text-primary"} underline`} href={project.url.url} rel="noreferrer" target="_blank">
-													{project.url.text}
-												</a>
+												{project.url && (
+													<a className={`${index === 0 ? "text-white" : "text-primary"} underline`} href={project.url.url} rel="noreferrer" target="_blank">
+														{project.url.text}
+													</a>
+												)}
 											</div>
 										</div>
 									</div>
