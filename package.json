@@ -1,7 +1,19 @@
 {
 	"name": "basicamente",
+	"description": "",
+	"author": "",
+	"license": "MIT",
 	"version": "1.0.0",
 	"private": true,
+	"keywords": [
+		"React",
+		"Basicamente",
+		"Website"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/WallQ/Basicamente"
+	},
 	"dependencies": {
 		"@apollo/client": "3.6.9",
 		"@contentful/rich-text-react-renderer": "15.12.1",

@@ -1,8 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaInstagram, FaFacebookF, FaLinkedinIn } from "react-icons/fa";
+import { MultilingualContext, MultilingualContextType } from "../../contexts/MultilingualContext";
 
 const Footer: React.FunctionComponent = () => {
+	const { isPortuguese } = React.useContext(MultilingualContext) as MultilingualContextType;
+
 	return (
 		<div className="bg-primary">
 			<h2 id="footer-heading" className="sr-only">
@@ -12,33 +15,51 @@ const Footer: React.FunctionComponent = () => {
 				<div className="flex flex-col gap-y-8 lg:flex-row lg:items-start lg:justify-evenly lg:gap-y-0 lg:text-left">
 					<div className="space-y-4 lg:space-y-8">
 						<h4 className="text-xl font-bold text-white">
-							Soluções Basicamente
+							{isPortuguese()
+								? "Soluções Basicamente"
+								: "Solutions Basically"
+							}
 						</h4>
 						<div className="flex flex-col">
 							<ul className="space-y-1 text-base text-white">
 								<li>
 									<Link to="services/digital-commerce" className="border-b border-b-white">
-										Comércio Digital
+										{isPortuguese()
+											? "Comércio Digital"
+											: "Digital Commerce"
+										}
 									</Link>
 								</li>
 								<li>
 									<Link to="services/marketing-digital-performance" className="border-b border-b-white">
-										Marketing Digital e Performance
+										{isPortuguese()
+											? "Marketing Digital e Performance"
+											: "Digital Marketing and Performance"
+										}
 									</Link>
 								</li>
 								<li>
 									<Link to="services/uiux-design" className="border-b border-b-white">
-										UI/UX Design
+										{isPortuguese()
+											? "Design UI/UX"
+											: "UI/UX Design"
+										}
 									</Link>
 								</li>
 								<li>
 									<Link to="services/web-development" className="border-b border-b-white">
-										Web Development
+										{isPortuguese()
+											? "Desenvolvimento Web"
+											: "Web Development"
+										}
 									</Link>
 								</li>
 								<li>
 									<Link to="services/websites-digital-workplaces" className="border-b border-b-white">
-										Websites e Workplaces Digitais
+										{isPortuguese()
+											? "Websites e Workplaces Digitais"
+											: "Websites and Digital Workplaces"
+										}
 									</Link>
 								</li>
 							</ul>
@@ -46,7 +67,10 @@ const Footer: React.FunctionComponent = () => {
 					</div>
 					<div className="space-y-4 lg:space-y-8">
 						<h4 className="text-xl font-bold text-white">
-							Onde estamos?
+							{isPortuguese()
+								? "Onde estamos?"
+								: "Where are we?"
+							}
 						</h4>
 						<div className="flex flex-col gap-y-4">
 							<div className="text-base text-white">
@@ -59,14 +83,17 @@ const Footer: React.FunctionComponent = () => {
 							<div className="text-base text-white">
 								<p className="font-base font-bold">Lisboa</p>
 								<span>
-									Rocha Conde d&aspos;Óbidos 1350-352 Lisboa
+									Rocha Conde d&apos;Óbidos 1350-352 Lisboa
 								</span>
 							</div>
 						</div>
 					</div>
 					<div className="space-y-4 lg:space-y-8">
 						<h4 className="text-xl font-bold text-white">
-							Contacte-nos:
+							{isPortuguese()
+								? "Contacte-nos:"
+								: "Contact us:"
+							}
 						</h4>
 						<div className="flex flex-col">
 							<ul className="space-y-1 text-base text-white">
@@ -107,13 +134,22 @@ const Footer: React.FunctionComponent = () => {
 			<div className="bg-white py-8 px-8">
 				<div className="flex flex-row flex-wrap items-center justify-center gap-x-4 gap-y-2 text-center">
 					<Link to="terms-conditions" className="border-b border-b-primary text-xs text-primary hover:opacity-80">
-						Termos e Condições
+						{isPortuguese()
+							? "Termos e Condições"
+							: "Terms and Conditions"
+						}
 					</Link>
 					<Link to="dispute-resolution" className="border-b border-b-primary text-xs text-primary hover:opacity-80">
-						Resolução de Litígios
+						{isPortuguese()
+							? "Resolução de Litígios"
+							: "Dispute Resolution"
+						}
 					</Link>
 					<a href="https://www.livroreclamacoes.pt/" target="_blank" rel="noreferrer" className="border-b border-b-primary text-xs text-primary hover:opacity-80">
-						Livro de Reclamações
+						{isPortuguese()
+							? "Livro de Reclamações"
+							: "Complaint Book"
+						}
 					</a>
 				</div>
 			</div>

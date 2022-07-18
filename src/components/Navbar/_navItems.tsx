@@ -8,11 +8,11 @@ export const services = [
 		routeUrl: "services/marketing-digital-performance",
 	},
 	{
-		routeTitle: "UI/UX Design",
+		routeTitle: "Design UI/UX",
 		routeUrl: "services/uiux-design",
 	},
 	{
-		routeTitle: "Web Development",
+		routeTitle: "Desenvolvimento Web",
 		routeUrl: "services/web-development",
 	},
 	{
@@ -31,7 +31,7 @@ export const portfolio = [
 		routeUrl: "portfolio/marketing-digital-performance",
 	},
 	{
-		routeTitle: "Web Development",
+		routeTitle: "Desenvolvimento Web",
 		routeUrl: "portfolio/web-development",
 	},
 	{
