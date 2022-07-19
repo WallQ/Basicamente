@@ -45,8 +45,7 @@ const UiUxDesign: React.FunctionComponent = () => {
 						<Text query={SERVICES_UIUXDESIGNPAGE_TEXT_3} />
 					</React.Suspense>
 				</div>
-				<React.Suspense
-					fallback={<PartnersLoadingSkeleton quantity={3} />}>
+				<React.Suspense fallback={<PartnersLoadingSkeleton quantity={3} />}>
 					<Partners query={SERVICES_UIUXDESIGNPAGE_PARTNERS} />
 				</React.Suspense>
 			</div>

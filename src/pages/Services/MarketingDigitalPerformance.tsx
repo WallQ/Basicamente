@@ -49,7 +49,7 @@ const MarketingDigitalPerformance: React.FunctionComponent = () => {
 			<React.Suspense fallback={<ContactFormLoadingSkeleton />}>
 				<ContactForm query={CONTACT_FORM} />
 			</React.Suspense>
-		</React.Fragment>
+		</React.Fragment> 
 	);
 };
 
