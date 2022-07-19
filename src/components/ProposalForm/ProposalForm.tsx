@@ -3,14 +3,22 @@ import { DocumentNode, useQuery } from "@apollo/client";
 import { useForm } from "react-hook-form";
 import ReCAPTCHA from "react-google-recaptcha";
 // import emailjs from '@emailjs/browser';
-import { MultilingualContextType, MultilingualContext } from "../../contexts/MultilingualContext";
-import { ToastNotificationContextType, ToastNotificationContext } from "../../contexts/ToastNotificationContext";
+import {
+	MultilingualContextType,
+	MultilingualContext,
+} from "../../contexts/MultilingualContext";
+import {
+	ToastNotificationContextType,
+	ToastNotificationContext,
+} from "../../contexts/ToastNotificationContext";
 
 import LoadingSkeleton from "./ProposalFormLoadingSkeleton";
 import ErrorBoundary from "./ProposalFormErrorBoundary";
 import FieldErrorMessage from "./ProposalFormFieldErrorMessage";
 
-const ToastNotification = React.lazy(() => import("../ToastNotification/ToastNotification"));
+const ToastNotification = React.lazy(
+	() => import("../ToastNotification/ToastNotification"),
+);
 
 interface Props {
 	query: DocumentNode;
@@ -34,15 +42,27 @@ interface FormData {
 
 const ProposalForm: React.FunctionComponent<Props> = ({ query }) => {
 	const id = React.useId();
-	const { register, handleSubmit, formState: { errors, isValid }, reset } = useForm<FormData>({ mode: "onChange" });
+	const {
+		register,
+		handleSubmit,
+		formState: { errors, isValid },
+		reset,
+	} = useForm<FormData>({ mode: "onChange" });
 
 	const recaptchaRef = React.createRef<ReCAPTCHA>();
 	const [verified, setVerified] = React.useState<boolean>(false);
 
-	const { language, isPortuguese } = React.useContext(MultilingualContext) as MultilingualContextType;
-	const { loading, error, data } = useQuery<any>(query, { variables: { language } });
+	const { language, isPortuguese } = React.useContext(
+		MultilingualContext,
+	) as MultilingualContextType;
+	const { loading, error, data } = useQuery<any>(query, {
+		variables: { language },
+	});
 
-	const { show, setShow, setSuccess, setTitle, setMessage } = React.useContext(ToastNotificationContext) as ToastNotificationContextType;
+	const { show, setShow, setSuccess, setTitle, setMessage } =
+		React.useContext(
+			ToastNotificationContext,
+		) as ToastNotificationContextType;
 
 	if (loading) return <LoadingSkeleton />;
 	if (error) return <ErrorBoundary message={error.message} />;
@@ -128,7 +148,10 @@ const ProposalForm: React.FunctionComponent<Props> = ({ query }) => {
 								{data.proposalForm.text}
 							</p>
 						</div>
-						<form id={`${id}-form`} onSubmit={handleSubmit(onSubmit)} className="flex w-full flex-col flex-wrap gap-y-4 xl:w-2/3">
+						<form
+							id={`${id}-form`}
+							onSubmit={handleSubmit(onSubmit)}
+							className="flex w-full flex-col flex-wrap gap-y-4 xl:w-2/3">
 							<div className="flex flex-col gap-x-4 gap-y-4 lg:flex-row">
 								<div className="flex flex-1 flex-col">
 									<label
@@ -540,4 +563,4 @@ const ProposalForm: React.FunctionComponent<Props> = ({ query }) => {
 	);
 };
 
-export default ProposalForm;
+export default React.memo(ProposalForm);

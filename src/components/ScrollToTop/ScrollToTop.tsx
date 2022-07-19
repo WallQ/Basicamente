@@ -40,4 +40,4 @@ const Scroll: React.FunctionComponent = () => {
 	);
 };
 
-export default Scroll;
+export default React.memo(Scroll);
