@@ -49,14 +49,14 @@ const App: React.FunctionComponent = () => {
 							<Route path="/" element={<Layout />}>
 								<Route path="/test" element={<Testing />} />
 								<Route index element={<Home />} />
-								<Route path="/services" element={<DigitalCommerce />}>
+								<Route path="/services">
 									<Route path="digital-commerce" element={<DigitalCommerce />} />
 									<Route path="marketing-digital-performance" element={<MarketingDigitalPerformanceS />} />
 									<Route path="uiux-design" element={<UiUxDesign />} />
 									<Route path="web-development" element={<WebDevelopmentS />} />
 									<Route path="websites-digital-workplaces" element={<WebsitesDigitalWorkplaces />} />
 								</Route>
-								<Route path="/portfolio" element={<Ecommerce />}>
+								<Route path="/portfolio">
 									<Route path="e-commerce" element={<Ecommerce />} />
 									<Route path="marketing-digital-performance" element={<MarketingDigitalPerformanceP />} />
 									<Route path="web-development" element={<WebDevelopmentP />} />
