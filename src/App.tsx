@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ReactGA from 'react-ga';
 
 // Contexts
 import { MultilingualContextProvider } from "./contexts/MultilingualContext";
@@ -31,7 +32,14 @@ const TermsConditions = React.lazy(() => import("./pages/TermsConditions/TermsCo
 const DisputeResolution = React.lazy(() => import("./pages/DisputeResolution/DisputeResolution"));
 const Error404 = React.lazy(() => import("./pages/Error404/Error404"));
 
+ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS_TRACKING_ID || "");
+
 const App: React.FunctionComponent = () => {
+
+	React.useEffect(() => {
+		ReactGA.pageview(window.location.pathname);
+	}, []);
+
 	return (
 		<React.Suspense fallback={<PageLoading />}>
 			<MultilingualContextProvider>
@@ -41,14 +49,14 @@ const App: React.FunctionComponent = () => {
 							<Route path="/" element={<Layout />}>
 								<Route path="/test" element={<Testing />} />
 								<Route index element={<Home />} />
-								<Route path="/services">
+								<Route path="/services" element={<DigitalCommerce />}>
 									<Route path="digital-commerce" element={<DigitalCommerce />} />
 									<Route path="marketing-digital-performance" element={<MarketingDigitalPerformanceS />} />
 									<Route path="uiux-design" element={<UiUxDesign />} />
 									<Route path="web-development" element={<WebDevelopmentS />} />
 									<Route path="websites-digital-workplaces" element={<WebsitesDigitalWorkplaces />} />
 								</Route>
-								<Route path="/portfolio">
+								<Route path="/portfolio" element={<Ecommerce />}>
 									<Route path="e-commerce" element={<Ecommerce />} />
 									<Route path="marketing-digital-performance" element={<MarketingDigitalPerformanceP />} />
 									<Route path="web-development" element={<WebDevelopmentP />} />
