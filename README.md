@@ -34,9 +34,7 @@
   <a href="https://vercel.com/" rel="noreferrer" target="_blank" style="text-decoration: none;">
     <img src="https://github.com/WallQ/Basicamente/blob/master/docs/tech/Vercel.png?raw=true" alt="Vercel" width="64" height="64" />
   </a>
-  <a href="https://code.visualstudio.com/" rel="noreferrer" target="_blank" style="text-decoration: none;">
-    <img src="https://github.com/WallQ/Basicamente/blob/master/docs/tech/VisualStudioCode.png?raw=true" alt="Visual Studio Code" width="64" height="64" />
-   </a>
+  [<img src="https://github.com/WallQ/Basicamente/blob/master/docs/tech/VisualStudioCode.png?raw=true" alt="Visual Studio Code" width="64" height="64" />](https://code.visualstudio.com/)
 </div>
 
 ## License
