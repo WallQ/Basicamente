@@ -1,5 +1,7 @@
 # Basicamente
 
+This is a [React App](https://reactjs.org/) project bootstrapped with [`npx create-react-app basicamente --template typescript`](https://create-react-app.dev/docs/adding-typescript/).
+
 ## Technologies
 
 [<img src="https://github.com/WallQ/Basicamente/blob/master/docs/tech/TypeScript.png?raw=true" alt="TypeScript" width="64" height="64" />](https://www.typescriptlang.org/)
@@ -14,8 +16,6 @@
 [<img src="https://github.com/WallQ/Basicamente/blob/master/docs/tech/GitHub.png?raw=true" alt="GitHub" width="64" height="64" />](https://github.com/)
 [<img src="https://github.com/WallQ/Basicamente/blob/master/docs/tech/Vercel.png?raw=true" alt="Vercel" width="64" height="64" />](https://vercel.com/)
 [<img src="https://github.com/WallQ/Basicamente/blob/master/docs/tech/VisualStudioCode.png?raw=true" alt="Visual Studio Code" width="64" height="64" />](https://code.visualstudio.com/)
-
-This is a [React App](https://reactjs.org/) project bootstrapped with [`npx create-react-app basicamente --template typescript`](https://create-react-app.dev/docs/adding-typescript/).
 
 ## Getting Started
 
