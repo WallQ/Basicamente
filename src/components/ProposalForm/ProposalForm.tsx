@@ -2,7 +2,7 @@ import React from "react";
 import { DocumentNode, useQuery } from "@apollo/client";
 import { useForm } from "react-hook-form";
 import ReCAPTCHA from "react-google-recaptcha";
-// import emailjs from '@emailjs/browser';
+import emailjs from "@emailjs/browser";
 import {
 	MultilingualContextType,
 	MultilingualContext,
@@ -88,7 +88,6 @@ const ProposalForm: React.FunctionComponent<Props> = ({ query }) => {
 
 		reset();
 		recaptchaRef.current?.reset();
-		console.log("EMAIL SENT!", templateParams);
 		setSuccess(true);
 		setTitle(
 			isPortuguese()
@@ -101,38 +100,43 @@ const ProposalForm: React.FunctionComponent<Props> = ({ query }) => {
 				: "We've sent you an email with more details.",
 		);
 		setShow(true);
-		// emailjs
-		//     .send(process.env.REACT_APP_EMAILJS_SERVICE_ID || '', isPortuguese() ? 'template_foqrnve' : 'template_d4qdtte', templateParams, process.env.REACT_APP_EMAILJS_USER_ID || '')
-		//     .then((response) => {
-		//         console.log(response);
-		//         setSuccess(true);
-		//         setTitle(
-		//             isPortuguese()
-		//                 ? "Proposta enviada com sucesso!"
-		//                 : "Proposal successfully sent!"
-		//         );
-		//         setMessage(
-		//             isPortuguese()
-		//                 ? "Enviamos-lhe um e-mail com mais detalhes."
-		//                 : "We've sent you an email with more details."
-		//         );
-		//         setShow(true);
-		//     })
-		//     .catch((error) => {
-		//         console.error(error);
-		//         setSuccess(false);
-		//         setTitle(
-		//             isPortuguese()
-		//                 ? "Ocorreu um erro inesperado!"
-		//                 : "An unexpected error has occurred!"
-		//         );
-		//         setMessage(
-		//             isPortuguese()
-		//                 ? "Por favor, tente novamente mais tarde."
-		//                 : "Please, try again later."
-		//         );
-		//         setShow(true);
-		//     });
+		emailjs
+			.send(
+				process.env.REACT_APP_EMAILJS_SERVICE_ID_2 || "",
+				isPortuguese() ? "template_exv6tsj" : "template_p37nhub",
+				templateParams,
+				process.env.REACT_APP_EMAILJS_USER_ID_2 || "",
+			)
+			.then((response) => {
+				console.log(response);
+				setSuccess(true);
+				setTitle(
+					isPortuguese()
+						? "Proposta enviada com sucesso!"
+						: "Proposal successfully sent!",
+				);
+				setMessage(
+					isPortuguese()
+						? "Enviamos-lhe um e-mail com mais detalhes."
+						: "We've sent you an email with more details.",
+				);
+				setShow(true);
+			})
+			.catch((error) => {
+				console.error(error);
+				setSuccess(false);
+				setTitle(
+					isPortuguese()
+						? "Ocorreu um erro inesperado!"
+						: "An unexpected error has occurred!",
+				);
+				setMessage(
+					isPortuguese()
+						? "Por favor, tente novamente mais tarde."
+						: "Please, try again later.",
+				);
+				setShow(true);
+			});
 	};
 
 	return (
