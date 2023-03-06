@@ -19,8 +19,13 @@ This is a [React App](https://reactjs.org/) project bootstrapped with [`npx crea
 
 ## Getting Started
 
-First, run the development server:
+First, install the dependencies:
 
+```bash
+npm install
+```
+
+Then run the development server:
 ```bash
 npm run start
 ```
