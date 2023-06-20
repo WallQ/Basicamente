@@ -1,5 +1,7 @@
 # Basicamente
 
+## Description
+
 This is a [React App](https://reactjs.org/) project bootstrapped with [`npx create-react-app basicamente --template typescript`](https://create-react-app.dev/docs/adding-typescript/).
 
 ## Technologies
